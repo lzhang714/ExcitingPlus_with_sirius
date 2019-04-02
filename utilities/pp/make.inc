@@ -1,0 +1,17 @@
+MAKE = make
+F90 = ftn
+CXX = CC
+CC = cc
+CPP_OPTS = -D_MPI_
+ 
+F90_OPTS = -O3 -cpp $(CPP_OPTS) -funroll-loops -check bound
+
+F90_LINK_OPTS=$(F90_OPTS)
+
+LAPACK_LIB = -mkl=cluster
+
+# === compile with HDF5 support ===
+CPP_OPTS := $(CPP_OPTS) -D_HDF5_
+
+# === collect all libraries under one name ===
+LIBS = $(LAPACK_LIB) 

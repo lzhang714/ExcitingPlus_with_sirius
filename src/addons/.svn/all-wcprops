@@ -1,0 +1,479 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/1908/trunk/src/addons
+END
+gwmain.f90
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/1861/trunk/src/addons/gwmain.f90
+END
+mod_rs.f90
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/1585/trunk/src/addons/mod_rs.f90
+END
+genvscrn.f90
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1780/trunk/src/addons/genvscrn.f90
+END
+write_xml_info.f90
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/1414/trunk/src/addons/write_xml_info.f90
+END
+putevecfd.f90
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1467/trunk/src/addons/putevecfd.f90
+END
+findband1.f90
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1338/trunk/src/addons/findband1.f90
+END
+writewf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1787/trunk/src/addons/writewf.f90
+END
+mod_papi.f90
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1862/trunk/src/addons/mod_papi.f90
+END
+seceqnfd.f90
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1718/trunk/src/addons/seceqnfd.f90
+END
+mod_mpi_grid.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/1863/trunk/src/addons/mod_mpi_grid.tpl
+END
+dosrlm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/1787/trunk/src/addons/dosrlm.f90
+END
+rhomag_exact.f90
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/1825/trunk/src/addons/rhomag_exact.f90
+END
+bandchar.f90
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1511/trunk/src/addons/bandchar.f90
+END
+wrmtrx.f90
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/1081/trunk/src/addons/wrmtrx.f90
+END
+update_self_energy.f90
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/1814/trunk/src/addons/update_self_energy.f90
+END
+genwfsvocc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/1563/trunk/src/addons/genwfsvocc.f90
+END
+genradf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1721/trunk/src/addons/genradf.f90
+END
+writegshells.f90
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/1555/trunk/src/addons/writegshells.f90
+END
+bndint.f90
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/1892/trunk/src/addons/bndint.f90
+END
+test_bloch_wf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/1787/trunk/src/addons/test_bloch_wf.f90
+END
+hash.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1059/trunk/src/addons/hash.f90
+END
+crpa.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1787/trunk/src/addons/crpa.f90
+END
+mod_hdf5.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1497/trunk/src/addons/mod_hdf5.tpl
+END
+mod_addons_q.f90
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/1817/trunk/src/addons/mod_addons_q.f90
+END
+mod_ws.f90
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/1730/trunk/src/addons/mod_ws.f90
+END
+checkherm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1059/trunk/src/addons/checkherm.f90
+END
+Lebedev-Laikov.f90
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/1059/trunk/src/addons/Lebedev-Laikov.f90
+END
+gendmatrsh.f90
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/1829/trunk/src/addons/gendmatrsh.f90
+END
+genscell.f90
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1904/trunk/src/addons/genscell.f90
+END
+response.f90
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1790/trunk/src/addons/response.f90
+END
+leblaik.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1059/trunk/src/addons/leblaik.f90
+END
+genshmat.f90
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1059/trunk/src/addons/genshmat.f90
+END
+test_xc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1501/trunk/src/addons/test_xc.f90
+END
+gaulegf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1059/trunk/src/addons/gaulegf.f90
+END
+seceqnsv_exact.f90
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/1728/trunk/src/addons/seceqnsv_exact.f90
+END
+genwfsvit.f90
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1080/trunk/src/addons/genwfsvit.f90
+END
+elk_intrf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1824/trunk/src/addons/elk_intrf.f90
+END
+mod_seceqn.f90
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/1729/trunk/src/addons/mod_seceqn.f90
+END
+vrinmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/1288/trunk/src/addons/vrinmt.f90
+END
+genwfsvmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1121/trunk/src/addons/genwfsvmt.f90
+END
+cmemcpy.c
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1864/trunk/src/addons/cmemcpy.c
+END
+genu4.f90
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1780/trunk/src/addons/genu4.f90
+END
+getatmcls.f90
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1676/trunk/src/addons/getatmcls.f90
+END
+occupy2.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1545/trunk/src/addons/occupy2.f90
+END
+init3.f90
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1798/trunk/src/addons/init3.f90
+END
+getufr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/1420/trunk/src/addons/getufr.f90
+END
+getbandgap.f90
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/1546/trunk/src/addons/getbandgap.f90
+END
+genbeff.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1428/trunk/src/addons/genbeff.f90
+END
+icosahedron.f90
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/1688/trunk/src/addons/icosahedron.f90
+END
+genwfdrc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1787/trunk/src/addons/genwfdrc.f90
+END
+genwffvmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1121/trunk/src/addons/genwffvmt.f90
+END
+getntr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/1289/trunk/src/addons/getntr.f90
+END
+genpmatsv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1787/trunk/src/addons/genpmatsv.f90
+END
+genufrp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1059/trunk/src/addons/genufrp.f90
+END
+seceqnsv_init.f90
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/1609/trunk/src/addons/seceqnsv_init.f90
+END
+rfval.f90
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1577/trunk/src/addons/rfval.f90
+END
+mod_util.f90
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1706/trunk/src/addons/mod_util.f90
+END
+mod_libapw.f90
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/1764/trunk/src/addons/mod_libapw.f90
+END
+mod_timer.f90
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1906/trunk/src/addons/mod_timer.f90
+END
+bandrlm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1874/trunk/src/addons/bandrlm.f90
+END
+test_sirius.f90.dnc
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/1908/trunk/src/addons/test_sirius.f90.dnc
+END
+genlapl.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1318/trunk/src/addons/genlapl.f90
+END
+genvxcnk.f90
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1811/trunk/src/addons/genvxcnk.f90
+END
+writenn.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1332/trunk/src/addons/writenn.f90
+END
+writebz.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1059/trunk/src/addons/writebz.f90
+END
+debug.f90
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1059/trunk/src/addons/debug.f90
+END
+unimtrxt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1059/trunk/src/addons/unimtrxt.f90
+END
+init_vmatlu.f90
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/1822/trunk/src/addons/init_vmatlu.f90
+END
+lapack.f90
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/1562/trunk/src/addons/lapack.f90
+END
+getevecfd.f90
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1467/trunk/src/addons/getevecfd.f90
+END
+drc_read_wf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/1787/trunk/src/addons/drc_read_wf.f90
+END
+getnghbr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1239/trunk/src/addons/getnghbr.f90
+END
+getgshells.f90
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/1059/trunk/src/addons/getgshells.f90
+END
+mixadapt_.f90
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1059/trunk/src/addons/mixadapt_.f90
+END
+mod_addons.f90
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/1905/trunk/src/addons/mod_addons.f90
+END
+mod_nrkp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/1907/trunk/src/addons/mod_nrkp.f90
+END
+getnufr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1447/trunk/src/addons/getnufr.f90
+END
+rhomagk_exact.f90
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/1730/trunk/src/addons/rhomagk_exact.f90
+END
+initmpigrid.f90
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/1775/trunk/src/addons/initmpigrid.f90
+END

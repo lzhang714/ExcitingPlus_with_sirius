@@ -1,0 +1,2297 @@
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/svn/!svn/ver/1908/trunk/src
+END
+ggamt_sp_2a.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1059/trunk/src/ggamt_sp_2a.f90
+END
+writesf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/writesf.f90
+END
+genrlm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/genrlm.f90
+END
+dos.f90
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/1059/trunk/src/dos.f90
+END
+readdyn.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/readdyn.f90
+END
+olpalo.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/olpalo.f90
+END
+xc_pzca.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1215/trunk/src/xc_pzca.f90
+END
+rdmdexcdc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/rdmdexcdc.f90
+END
+genveffig.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1382/trunk/src/genveffig.f90
+END
+stheta_fd.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/stheta_fd.f90
+END
+rdmgenvnl_ijjk.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1059/trunk/src/rdmgenvnl_ijjk.f90
+END
+modldapu.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/modldapu.f90
+END
+rdmgetvnl_ijji.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1059/trunk/src/rdmgetvnl_ijji.f90
+END
+gndstate.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1823/trunk/src/gndstate.f90
+END
+erf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/1059/trunk/src/erf.f90
+END
+modtest.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/modtest.f90
+END
+findlambdalu.f90
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1059/trunk/src/findlambdalu.f90
+END
+c_pbe_gcor.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1059/trunk/src/c_pbe_gcor.f90
+END
+phlwidth.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/phlwidth.f90
+END
+sdelta_fd.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/sdelta_fd.f90
+END
+linengy1.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1903/trunk/src/linengy1.f90
+END
+addrhocr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1892/trunk/src/addrhocr.f90
+END
+rdmvaryc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/rdmvaryc.f90
+END
+sphcover.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/sphcover.f90
+END
+rdmminc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/rdmminc.f90
+END
+getevecsv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/getevecsv.f90
+END
+ztorflm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/ztorflm.f90
+END
+xc_pbe.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1218/trunk/src/xc_pbe.f90
+END
+r3mtm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/r3mtm.f90
+END
+writeeval.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1891/trunk/src/writeeval.f90
+END
+occupy.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1890/trunk/src/occupy.f90
+END
+i3minv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/i3minv.f90
+END
+writedveff.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1059/trunk/src/writedveff.f90
+END
+writeiad.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/writeiad.f90
+END
+xc_vbh.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1219/trunk/src/xc_vbh.f90
+END
+r3taxi.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/r3taxi.f90
+END
+alpha2f.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/alpha2f.f90
+END
+genppts.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/genppts.f90
+END
+ggamt_sp_1.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1059/trunk/src/ggamt_sp_1.f90
+END
+effmass.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/effmass.f90
+END
+init2.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/init2.f90
+END
+rhomagk.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1892/trunk/src/rhomagk.f90
+END
+connect.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/connect.f90
+END
+seceqnhf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/seceqnhf.f90
+END
+mixpack.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1158/trunk/src/mixpack.f90
+END
+gensfacgp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/gensfacgp.f90
+END
+findigp0.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/findigp0.f90
+END
+atom.f90
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/1059/trunk/src/atom.f90
+END
+findswidth.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1059/trunk/src/findswidth.f90
+END
+projsbf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1892/trunk/src/projsbf.f90
+END
+x_wc06.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/x_wc06.f90
+END
+writeinfo.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1892/trunk/src/writeinfo.f90
+END
+ggair_1.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/ggair_1.f90
+END
+oepmagmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1892/trunk/src/oepmagmt.f90
+END
+rhoinit.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1435/trunk/src/rhoinit.f90
+END
+vecplot.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1892/trunk/src/vecplot.f90
+END
+genwfpw.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/genwfpw.f90
+END
+r3minv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/r3minv.f90
+END
+readgamma.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/readgamma.f90
+END
+olprad.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/olprad.f90
+END
+hmlaa.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1604/trunk/src/hmlaa.f90
+END
+writeexpiqr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1059/trunk/src/writeexpiqr.f90
+END
+getwfpw.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/getwfpw.f90
+END
+poteff.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1615/trunk/src/poteff.f90
+END
+geomplot.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/geomplot.f90
+END
+genjlgq0r.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/genjlgq0r.f90
+END
+writekpts.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/writekpts.f90
+END
+findsymsite.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1059/trunk/src/findsymsite.f90
+END
+rdmengyxc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/rdmengyxc.f90
+END
+writegeom.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/writegeom.f90
+END
+rschrodapp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1383/trunk/src/rschrodapp.f90
+END
+rfarray.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/rfarray.f90
+END
+genzqrmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/genzqrmt.f90
+END
+genwiq2.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/genwiq2.f90
+END
+readstate.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1484/trunk/src/readstate.f90
+END
+writeengy.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1506/trunk/src/writeengy.f90
+END
+rdmdedn.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/rdmdedn.f90
+END
+checkmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/checkmt.f90
+END
+ggair_sp_2b.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1059/trunk/src/ggair_sp_2b.f90
+END
+vecfbz.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/vecfbz.f90
+END
+readalphalu.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1059/trunk/src/readalphalu.f90
+END
+phdveff.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/phdveff.f90
+END
+genlmirep.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1392/trunk/src/genlmirep.f90
+END
+ggamt_sp_2b.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1059/trunk/src/ggamt_sp_2b.f90
+END
+stheta_mp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/stheta_mp.f90
+END
+dm2tensmom.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1059/trunk/src/dm2tensmom.f90
+END
+stheta.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/stheta.f90
+END
+rdmwritededn.f90
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1059/trunk/src/rdmwritededn.f90
+END
+genpmat.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1121/trunk/src/genpmat.f90
+END
+moke.f90
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/1059/trunk/src/moke.f90
+END
+writelat.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/writelat.f90
+END
+writelambda.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1059/trunk/src/writelambda.f90
+END
+zfftifc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/zfftifc.f90
+END
+hermite.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/hermite.f90
+END
+genbeffmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1892/trunk/src/genbeffmt.f90
+END
+rotzflm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1392/trunk/src/rotzflm.f90
+END
+hartfock.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/hartfock.f90
+END
+oepvnl.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/oepvnl.f90
+END
+plot2d.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/plot2d.f90
+END
+findband.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/findband.f90
+END
+r3dist.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/r3dist.f90
+END
+genjlgpr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/genjlgpr.f90
+END
+sdelta_mp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/sdelta_mp.f90
+END
+rhomag.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1260/trunk/src/rhomag.f90
+END
+dyntask.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/dyntask.f90
+END
+symdmat.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1392/trunk/src/symdmat.f90
+END
+fsmooth.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/fsmooth.f90
+END
+dbxcplot.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1892/trunk/src/dbxcplot.f90
+END
+fderiv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1228/trunk/src/fderiv.f90
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/1886/trunk/src/Makefile
+END
+gridsize.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/gridsize.f90
+END
+potnucl.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/potnucl.f90
+END
+readinput.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1872/trunk/src/readinput.f90
+END
+genlofr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/genlofr.f90
+END
+writegamma.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1059/trunk/src/writegamma.f90
+END
+bandstr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/bandstr.f90
+END
+readfermi.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/readfermi.f90
+END
+mossbauer.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1892/trunk/src/mossbauer.f90
+END
+genylmg.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/genylmg.f90
+END
+gensdmat.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/gensdmat.f90
+END
+linengy.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1337/trunk/src/linengy.f90
+END
+mixander.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1168/trunk/src/mixander.f90
+END
+rvfcross.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/rvfcross.f90
+END
+c_pbe.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/c_pbe.f90
+END
+vnlrho.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/vnlrho.f90
+END
+wavefmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/wavefmt.f90
+END
+r3mtv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/r3mtv.f90
+END
+zpotclmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/zpotclmt.f90
+END
+symrvfir.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1894/trunk/src/symrvfir.f90
+END
+tensmom.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/tensmom.f90
+END
+libxcifc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1061/trunk/src/libxcifc.f90
+END
+olpistl.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/olpistl.f90
+END
+readspecies.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1616/trunk/src/readspecies.f90
+END
+rhoplot.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/rhoplot.f90
+END
+genshtmat.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/genshtmat.f90
+END
+genapwfr1.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1705/trunk/src/genapwfr1.f90
+END
+stheta_sq.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/stheta_sq.f90
+END
+writestate.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1484/trunk/src/writestate.f90
+END
+xc_am05.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1222/trunk/src/xc_am05.f90
+END
+sbessel.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/sbessel.f90
+END
+libxc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/libxc.f90
+END
+writelsj.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/writelsj.f90
+END
+genflufr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/genflufr.f90
+END
+rhomagsh.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/rhomagsh.f90
+END
+genrmesh.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1601/trunk/src/genrmesh.f90
+END
+genapwfr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/genapwfr.f90
+END
+putevalfv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/putevalfv.f90
+END
+testcheck.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/testcheck.f90
+END
+gradzfmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/gradzfmt.f90
+END
+sdelta_sq.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/sdelta_sq.f90
+END
+olplolo.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/olplolo.f90
+END
+gendmatlu.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/gendmatlu.f90
+END
+ggamt_2a.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/ggamt_2a.f90
+END
+sbesseldm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/sbesseldm.f90
+END
+gauntyry.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/gauntyry.f90
+END
+readflu.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/readflu.f90
+END
+fluykwa.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/fluykwa.f90
+END
+protex
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/1059/trunk/src/protex
+END
+stheta_lr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/stheta_lr.f90
+END
+energynn.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/energynn.f90
+END
+dmplz.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/dmplz.f90
+END
+exxengy.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/exxengy.f90
+END
+oepmain.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/oepmain.f90
+END
+phdelete.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/phdelete.f90
+END
+writewfpw.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/writewfpw.f90
+END
+r3cross.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/r3cross.f90
+END
+moment.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/moment.f90
+END
+writephn.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/writephn.f90
+END
+rfirvec.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/rfirvec.f90
+END
+autoradmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1454/trunk/src/autoradmt.f90
+END
+rdmputvnl_ijjk.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1059/trunk/src/rdmputvnl_ijjk.f90
+END
+rdmdedc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/rdmdedc.f90
+END
+mixpulay.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1168/trunk/src/mixpulay.f90
+END
+sdelta_lr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/sdelta_lr.f90
+END
+potefield.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/potefield.f90
+END
+ggair_sp_1.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1059/trunk/src/ggair_sp_1.f90
+END
+writefermi.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1059/trunk/src/writefermi.f90
+END
+genlofr1.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1705/trunk/src/genlofr1.f90
+END
+r3mm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/1059/trunk/src/r3mm.f90
+END
+oepvnlk.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/oepvnlk.f90
+END
+genflu.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/genflu.f90
+END
+writelinen.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1350/trunk/src/writelinen.f90
+END
+modrdm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/modrdm.f90
+END
+zmatinp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/zmatinp.f90
+END
+lopzflm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/lopzflm.f90
+END
+axangsu2.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1224/trunk/src/axangsu2.f90
+END
+putevalsv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/putevalsv.f90
+END
+writewiq2.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/writewiq2.f90
+END
+writetensmom.f90
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1059/trunk/src/writetensmom.f90
+END
+polynom.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1225/trunk/src/polynom.f90
+END
+updatpos.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/updatpos.f90
+END
+genffacg.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/genffacg.f90
+END
+rdmgenvnl_ijji.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1059/trunk/src/rdmgenvnl_ijji.f90
+END
+flushifc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/flushifc.f90
+END
+rdirac.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1869/trunk/src/rdirac.f90
+END
+mixerifc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/mixerifc.f90
+END
+gwf2val.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/gwf2val.f90
+END
+findprim.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/findprim.f90
+END
+oepresk.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/oepresk.f90
+END
+oepmag.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1892/trunk/src/oepmag.f90
+END
+xc_wc06.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/xc_wc06.f90
+END
+rdmgetvnl_ijjk.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1059/trunk/src/rdmgetvnl_ijjk.f90
+END
+seceqnfv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1618/trunk/src/seceqnfv.f90
+END
+ggair_2a.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/ggair_2a.f90
+END
+hmlistl.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/hmlistl.f90
+END
+writepmat.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1111/trunk/src/writepmat.f90
+END
+sdelta.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/sdelta.f90
+END
+z2mctm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/z2mctm.f90
+END
+phveff.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/phveff.f90
+END
+rfmtinp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/rfmtinp.f90
+END
+dynsymapp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/dynsymapp.f90
+END
+rfmtctof.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/rfmtctof.f90
+END
+fermisurfbxsf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/1059/trunk/src/fermisurfbxsf.f90
+END
+zfmtinp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/zfmtinp.f90
+END
+timesec.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/timesec.f90
+END
+rfinterp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/rfinterp.f90
+END
+gcd.f90
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/1059/trunk/src/gcd.f90
+END
+rtozflm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/rtozflm.f90
+END
+findkpt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/findkpt.f90
+END
+genepmat.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1611/trunk/src/genepmat.f90
+END
+symrfmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1607/trunk/src/symrfmt.f90
+END
+potplot.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/potplot.f90
+END
+genvmatlu.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1892/trunk/src/genvmatlu.f90
+END
+reciplat.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/reciplat.f90
+END
+plot3d.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/plot3d.f90
+END
+hmllolo.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1432/trunk/src/hmllolo.f90
+END
+phcell.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/phcell.f90
+END
+engyflu.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/engyflu.f90
+END
+dyndiag.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/dyndiag.f90
+END
+rschrodint.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1383/trunk/src/rschrodint.f90
+END
+r3frac.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/r3frac.f90
+END
+writeldapu.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1059/trunk/src/writeldapu.f90
+END
+getevalfv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/getevalfv.f90
+END
+rotaxang.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/rotaxang.f90
+END
+sphcrd.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/sphcrd.f90
+END
+init0.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1892/trunk/src/init0.f90
+END
+main.f90
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/1830/trunk/src/main.f90
+END
+z2mm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/1059/trunk/src/z2mm.f90
+END
+seceqnsv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1892/trunk/src/seceqnsv.f90
+END
+rschroddme.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1383/trunk/src/rschroddme.f90
+END
+rdmeval.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/rdmeval.f90
+END
+spline.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/spline.f90
+END
+genylm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/genylm.f90
+END
+sortidx.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/sortidx.f90
+END
+dynqtor.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/dynqtor.f90
+END
+r3mmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/r3mmt.f90
+END
+fermisurf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/fermisurf.f90
+END
+modqpt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/modqpt.f90
+END
+gradrf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/gradrf.f90
+END
+yambo.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/yambo.f90
+END
+findsym.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/findsym.f90
+END
+genidxlo.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/genidxlo.f90
+END
+zrhogp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/zrhogp.f90
+END
+findsymcrys.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1059/trunk/src/findsymcrys.f90
+END
+clebgor.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/clebgor.f90
+END
+getoccsv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/getoccsv.f90
+END
+gaunt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/gaunt.f90
+END
+gengvec.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/gengvec.f90
+END
+ggamt_1.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/ggamt_1.f90
+END
+ggamt_2b.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/ggamt_2b.f90
+END
+checkfsm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/checkfsm.f90
+END
+writesym.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/writesym.f90
+END
+gdft.f90
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/1059/trunk/src/gdft.f90
+END
+gencfun.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/gencfun.f90
+END
+wigner6j.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/wigner6j.f90
+END
+wavefcr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/wavefcr.f90
+END
+phfext.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/phfext.f90
+END
+getevalsv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/getevalsv.f90
+END
+phonon.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/phonon.f90
+END
+fluykwa0.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/fluykwa0.f90
+END
+energykncr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1059/trunk/src/energykncr.f90
+END
+xc_xalpha.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1223/trunk/src/xc_xalpha.f90
+END
+zbessela.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/zbessela.f90
+END
+rdmdkdc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/rdmdkdc.f90
+END
+writeforce.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1059/trunk/src/writeforce.f90
+END
+euler.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/euler.f90
+END
+allatoms.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/allatoms.f90
+END
+z2mmct.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/z2mmct.f90
+END
+genkinmat.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/genkinmat.f90
+END
+nfftifc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/nfftifc.f90
+END
+readdmatlu.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1059/trunk/src/readdmatlu.f90
+END
+writeengyflu.f90
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1059/trunk/src/writeengyflu.f90
+END
+rotrflm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1600/trunk/src/rotrflm.f90
+END
+symrvf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1883/trunk/src/symrvf.f90
+END
+r3mv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/1059/trunk/src/r3mv.f90
+END
+phdisp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/phdisp.f90
+END
+dielectricq.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1059/trunk/src/dielectricq.f90
+END
+wigner3j.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/wigner3j.f90
+END
+olpaa.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1613/trunk/src/olpaa.f90
+END
+factr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/factr.f90
+END
+genexpiqr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/genexpiqr.f90
+END
+elnes.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/elnes.f90
+END
+putevecfv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/putevecfv.f90
+END
+mixadapt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1714/trunk/src/mixadapt.f90
+END
+dielectric.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1539/trunk/src/dielectric.f90
+END
+rdmdexcdn.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/rdmdexcdn.f90
+END
+writechg.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/writechg.f90
+END
+ggair_2b.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/ggair_2b.f90
+END
+hmlalo.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1606/trunk/src/hmlalo.f90
+END
+rdmwriteengy.f90
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1059/trunk/src/rdmwriteengy.f90
+END
+zflmconj.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/zflmconj.f90
+END
+dynsym.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/dynsym.f90
+END
+modmain.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1892/trunk/src/modmain.f90
+END
+rhonorm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/rhonorm.f90
+END
+gwf2cr.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/gwf2cr.f90
+END
+symvect.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/symvect.f90
+END
+elk_silhouette.pdf
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1059/trunk/src/elk_silhouette.pdf
+END
+symrfir.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1894/trunk/src/symrfir.f90
+END
+match.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1221/trunk/src/match.f90
+END
+potxc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1892/trunk/src/potxc.f90
+END
+dynrtoq.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/dynrtoq.f90
+END
+rdmvaryn.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/rdmvaryn.f90
+END
+writeqpts.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/writeqpts.f90
+END
+i3mtv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/i3mtv.f90
+END
+rdmminn.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/rdmminn.f90
+END
+tensmomengy.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1059/trunk/src/tensmomengy.f90
+END
+rfpack.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/rfpack.f90
+END
+forcek.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/forcek.f90
+END
+wfplot.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/wfplot.f90
+END
+seceqn.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1715/trunk/src/seceqn.f90
+END
+rfinp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/rfinp.f90
+END
+rdiracint.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1383/trunk/src/rdiracint.f90
+END
+ylmroty.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/ylmroty.f90
+END
+genwfsv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/genwfsv.f90
+END
+rfint.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/rfint.f90
+END
+gencore.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1892/trunk/src/gencore.f90
+END
+xc_pwca.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1220/trunk/src/xc_pwca.f90
+END
+putevecsv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/putevecsv.f90
+END
+seceqnss.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/seceqnss.f90
+END
+init1.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1432/trunk/src/init1.f90
+END
+i3mdet.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/i3mdet.f90
+END
+getngkmax.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/getngkmax.f90
+END
+potcoul.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1649/trunk/src/potcoul.f90
+END
+zfinp.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/zfinp.f90
+END
+grad2rfmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/grad2rfmt.f90
+END
+energy.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1892/trunk/src/energy.f90
+END
+rdiracdme.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/rdiracdme.f90
+END
+rdmenergy.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/rdmenergy.f90
+END
+sumrule.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/sumrule.f90
+END
+x_pbe.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/x_pbe.f90
+END
+writefsm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/writefsm.f90
+END
+genvmat.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/genvmat.f90
+END
+modphonon.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/modphonon.f90
+END
+exxengyk.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/exxengyk.f90
+END
+rdmentropy.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1059/trunk/src/rdmentropy.f90
+END
+putoccsv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/putoccsv.f90
+END
+gradrfmt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/gradrfmt.f90
+END
+delevec.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/delevec.f90
+END
+writeefg.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/writeefg.f90
+END
+epcouple.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/epcouple.f90
+END
+phdos.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/phdos.f90
+END
+rdmdtsdn.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/rdmdtsdn.f90
+END
+genspecies.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1656/trunk/src/genspecies.f90
+END
+ylmrot.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/ylmrot.f90
+END
+readdveff.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1059/trunk/src/readdveff.f90
+END
+genbmatk.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1892/trunk/src/genbmatk.f90
+END
+charge.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/charge.f90
+END
+fsmfield.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1892/trunk/src/fsmfield.f90
+END
+modxcifc.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/modxcifc.f90
+END
+gengpvec.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/gengpvec.f90
+END
+r3mdet.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/r3mdet.f90
+END
+force.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/force.f90
+END
+libxc_funcs.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1059/trunk/src/libxc_funcs.f90
+END
+symrf.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/symrf.f90
+END
+rdmputvnl_ijji.f90
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/1059/trunk/src/rdmputvnl_ijji.f90
+END
+plot1d.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/plot1d.f90
+END
+elfplot.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/elfplot.f90
+END
+hmlrad.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1394/trunk/src/hmlrad.f90
+END
+factnm.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/factnm.f90
+END
+brzint.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/brzint.f90
+END
+vnlrhomt.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/vnlrhomt.f90
+END
+zbesselb.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/zbesselb.f90
+END
+genveelu.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/genveelu.f90
+END
+findsymlat.f90
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/1059/trunk/src/findsymlat.f90
+END
+seceqnit.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/seceqnit.f90
+END
+rdmft.f90
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1059/trunk/src/rdmft.f90
+END
+genvmatk.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1059/trunk/src/genvmatk.f90
+END
+ggair_sp_2a.f90
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1059/trunk/src/ggair_sp_2a.f90
+END
+getevecfv.f90
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1392/trunk/src/getevecfv.f90
+END
+gendmat.f90
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1059/trunk/src/gendmat.f90
+END
+zpotcoul.f90
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1902/trunk/src/zpotcoul.f90
+END
+rlmrot.f90
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/1059/trunk/src/rlmrot.f90
+END
