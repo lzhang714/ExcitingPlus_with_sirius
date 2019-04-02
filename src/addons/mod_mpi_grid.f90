@@ -37,6 +37,12 @@ integer op_min
 !> mpi reduction operations: max
 integer op_max
 
+!> sirius related variables
+integer :: sirius_fft_comm, sirius_fft_comm_size, sirius_fft_comm_rank
+integer :: all_kpts_comm,      kpt_inner_comm
+integer :: all_kpts_comm_size, kpt_inner_comm_size
+integer :: all_kpts_comm_rank, kpt_inner_comm_rank
+
 
 !> @brief Interface to MPI reduction operation
 !> @param inpb input buffer
@@ -504,8 +510,45 @@ end subroutine
 
 
 
-! private subroutines and functions
 
+! ------------------------------------- 
+! created for interfacing to SIRIUS, copied from Exciting-Sirius interface
+! -------------------------------------
+! NOTE: 
+! ngr_loc and ngr_loc_all(:) are declared in modmain.f90,
+! and assigned values in init0: 
+! ngr_loc = sirius_get_num_fft_grid_points(sctx)
+! ngr_loc_all(sirius_fft_comm_rank) = ngr_loc
+
+subroutine gatherir(buf)
+    
+  use modmain
+      
+  implicit none
+      
+  real(8), intent(inout) :: buf(ngrtot)
+  integer displs(0:sirius_fft_comm_size-1)
+  integer i, ierr
+  
+  displs = 0
+  do i = 1, sirius_fft_comm_size - 1
+    displs(i) = displs(i - 1) + ngr_loc_all(i - 1)
+  enddo
+  
+  ! call native MPI function mpi_allgatherv
+  call mpi_allgatherv(MPI_IN_PLACE, ngr_loc, MPI_DOUBLE_PRECISION, buf, ngr_loc_all, displs,&
+                     &MPI_DOUBLE_PRECISION, sirius_fft_comm, ierr)
+
+end subroutine
+
+
+
+
+
+
+! ====================================================================================================
+! private subroutines and functions
+! ====================================================================================================
 
 !> @brief Private function of the module
 !> @details Covert variable-length array with dimensions to a fixed-size array
