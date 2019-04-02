@@ -1,0 +1,26 @@
+MAKE = make
+
+##F90 = /usr/common/software/openmpi/1.10.2/hsw/intel/bin/mpif90
+##CXX = /usr/common/software/openmpi/1.10.2/hsw/intel/bin/mpicxx
+##CC  = /usr/common/software/openmpi/1.10.2/hsw/intel/bin/mpicc 
+
+F90 = ftn
+CXX = CC
+CC = cc
+
+CPP_OPTS = -D_MPI_
+ 
+F90_OPTS = -O3 -cpp $(CPP_OPTS) -qopenmp -Wl -z muldefs -funroll-loops -check bound
+
+F90_LINK_OPTS=$(F90_OPTS)
+
+LAPACK_LIB = -mkl=cluster
+
+# === compile with HDF5 support ===
+
+#HDF5_LIB = /global/homes/z/zhang714/install_excitingplus_cori_2017Jan04/libs/hdf5-1.8.12/build/lib/libhdf5hl_fortran.a /global/homes/z/zhang714/install_excitingplus_cori_2017Jan04/libs/hdf5-1.8.12/build/lib/libhdf5_hl.a /global/homes/z/zhang714/install_excitingplus_cori_2017Jan04/libs/hdf5-1.8.12/build/lib/libhdf5_fortran.a /global/homes/z/zhang714/install_excitingplus_cori_2017Jan04/libs/hdf5-1.8.12/build/lib/libhdf5.a -lz -lm
+
+CPP_OPTS := $(CPP_OPTS) -D_HDF5_
+
+# === collect all libraries under one name ===
+LIBS = $(LAPACK_LIB) $(HDF5_LIB)
