@@ -585,8 +585,6 @@ call gensfacgp(ngvec,vgc,ngvec,sfacg)
 ! generate the characteristic function
 call gencfun
 
-write(*,*)'ngvec=',ngvec
-
 !-------------------------!
 !     atoms and cores     !
 !-------------------------!

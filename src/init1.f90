@@ -29,6 +29,7 @@ subroutine init1
   integer i1,i2,i3,ispn
   integer l1,l2,l3,m1,m2,m3
   integer lm1,lm2,lm3
+  integer m
   real(8) vl(3),vc(3)
   real(8) boxl(3,4),t1
   real(8) ts0,ts1
@@ -177,8 +178,9 @@ end if
     ! the boolean indicates whether the k-set will be initialized;
     ks_handler = sirius_create_kset(sctx, nkpt, vkl(1,1), wkpt(1), logical(.true.,kind=c_bool))
     gs_handler = sirius_create_ground_state(ks_handler)
-    ! offset in the regular FFT grid buffer (all interstitital arrays). I don't understand this !!
-    m = sum(ngr_loc_all(0:sirius_fft_comm_rank)) - ngr_loc + 1
+    !! offset in the regular FFT grid buffer (all interstitital arrays). I don't understand this !!
+    !m = sum(ngr_loc_all(0:sirius_fft_comm_rank)) - ngr_loc + 1
+    m = 1
     ! set pointer to the muffin-tin and regular-grid parts of the period functions: rho, veff
     call sirius_set_periodic_function_ptr(gs_handler, string("rho"),  f_mt =  rhomt(1, 1, 1), f_rg =  rhoir(m))
     call sirius_set_periodic_function_ptr(gs_handler, string("veff"), f_mt = veffmt(1, 1, 1), f_rg = veffir(m))
