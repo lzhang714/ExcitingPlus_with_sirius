@@ -6,7 +6,8 @@ implicit none
 !
 integer,intent(in) :: fnum
 real(8), allocatable :: e_qp(:,:,:),e_ks(:,:,:),dk(:,:),vk(:,:)
-integer :: ierr1,ik,ikloc,isp1,i,ib,tmp,exst,ios
+integer :: ierr1,ik,ikloc,isp1,i,ib,tmp,ios
+logical :: exst
 real(8) :: dt,vc(3),d1k,d2k,dc12
 character*100 :: fspn,fname,fname_tot
 integer :: ndk
