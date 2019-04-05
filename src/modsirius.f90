@@ -32,17 +32,17 @@ Module mod_sirius
 ! ---- these are the tasks that we want SIRIUS to do 
 
 ! let sirius generate Hartree potential (solve Poisson equation)
-  logical, parameter :: use_sirius_vha           = .true.
+  logical, parameter :: use_sirius_vha           = .false.
 ! let sirius generate exchange-correlation potential 
-  logical, parameter :: use_sirius_vxc           = .true.
+  logical, parameter :: use_sirius_vxc           = .false.
 ! let sirius solve the eigen problem (diagonalisation)
-  logical, parameter :: use_sirius_eigen_states  = .true.
+  logical, parameter :: use_sirius_eigen_states  = .false.
 ! let sirius generate charge density 
-  logical, parameter :: use_sirius_density       = .true.
+  logical, parameter :: use_sirius_density       = .false.
 ! let sirius generate the step-function
-  logical, parameter :: use_sirius_cfun          = .true.
+  logical, parameter :: use_sirius_cfun          = .false.
 ! let sirius generate G-vectors
-  logical, parameter :: use_sirius_gvec          = .true.
+  logical, parameter :: use_sirius_gvec          = .false.
 
 
 ! ---- these are set to .false. at the moment , we generate them in EP side and pass to SIRIUS
@@ -64,7 +64,7 @@ Module mod_sirius
 ! let sirius generate initial charge density
   logical, parameter :: use_sirius_rhoinit       = .false.
 ! let sirius determine linearization energy automatically
-  logical, parameter :: use_sirius_autoenu       = .false.
+  logical, parameter :: use_sirius_autoenu       = .true.
 
 
   character*100, parameter :: sirius_error = " The code is not compiled with SIRIUS library. "
