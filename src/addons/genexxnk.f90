@@ -39,8 +39,9 @@ real(8) :: cfq, t1, zn(nspecies),v(3),sum1
 complex(8), allocatable :: wfmt(:,:,:,:,:), wfit(:,:,:)
 integer :: wfmttd, wfittd, ngknr_ik1, iv(3)
 character(len=256) :: fname
-integer :: isp1, ibnd, fbnd, exst, ik0, ios, ist0, ist1
+integer :: isp1, ibnd, fbnd, ik0, ios, ist0, ist1
 integer :: bndrg(2,nspinor)
+logical exst
 integer,allocatable :: neval(:,:),evalmap(:,:,:)
 !
 
