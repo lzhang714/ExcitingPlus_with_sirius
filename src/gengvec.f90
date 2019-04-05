@@ -43,46 +43,38 @@ subroutine gengvec
   ! LZ: a big if-else to relocate the original code in between "else" and "end if"
 
   if (use_sirius_library.and.use_sirius_gvec) then
-  
 #ifdef _SIRIUS_
-
-        ! allocate several global G-vector arrays
-        
-        ! ngvec: number of G-vec
-        ngvec = sirius_get_num_gvec(sctx)    
-        ! ivg: G-vec in integer(lattice) coordi
-        If (allocated(ivg)) deallocate (ivg) 
-        Allocate(ivg(3,ngvec))
-        ! intgv: integer grid intervals for each direction, integer(3,2)
-        ! ivgig: map from integer grid to G-vector array
-        If (allocated(ivgig)) deallocate (ivgig)
-        Allocate(ivgig(intgv(1,1):intgv(1,2),intgv(2,1):intgv(2,2),intgv(3,1):intgv(3, 2)))  
-        ! igfft: map from G-vector array to FFT array
-        If (allocated(igfft)) deallocate (igfft)
-        Allocate(igfft(ngvec))
-        ! vgc: G-vec in Cartesian coordi
-        If (allocated(vgc)) deallocate (vgc) 
-        Allocate(vgc(3,ngvec))
-        ! gc: length of G-vectors
-        If (allocated(gc)) deallocate (gc)
-        Allocate(gc(ngvec))
-        ! pass G-vec array to sirius
-        call sirius_get_gvec_arrays(sctx, ivg(1,1), vgc(1,1), gc(1), ivgig(intgv(1,1), intgv(2,1), intgv(3,1)))
-        ! pass the mapping between G-vec index and FFT index to sirius
-        call sirius_get_fft_index(sctx, igfft(1))
-        
+    ! allocate several global G-vector arrays
+    ! ngvec: number of G-vec
+    ngvec = sirius_get_num_gvec(sctx)    
+    ! ivg: G-vec in integer(lattice) coordi
+    If (allocated(ivg)) deallocate (ivg) 
+    Allocate(ivg(3,ngvec))
+    ! intgv: integer grid intervals for each direction, integer(3,2)
+    ! ivgig: map from integer grid to G-vector array
+    If (allocated(ivgig)) deallocate (ivgig)
+    Allocate(ivgig(intgv(1,1):intgv(1,2),intgv(2,1):intgv(2,2),intgv(3,1):intgv(3, 2)))  
+    ! igfft: map from G-vector array to FFT array
+    If (allocated(igfft)) deallocate (igfft)
+    Allocate(igfft(ngvec))
+    ! vgc: G-vec in Cartesian coordi
+    If (allocated(vgc)) deallocate (vgc) 
+    Allocate(vgc(3,ngvec))
+    ! gc: length of G-vectors
+    If (allocated(gc)) deallocate (gc)
+    Allocate(gc(ngvec))
+    ! pass G-vec array to sirius
+    call sirius_get_gvec_arrays(sctx, ivg(1,1), vgc(1,1), gc(1), ivgig(intgv(1,1), intgv(2,1), intgv(3,1)))
+    ! pass the mapping between G-vec index and FFT index to sirius
+    call sirius_get_fft_index(sctx, igfft(1))
 #else
-        stop sirius_error
+    stop sirius_error
 #endif
-
-
   else
-
     ! allocate local arrays
     allocate(idx(ngrtot))
     allocate(iar(ngrtot))
     allocate(rar(ngrtot))
-  
     ! allocate global G-vector arrays
     if (allocated(ivg)) deallocate(ivg)
     allocate(ivg(3,ngrtot))
@@ -94,7 +86,7 @@ subroutine gengvec
     allocate(vgc(3,ngrtot))
     if (allocated(gc)) deallocate(gc)
     allocate(gc(ngrtot))
-    
+
     ig=0
     do i1=intgv(1,1),intgv(1,2)
       do i2=intgv(2,1),intgv(2,2)
@@ -111,7 +103,7 @@ subroutine gengvec
         end do
       end do
     end do
-  
+
     ! sort by vector length
     call sortidx(ngrtot,gc,idx)
 
