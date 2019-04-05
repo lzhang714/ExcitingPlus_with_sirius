@@ -7,6 +7,7 @@ subroutine init0
   use modmain
   use modxcifc
   use modldapu
+  use mod_mpi_grid
 #ifdef _SIRIUS_
   use mod_sirius
 #endif
@@ -26,8 +27,9 @@ subroutine init0
   integer ist,l,m,lm,iv(3)
   !real(8) sum
   real(8) ts0,ts1
-  logical autoenu
   integer, allocatable :: icls(:)
+  character(100) :: label
+  logical(1) :: flg, autoenu
   
   ! zero timing variables
   timeinit=0.d0
@@ -311,7 +313,7 @@ subroutine init0
   if (use_sirius_library) then
 #ifdef _SIRIUS_
         ! init sirius (set to .false. b/c we assume "MPI_Init" is already done, otherwise it should be set to .true.)
-        call sirius_initialize(logical(.false.,kind=c_bool))
+        call sirius_initialize(logical(.true.,kind=c_bool))
         ! set global MPI communicator for sirius
         sctx = sirius_create_context(MPI_COMM_WORLD)
         ! set json string to specify calculation type fp-lapw or pp-pw
@@ -385,7 +387,7 @@ subroutine init0
               autoenu = .false.
               if (use_sirius_autoenu.and.apwve(io,l,is)) autoenu = .true.
               call sirius_add_atom_type_aw_descriptor(sctx, string(trim(label)), apwpqn(l,is), l, &
-                                                      &apwe0(io, l, is), apwdm(io, l, is), autoenu)
+                                                      &apwe0(io, l, is), apwdm(io, l, is), logical(autoenu,kind=c_bool))
             enddo
           enddo
 
@@ -402,8 +404,8 @@ subroutine init0
             do io = 1, lorbord(ilo, is)
               autoenu = .false.
               if (use_sirius_autoenu.and.lorbve(io, ilo, is)) autoenu = .true.
-              call sirius_add_atom_type_lo_descriptor(sctx, string(trim(label)), ilo, lopqn(ilo,is), lorbl(ilo, is)&
-                                                      &lorbe0(io, ilo, is), lorbdm(io, ilo, is), autoenu)
+              call sirius_add_atom_type_lo_descriptor(sctx, string(trim(label)), ilo, lopqn(ilo,is), lorbl(ilo, is),&
+                                                      &lorbe0(io, ilo, is), lorbdm(io, ilo, is), logical(autoenu,kind=c_bool))
             enddo
           enddo
 
