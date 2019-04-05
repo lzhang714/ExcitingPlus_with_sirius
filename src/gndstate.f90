@@ -32,6 +32,7 @@ subroutine gndstate
   real(8), allocatable :: v(:)
   real(8), allocatable :: work(:)
   real(8), allocatable :: evalfv(:,:,:)
+  character(100) :: label
   
   call timer_start(t_init,reset=.true.)  
   
@@ -122,28 +123,10 @@ subroutine gndstate
         enddo
       enddo
 
-      !--------
-!      if (use_sirius_library.and.use_sirius_rhoinit) then
-!#ifdef SIRIUS
-!          ! frome Exciting comments: this can only be used with sirius species files which contain free atom density
-!          do is=1,nspecies
-!            label = adjustl(speciesfile)
-!            call sirius_add_atom_type_radial_function(sctx, string(trim(label)), string("ae_rho"),&
-!                                                     &sprho(1, is), spnr(is))
-!          enddo
-!          call sirius_generate_initial_density(gs_handler)
-!          call gatherir(rhoir(1))
-!          do idm = 1, ndmag
-!            call gatherir(magir(1, idm))
-!          enddo
-!#endif
-!      else
-          call rhoinit  ! at the moment, still gen initial rho in EP
-!      endif
-      !--------      
-      
+      call rhoinit  ! at the moment, still gen initial rho in EP
+
       call poteff       ! sirius calls 
-  
+
       call timer_stop(t_rhoinit)
 
       if (wproc) then
@@ -167,7 +150,23 @@ subroutine gndstate
   
   tstop=.false.   
   tlast=.false.   
-  etp=0.d0        
+  etp=0.d0
+
+  !
+  ! check that we can run the whole ground state; used to debug the EP/SIRIUS interface
+  ! 
+  if (use_sirius_library) then
+    ! set the free atomic desnity for each atom type
+    ! we can do it only here after we called allatoms() to solve the isolated atom
+    !   and generate free-atom density sprho
+    do is=1,nspecies
+      label = adjustl(spfname(is))
+      call sirius_add_atom_type_radial_function(sctx, string(trim(label)), string("ae_rho"),&
+                                                &sprho(1, is), spnr(is))
+    enddo
+    call sirius_find_ground_state(gs_handler, bool(.false.))
+    write(*,*)'SIRIUS scf done!'
+  endif
   
   
   
@@ -309,26 +308,26 @@ subroutine gndstate
     if (wannier) call wann_ene_occ
     
     ! density and magnetisation
-    if (use_sirius_library.and.use_sirius_density) then
-#ifdef _SIRIUS_
-        do ik = 1, nkpt
-            if (ndmag.eq.0.or.ndmag.eq.3) then
-              call sirius_set_band_occupancies(ks_handler, ik, 0, occsv(1, ik))   ! pass occsv to sirius
-            else
-              call sirius_set_band_occupancies(ks_handler, ik, 0, occsv(1, ik))
-              call sirius_set_band_occupancies(ks_handler, ik, 1, occsv(nstfv+1, ik))
-            endif
-        enddo
-        ! let sirius generate charge density
-        call sirius_generate_density(gs_handler)
-        ! TODO: get the charge density from SIRIUS. do it here or at the end of scf iteration (after converge, before writing STATE.OUT)?
-        call gatherir(rhoir(1))
-        do idm = 1, ndmag
-          call gatherir(magir(1, idm))
-        enddo
-#else
-        stop sirius_error
-#endif
+    if (.false.) then !use_sirius_library.and.use_sirius_density) then
+!#ifdef _SIRIUS_
+!        do ik = 1, nkpt
+!            if (ndmag.eq.0.or.ndmag.eq.3) then
+!              call sirius_set_band_occupancies(ks_handler, ik, 0, occsv(1, ik))   ! pass occsv to sirius
+!            else
+!              call sirius_set_band_occupancies(ks_handler, ik, 0, occsv(1, ik))
+!              call sirius_set_band_occupancies(ks_handler, ik, 1, occsv(nstfv+1, ik))
+!            endif
+!        enddo
+!        ! let sirius generate charge density
+!        call sirius_generate_density(gs_handler)
+!        ! TODO: get the charge density from SIRIUS. do it here or at the end of scf iteration (after converge, before writing STATE.OUT)?
+!        call gatherir(rhoir(1))
+!        do idm = 1, ndmag
+!          call gatherir(magir(1, idm))
+!        enddo
+!#else
+!        stop sirius_error
+!#endif
     else
           call rhomag
     endif
@@ -461,7 +460,8 @@ subroutine gndstate
       write(ioinfo,'("Time (CPU seconds) : ",F12.2)') timetot
       write(ioinfo,*)
       write(ioinfo,'("iteration time (seconds)              : ",F12.2)' ) timer_get_value(t_iter_tot)
-      write(ioinfo,'("  radial setup (linen, APW, radint)   : ",3F12.2)') timer_get_value(t_lin_en),timer_get_value(t_apw_rad),timer_get_value(t_hbo_rad)
+      write(ioinfo,'("  radial setup (linen, APW, radint)   : ",3F12.2)') timer_get_value(t_lin_en),&
+        &timer_get_value(t_apw_rad),timer_get_value(t_hbo_rad)
       write(ioinfo,'("  total for secular equation          : ",F12.2)' ) timer_get_value(t_seceqn)
       write(ioinfo,'("  first-variational                   : ",F12.2)' ) timer_get_value(t_seceqnfv)
       write(ioinfo,'("  setup                               : ",F12.2)' ) timer_get_value(t_seceqnfv_setup)
