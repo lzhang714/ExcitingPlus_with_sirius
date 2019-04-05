@@ -38,10 +38,11 @@ subroutine poteff
   if (use_sirius_library.and.use_sirius_vha) then
 #ifdef _SIRIUS_
       ! offsets, I don't understand this line ......
-      offs = sum(ngr_loc_all(0:sirius_fft_comm_rank)) - ngr_loc + 1   
+      !offs = sum(ngr_loc_all(0:sirius_fft_comm_rank)) - ngr_loc + 1   
+      offs = 1
       ! generate Coulomb potential by solving Poisson equation with SIRIUS. 
       call sirius_generate_coulomb_potential(gs_handler, vclmt(1,1,1), vclir(offs))
-      call gatherir(vclir(1))
+      !call gatherir(vclir(1))
       ! Exciting gets "vmad" from SIRIUS, do I need this? 
       call sirius_get_vha_el(gs_handler, vmad(1))
 #else
@@ -59,10 +60,11 @@ subroutine poteff
   if (use_sirius_library.and.use_sirius_vxc) then
 #ifdef _SIRIUS_
       ! offs 
-      offs = sum(ngr_loc_all(0:sirius_fft_comm_rank)) - ngr_loc + 1
+      !offs = sum(ngr_loc_all(0:sirius_fft_comm_rank)) - ngr_loc + 1
+      offs = 1
       ! generate XC potential with SIRIUS.
       call sirius_generate_xc_potential(gs_handler, vxcmt(1,1,1), vxcir(offs), bxcmt(1,1,1,1), bxcir(offs,1))
-      call gatherir(vxcir(1))
+      !call gatherir(vxcir(1))
       do j = 1, ndmag
         call gatherir(bxcir(1, j))
       enddo
