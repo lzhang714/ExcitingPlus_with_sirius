@@ -59,8 +59,9 @@ subroutine gencfun
 
 #ifdef _SIRIUS_
     !m = sum(ngr_loc_all(0:sirius_fft_comm_rank)) - ngr_loc + 1
+    m = 1
     call sirius_get_step_function(sctx, cfunig(1), cfunir(m))
-    call gatherir(cfunir(1))                                      ! gatherir in addons/mod_mpi_grid.f90
+    !call gatherir(cfunir(1))                                      ! gatherir in addons/mod_mpi_grid.f90
 #else
     stop sirius_error
 #endif
