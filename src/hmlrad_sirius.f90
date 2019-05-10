@@ -6,9 +6,9 @@
 subroutine hmlrad_sirius
   
   use modmain
-#ifdef _SIRIUS_
-  use mod_sirius
-#endif
+!#ifdef _SIRIUS_
+!  use mod_sirius
+!#endif
 !  
 ! 2019 L.Zhang@UFL created to comply to SIRIUS library, following the spirit of Exciting-Sirius interface. 
 !
@@ -29,7 +29,7 @@ subroutine hmlrad_sirius
   complex(8), allocatable :: haaij(:,:,:),haloij(:,:,:),hloloij(:,:,:)
   real(8),    allocatable :: haaintegrals(:,:,:,:,:),halointegrals(:,:,:,:),hlolointegrals(:,:,:)  
   
-  logical valence_relativity
+  logical :: valence_relativity
   
   logical :: usesplines  
   real(8) alpha
@@ -39,7 +39,15 @@ subroutine hmlrad_sirius
   integer ipiv(polyord+1)
   real(8), allocatable :: poly(:,:),weight(:),ints(:),abscissa(:),work(:)
   
-  ! here some variables for the sake of convenience.
+  
+  ! ========================================================
+  ! two important booleans set ONLY in this subroutine.
+  usesplines = .true.
+  valence_relativity = .false.
+  ! ========================================================
+  
+  
+  ! -------- here some variables for the sake of convenience.
   ! we have lm2l,lm2m in src/addons/init3.f90, same thing. 
   allocate (lfromlm(lmmaxvr))
   allocate (mfromlm(lmmaxvr))
@@ -51,8 +59,7 @@ subroutine hmlrad_sirius
     enddo
   enddo
   
-  ! if consider valence relativity: aa != 0
-  valence_relativity = .false.
+  ! -------- if consider valence relativity: aa != 0
   if (valence_relativity) then
     aa = 0.5d0*alpha**2
   else
@@ -230,17 +237,19 @@ subroutine hmlrad_sirius
                 else
                   haaintegrals(1,io2,l3,io1,l1) = 0.d0
                 end if
-
-                ! In Exciting, the double loop is under the condition usesplines=.false.
-                do lm2 = 2, lmmaxvr
-                  m2 = mfromlm(lm2)
-                  l2 = lfromlm(lm2)
-                  haaintegrals(lm2, io2, l3, io1, l1) = 0d0
-                  do ir = 1, nr
-                    haaintegrals(lm2, io2, l3, io1, l1) = haaintegrals(lm2, io2, l3, io1, l1) + &
-                    & apwfr(ir, 1, io1, l1, ias) * apwfr(ir, 1, io2, l3, ias) * r2(ir) * veffmt(lm2, ir, ias) * weight(ir)
+                ! In Exciting, the double loop below is under the condition usesplines=.true.
+                ! but usesplines is set to .false. at the beginning of this subroutine. 
+                if(usesplines) then
+                  do lm2 = 2, lmmaxvr
+                    m2 = mfromlm(lm2)
+                    l2 = lfromlm(lm2)
+                    haaintegrals(lm2, io2, l3, io1, l1) = 0d0
+                    do ir = 1, nr
+                      haaintegrals(lm2, io2, l3, io1, l1) = haaintegrals(lm2, io2, l3, io1, l1) + &
+                      & apwfr(ir, 1, io1, l1, ias) * apwfr(ir, 1, io2, l3, ias) * r2(ir) * veffmt(lm2, ir, ias) * weight(ir)
+                    end do
                   end do
-                end do
+                endif
 
             enddo
           enddo
@@ -269,17 +278,19 @@ subroutine hmlrad_sirius
                 else
                   halointegrals(1, io, l3, ilo) = 0.d0
                 endif
-
-                ! In Exciting, the double loop is under the condition usesplines=.false.
-                do lm2 = 2, lmmaxvr
-                  m2 = mfromlm(lm2)
-                  l2 = lfromlm(lm2)
-                  halointegrals(lm2, io, l3, ilo)=0d0
-                  do ir = 1, nr
-                    halointegrals(lm2, io, l3, ilo) = halointegrals(lm2, io, l3, ilo) + &
-                    & lofr(ir, 1, ilo, ias) * apwfr(ir, 1, io, l3, ias) * r2(ir) * veffmt(lm2, ir, ias) * weight(ir)
+                ! In Exciting, the double loop below is under the condition usesplines=.true.
+                ! but usesplines is set to .false. at the beginning of this subroutine. 
+                if(usesplines) then
+                  do lm2 = 2, lmmaxvr
+                    m2 = mfromlm(lm2)
+                    l2 = lfromlm(lm2)
+                    halointegrals(lm2, io, l3, ilo)=0d0
+                    do ir = 1, nr
+                      halointegrals(lm2, io, l3, ilo) = halointegrals(lm2, io, l3, ilo) + &
+                      & lofr(ir, 1, ilo, ias) * apwfr(ir, 1, io, l3, ias) * r2(ir) * veffmt(lm2, ir, ias) * weight(ir)
+                    enddo
                   enddo
-                enddo
+                endif
 
           enddo
         enddo
@@ -293,7 +304,7 @@ subroutine hmlrad_sirius
         l1 = lorbl(ilo1,is)
         do ilo2 = 1, nlorb(is)
           l3 = lorbl(ilo2,is)
-              
+          
                 if (l1 .Eq. l3) then
                   angular=dble(l1*(l1+1))
                   do ir = 1, nr
@@ -307,24 +318,26 @@ subroutine hmlrad_sirius
                 else
                   hlolointegrals(1, ilo1, ilo2) = 0.d0
                 endif
-                    
-                ! In Exciting, the double loop is under the condition usesplines=.false.
-                do lm2 = 2, lmmaxvr
-                  m2 = mfromlm(lm2)
-                  l2 = lfromlm(lm2)
-                  hlolointegrals(lm2, ilo1, ilo2)=0d0
-                  do ir = 1, nr
-                    hlolointegrals(lm2, ilo1, ilo2) = hlolointegrals(lm2, ilo1, ilo2) + &
-                    &lofr(ir, 1, ilo1, ias) * lofr(ir, 1, ilo2, ias) * r2(ir) * veffmt(lm2, ir, ias) * weight(ir)
+                ! In Exciting, the double loop below is under the condition usesplines=.true.
+                ! but usesplines is set to .false. at the beginning of this subroutine. 
+                if(usesplines) then
+                  do lm2 = 2, lmmaxvr
+                    m2 = mfromlm(lm2)
+                    l2 = lfromlm(lm2)
+                    hlolointegrals(lm2, ilo1, ilo2)=0d0
+                    do ir = 1, nr
+                      hlolointegrals(lm2, ilo1, ilo2) = hlolointegrals(lm2, ilo1, ilo2) + &
+                      &lofr(ir, 1, ilo1, ias) * lofr(ir, 1, ilo2, ias) * r2(ir) * veffmt(lm2, ir, ias) * weight(ir)
+                    end do
                   end do
-                end do
-
+                endif
+        
         enddo
       enddo
 
 
       ! now pass haaintegrals/halointegrals/hlolointegrals to SIRIUS
-      if (use_sirius_library.and..not.use_sirius_hmlrad) then
+      if (use_sirius_library.and.pass_hmlrad_to_sirius) then
 #ifdef _SIRIUS_
                ! pass apw-apw
                do l1 = 0, lmaxapw

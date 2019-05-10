@@ -10,9 +10,9 @@
 subroutine poteff
 
   use modmain
-#ifdef _SIRIUS_
-  use mod_sirius
-#endif
+!#ifdef _SIRIUS_
+!  use mod_sirius
+!#endif
 
 ! !DESCRIPTION:
 !   Computes the effective potential by adding together the Coulomb and
@@ -65,9 +65,9 @@ subroutine poteff
       ! generate XC potential with SIRIUS.
       call sirius_generate_xc_potential(gs_handler, vxcmt(1,1,1), vxcir(offs), bxcmt(1,1,1,1), bxcir(offs,1))
       !call gatherir(vxcir(1))
-      do j = 1, ndmag
-        call gatherir(bxcir(1, j))
-      enddo
+      !do j = 1, ndmag
+      !  call gatherir(bxcir(1, j))
+      !enddo
 #else
       stop sirius_error
 #endif
