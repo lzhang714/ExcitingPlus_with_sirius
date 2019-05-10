@@ -9,9 +9,9 @@
 subroutine gencfun
 ! !USES:
   use modmain
-#ifdef _SIRIUS_
-  use mod_sirius
-#endif
+!#ifdef _SIRIUS_
+!  use mod_sirius
+!#endif
 ! !DESCRIPTION:
 !   Generates the smooth characteristic function. This is the function which is
 !   0 within the muffin-tins and 1 in the intersitial region and is constructed
@@ -52,16 +52,14 @@ subroutine gencfun
   allocate(cfunir(ngrtot))
   
   
-  ! LZ ----------------------------------------------------------------------------    
-  ! LZ: relocate the original code in between "else" and "end if"
-
+  ! ----------------------------------------------------------------------------    
   if (use_sirius_library.and.use_sirius_cfun) then
 
 #ifdef _SIRIUS_
     !m = sum(ngr_loc_all(0:sirius_fft_comm_rank)) - ngr_loc + 1
     m = 1
     call sirius_get_step_function(sctx, cfunig(1), cfunir(m))
-    !call gatherir(cfunir(1))                                      ! gatherir in addons/mod_mpi_grid.f90
+    !call gatherir(cfunir(1))   
 #else
     stop sirius_error
 #endif
@@ -73,7 +71,9 @@ subroutine gencfun
     ! begin loop over species
     do is=1,nspecies
       ! generate the smooth step function form factors
+          write(*,*)' debug flag, gencfun, 1 '
       call genffacg(is,ngrtot,ffacg)
+          write(*,*)' debug flag, gencfun, 2 '
       ! loop over atoms
       do ia=1,natoms(is)
         do ig=1,ngrtot
@@ -85,18 +85,25 @@ subroutine gencfun
         end do
       end do
     end do
+
+          write(*,*)' debug flag, gencfun, 3 '
+
     do ig=1,ngrtot
-    ifg=igfft(ig)
-    zfft(ifg)=cfunig(ig)
+      ifg=igfft(ig)
+      zfft(ifg)=cfunig(ig)
     end do
+
+          write(*,*)' debug flag, gencfun, 4 '
+
     ! Fourier transform to real-space
     call zfftifc(3,ngrid,1,zfft)
     cfunir(:)=dble(zfft(:))
     deallocate(ffacg,zfft)
 
+          write(*,*)' debug flag, gencfun, 5 '
+
   end if
-  ! LZ: relocate the original code in between "else" and "end if" 
-  ! LZ ----------------------------------------------------------------------------
+  ! ----------------------------------------------------------------------------    
 
   return
 
