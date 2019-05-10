@@ -32,9 +32,9 @@ use_sirius_vxc
 use_sirius_density
    .false.
 use_sirius_cfun
-   .false.
+   .true.
 use_sirius_gvec
-                       .true.
+   .true.
 use_sirius_rhoinit
    .false.
 use_sirius_autoenu
@@ -62,7 +62,7 @@ atoms
     0.50000000    0.50000000    0.50000000    0.00000000  0.00000000  0.00000000
 
 rgkmax      !! R_mt*max{|G+k|}, this determines max{|G+k|}.  SIRIUS::aw_cutoff
-   7
+  7
 
 gmaxvr      !! max{|G|} for interstitial density & potential. SIRIUS::pw_cutoff
   20
@@ -82,8 +82,8 @@ nempty      !! number of empty states per atom and spin, default 4
 autoswidth  !! smearing parameter "swidth" determined automatically
   .true.
 
-!autormt     !! does not appear in the current ELK manual
-!  .true.
+autormt     !! does not appear in the current ELK manual
+  .true.
 
 sppath
   './'
