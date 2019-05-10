@@ -13,8 +13,10 @@ ig=0
 do while (ig.lt.ngvec)
   ig=ig+1
   igishell(ig)=ish
-  if (abs(gc(ig+1)-gc(ig)).gt.epslat) then
-    ish=ish+1
+  if (ig.ne.ngvec) then
+    if (abs(gc(ig+1)-gc(ig)).gt.epslat) then
+      ish=ish+1
+    endif
   endif
 enddo 
 
