@@ -1,0 +1,211 @@
+ 
+timestamp: 10.05.2019  00:24:37
+comment: [main] done mpi_world_initialize
+ 
+timestamp: 10.05.2019  00:24:37
+comment: [main] done readinput
+   
+  debug flag, init0, 1 
+ after sirius_init summary: 
+ lmaxapw   ( passed to sirius::lmax_apw )                 8
+ lmaxvr    ( passed to sirius::lmax_rho and lmax_pot )    8
+ gkmax     ( passed to sirius::gk_cutoff )               4.3750
+ gmaxvr    ( passed to sirius::pw_cutoff )              20.0000
+ ndmag     ( passed to sirius::num_mag_dims )             0
+ ngrid(1)  ( passed to sirius::fft_grid_size )           36
+ ngrid(2)  ( passed to sirius::fft_grid_size )           36
+ ngrid(3)  ( passed to sirius::fft_grid_size )           36
+ ngrtot    ( this is not passed to sirius )                 46656
+   
+  debug flag, init0, 2 
+   
+  debug flag, gengvec, 2 
+ debug flag, gengvec, ngrtot =      46656
+ debug flag, gengvec, ngvec  =      16529
+   
+  debug flag, init0, 3 
+  debug flag, init0, 4 
+  debug flag, gencfun, 1 
+  debug flag, genffacg, 1 
+  debug flag, genffacg, 2 
+  debug flag, gencfun, 2 
+  debug flag, gencfun, 1 
+  debug flag, genffacg, 1 
+  debug flag, genffacg, 2 
+  debug flag, gencfun, 2 
+  debug flag, gencfun, 3 
+  debug flag, gencfun, 4 
+  debug flag, gencfun, 5 
+  debug flag, init0, 5 
+  debug flag, init0, 6 
+  debug flag, init0, 7 
+  debug flag, init0, 8 
+  debug flag, init0, 9 
+  debug flag, init0, 10 
+ 
+[initmpigrid] mpi grid size :        1       1
+  SIRIUS full scf started! 
+SIRIUS 6.1.5, git hash: 8fd984bfccfd3c55448284c9a0a8a01f86c65ca9
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9971
+  target value : 36
+  difference : 0.00286171
+  total core leakage : 0.00287174
+    atom class : 0, core leakage : 0.00287162
+    atom class : 1, core leakage : 1.21346e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9976
+  target value : 36
+  difference : 0.00235613
+  total core leakage : 0.00235404
+    atom class : 0, core leakage : 0.00235391
+    atom class : 1, core leakage : 1.31915e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9971
+  target value : 36
+  difference : 0.00291378
+  total core leakage : 0.00292212
+    atom class : 0, core leakage : 0.002922
+    atom class : 1, core leakage : 1.22838e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9974
+  target value : 36
+  difference : 0.00264865
+  total core leakage : 0.00265678
+    atom class : 0, core leakage : 0.00265665
+    atom class : 1, core leakage : 1.21751e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9973
+  target value : 36
+  difference : 0.00268973
+  total core leakage : 0.0026961
+    atom class : 0, core leakage : 0.00269598
+    atom class : 1, core leakage : 1.22875e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9972
+  target value : 36
+  difference : 0.00275001
+  total core leakage : 0.00275745
+    atom class : 0, core leakage : 0  SIRIUS full scf done! 
+ the whole gndstate scf loop done!
+Total execution time :     202.8480 seconds
+.00275733
+    atom class : 1, core leakage : 1.22391e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9972
+  target value : 36
+  difference : 0.00275057
+  total core leakage : 0.00275782
+    atom class : 0, core leakage : 0.0027577
+    atom class : 1, core leakage : 1.22519e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9972
+  target value : 36
+  difference : 0.00275032
+  total core leakage : 0.00275752
+    atom class : 0, core leakage : 0.0027574
+    atom class : 1, core leakage : 1.22555e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9972
+  target value : 36
+  difference : 0.00275028
+  total core leakage : 0.00275748
+    atom class : 0, core leakage : 0.00275736
+    atom class : 1, core leakage : 1.22548e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9972
+  target value : 36
+  difference : 0.00275028
+  total core leakage : 0.00275748
+    atom class : 0, core leakage : 0.00275736
+    atom class : 1, core leakage : 1.22549e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9972
+  target value : 36
+  difference : 0.00275028
+  total core leakage : 0.00275748
+    atom class : 0, core leakage : 0.00275736
+    atom class : 1, core leakage : 1.22549e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9972
+  target value : 36
+  difference : 0.00275028
+  total core leakage : 0.00275748
+    atom class : 0, core leakage : 0.00275736
+    atom class : 1, core leakage : 1.22549e-07
+
