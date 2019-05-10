@@ -1,0 +1,105 @@
+! non-magnetic bulk NiO
+
+tasks
+   0
+
+use_sirius_library
+                        .true. 
+use_sirius_init
+                        .true
+sirius_run_full_scf
+                        .true.
+
+use_sirius_eigen_states
+   .false.
+update_atomic_pot
+   .false.
+pass_veffig_to_sirius
+   .false.
+pass_apwfr_to_sirius
+   .false.
+pass_lofr_to_sirius
+   .false.
+pass_olprad_to_sirius
+   .false.
+pass_hmlrad_to_sirius
+   .false.
+
+use_sirius_vha
+   .false. 
+use_sirius_vxc
+   .false.
+use_sirius_density
+   .false.
+use_sirius_cfun
+   .false.
+use_sirius_gvec
+                       .true.
+use_sirius_rhoinit
+   .false.
+use_sirius_autoenu
+   .false.
+  
+
+maxscl
+  100
+
+scale
+  7.880157372    !!   = 4.17 Angs
+
+avec
+   0.000000000       0.500000000       0.500000000
+   0.500000000       0.000000000       0.500000000
+   0.500000000       0.500000000       0.000000000
+
+atoms
+   2                                    : nspecies
+'Ni.in'                                 : spfname
+   1                                    : natoms; atposl, bfcmt below
+    0.00000000    0.00000000    0.00000000    0.00000000  0.00000000  0.00000000
+'O.in'                                 : spfname
+   1                                    : natoms; atposl, bfcmt below
+    0.50000000    0.50000000    0.50000000    0.00000000  0.00000000  0.00000000
+
+rgkmax      !! R_mt*max{|G+k|}, this determines max{|G+k|}.  SIRIUS::aw_cutoff
+   7
+
+gmaxvr      !! max{|G|} for interstitial density & potential. SIRIUS::pw_cutoff
+  20
+
+lmaxapw     !! l cut-off for the APW functions, default 8, must be >=0. SIRIUS::lmax_apw
+   8
+
+lmaxvr      !! l cut-off for for potentials and densities, default 7, must be >=3. SIRIUS::lmax_rho/lmax_pot
+   8
+
+!reducek     !! type of reduction of the k-point set (0 no reduction; 2 symmorphic symm only;)
+!  2 
+
+nempty      !! number of empty states per atom and spin, default 4
+  10
+
+autoswidth  !! smearing parameter "swidth" determined automatically
+  .true.
+
+!autormt     !! does not appear in the current ELK manual
+!  .true.
+
+sppath
+  './'
+
+ngridk
+  4 4 4
+
+xctype
+  20 0 0
+ 
+plot1d
+  6  180                 ! # of k-points to be sampled
+  0.375 0.375 0.750      ! K
+  0.000 0.000 0.000      ! G
+  0.500 0.000 0.500      ! X
+  0.500 0.250 0.750      ! W
+  0.500 0.500 0.500      ! L
+  0.000 0.000 0.000      ! G
+ 

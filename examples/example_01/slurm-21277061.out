@@ -1,0 +1,20 @@
+forrtl: severe (408): fort: (2): Subscript #1 of the array GC has value 16530 which is greater than the upper bound of 16529
+
+Image              PC                Routine            Line        Source             
+elk                00000000013B3CA0  for_emit_diagnost     Unknown  Unknown
+elk                0000000000C67051  Unknown               Unknown  Unknown
+elk                0000000000602CF4  Unknown               Unknown  Unknown
+elk                00000000006797E5  Unknown               Unknown  Unknown
+elk                0000000000487521  Unknown               Unknown  Unknown
+elk                00000000006C7594  Unknown               Unknown  Unknown
+elk                00000000004132CE  Unknown               Unknown  Unknown
+libc-2.22.so       00002AAAB48DF725  __libc_start_main     Unknown  Unknown
+elk                00000000004131E9  Unknown               Unknown  Unknown
+srun: error: nid00563: task 0: Exited with exit code 152
+srun: Terminating job step 21277061.0
+ 
+ ================================================= 
+ The job is done in time.                          
+ Time used for execution: 0 min 16 sec 
+ ================================================= 
+ 

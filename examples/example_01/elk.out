@@ -1,0 +1,31 @@
+ 
+timestamp: 10.05.2019  00:23:02
+comment: [main] done mpi_world_initialize
+ 
+timestamp: 10.05.2019  00:23:02
+comment: [main] done readinput
+   
+  debug flag, init0, 1 
+ after sirius_init summary: 
+ lmaxapw   ( passed to sirius::lmax_apw )                 8
+ lmaxvr    ( passed to sirius::lmax_rho and lmax_pot )    8
+ gkmax     ( passed to sirius::gk_cutoff )               4.3750
+ gmaxvr    ( passed to sirius::pw_cutoff )              20.0000
+ ndmag     ( passed to sirius::num_mag_dims )             0
+ ngrid(1)  ( passed to sirius::fft_grid_size )           36
+ ngrid(2)  ( passed to sirius::fft_grid_size )           36
+ ngrid(3)  ( passed to sirius::fft_grid_size )           36
+ ngrtot    ( this is not passed to sirius )                 46656
+   
+  debug flag, init0, 2 
+   
+  debug flag, gengvec, 1 
+ debug flag, gengvec, ngrtot(from EP)     =      46656
+ debug flag, gengvec, ngvec(from SIRIUS)  =      16529
+   
+  debug flag, init0, 3 
+  debug flag, init0, 4 
+  debug flag, gencfun, 1 
+  debug flag, genffacg, 1 
+  debug flag, genffacg, 2 
+SIRIUS 6.1.5, git hash: 8fd984bfccfd3c55448284c9a0a8a01f86c65ca9
