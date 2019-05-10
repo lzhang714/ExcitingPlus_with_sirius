@@ -17,9 +17,9 @@ subroutine gndstate
   use mod_sic
   use mod_seceqn
   use mod_addons
-#ifdef _SIRIUS_
-  use mod_sirius
-#endif
+!#ifdef _SIRIUS_
+!  use mod_sirius
+!#endif
 
   implicit none
 
@@ -35,11 +35,8 @@ subroutine gndstate
   character(100) :: label
   
   call timer_start(t_init,reset=.true.)  
-  
-  call init0                                 ! sirius calls
-  
-  call init1                                 ! sirius calls
-  
+  call init0                                 ! sirius calls inside
+  call init1                                 ! sirius calls inside
   call timer_stop(t_init)
    
   if (.not.mpi_grid_in()) return
@@ -107,13 +104,18 @@ subroutine gndstate
   
   ! ---------------------- task selection 
   if ((task.eq.1).or.(sic.and.isclsic.gt.1)) then
+
       call readstate
       if (wproc) write(ioinfo,'(" Potential has been read in from STATE.OUT ")')
       if (autolinengy) call readfermi
+
   else if (task.eq.200) then
+
       call phveff
       if (wproc) write(ioinfo,'(" Supercell potential constructed from STATE.OUT ")')
+
   else
+
       call timer_start(t_rhoinit,reset=.true.)
       call allatoms 
       do ias=1,natmtot
@@ -122,11 +124,28 @@ subroutine gndstate
           evalcr(ist,ias)=speval(ist,is)
         enddo
       enddo
-
-      call rhoinit  ! at the moment, still gen initial rho in EP
-
-      call poteff       ! sirius calls 
-
+      !
+      ! check that we can run the whole ground state; used to debug the EP/SIRIUS interface;
+      ! 
+      if (use_sirius_library.and.sirius_run_full_scf) then
+        ! set the free atomic desnity for each atom type
+        ! we can do it only here after we called allatoms() to solve the isolated atom
+        !   and generate free-atom density sprho
+        do is=1,nspecies
+          label = adjustl(spfname(is))
+          call sirius_add_atom_type_radial_function(sctx, string(trim(label)), string("ae_rho"),&
+                                                    &sprho(1, is), spnr(is))
+        enddo
+        write(*,*)' SIRIUS full scf started! '
+        call sirius_find_ground_state(gs_handler, bool(.false.))
+        write(*,*)' SIRIUS full scf done! '
+      else
+        ! origianl EP rhoinit should be "OR"ed with sirius full scf run
+        call rhoinit  
+      endif
+      
+      call poteff      ! sirius calls 
+      !call genveffig   ! EXCITING
       call timer_stop(t_rhoinit)
 
       if (wproc) then
@@ -152,23 +171,46 @@ subroutine gndstate
   tlast=.false.   
   etp=0.d0
 
-  !
-  ! check that we can run the whole ground state; used to debug the EP/SIRIUS interface
-  ! 
-  if (use_sirius_library) then
-    ! set the free atomic desnity for each atom type
-    ! we can do it only here after we called allatoms() to solve the isolated atom
-    !   and generate free-atom density sprho
-    do is=1,nspecies
-      label = adjustl(spfname(is))
-      call sirius_add_atom_type_radial_function(sctx, string(trim(label)), string("ae_rho"),&
-                                                &sprho(1, is), spnr(is))
-    enddo
-    call sirius_find_ground_state(gs_handler, bool(.false.))
-    write(*,*)'SIRIUS scf done!'
-  endif
-  
-  
+
+!moved the chunk below to the task selection above,
+!  !
+!  ! check that we can run the whole ground state; used to debug the EP/SIRIUS interface
+!  ! 
+!  if (use_sirius_library.and.sirius_run_full_scf) then
+!    ! set the free atomic desnity for each atom type
+!    ! we can do it only here after we called allatoms() to solve the isolated atom
+!    !   and generate free-atom density sprho
+!    do is=1,nspecies
+!      label = adjustl(spfname(is))
+!      call sirius_add_atom_type_radial_function(sctx, string(trim(label)), string("ae_rho"),&
+!                                                &sprho(1, is), spnr(is))
+!    enddo
+!    call sirius_find_ground_state(gs_handler, bool(.false.))
+!    write(*,*)'SIRIUS scf done!'
+!  endif
+!
+!the "sirius_find_ground_state" will do the following, 
+!
+!/* @fortran begin function void sirius_find_ground_state        Find the ground state
+!   @fortran argument in required void* gs_handler               Handler of the ground state
+!   @fortran argument in optional bool  save__                   boolean variable indicating if we want to save the ground state
+!   @fortran end 
+!   */
+!   
+!void sirius_find_ground_state(void* const* gs_handler__, bool const *save__)
+!{
+!    GET_GS(gs_handler__)
+!    auto& ctx = gs.ctx();
+!    auto& inp = ctx.parameters_input();
+!    gs.initial_state();
+!
+!    bool save{false};
+!    if (save__ != nullptr) {
+!        save = *save__;
+!    }
+!
+!    auto result = gs.find(inp.potential_tol_, inp.energy_tol_, inp.num_dft_iter_, save);
+!}
   
   ! ================================================================== ! 
   !                               SCF loop                             ! 
@@ -204,10 +246,13 @@ subroutine gndstate
     if (wproc) call flushifc(ioinfo)
 
     ! Fourier transform effective potential to G-space
-    call genveffig                                        ! sirius call
+    !
+    ! will pass pw coeff to sirius if (use_sirius_library.and.pass_veffig_to_sirius)
+    !
+    call genveffig                                        ! sirius calls inside
 
     ! set the new spherical potential in SIRIUS
-    if (use_sirius_library) then
+    if (use_sirius_library.and.update_atomic_pot) then
 #ifdef _SIRIUS_
       call sirius_update_atomic_potential(gs_handler)
 #else
@@ -226,19 +271,19 @@ subroutine gndstate
     ! write out the linearisation energies
     if (wproc) call writelinen
     ! generate the APW radial functions
-    call genapwfr                                 ! sirius call 
+    call genapwfr                                 ! sirius call inside
     ! generate the local-orbital radial functions
-    call genlofr                                  ! sirius call 
+    call genlofr                                  ! sirius call inside
     ! collect radial mt functions, check mod_addons
     call getufr
     ! compute the product of radial functions, check mod_addons
     call genufrp
     ! compute the overlap radial integrals
-    call olprad                                   ! sirius call 
+    call olprad                                   ! sirius call inside
     ! compute the Hamiltonian radial integrals
     ! hmlrad_sirius.f90 is newly created, following the hmlint.f90 of Exciting
-    if (use_sirius_library) then
-        call hmlrad_sirius                        ! sirius call 
+    if (use_sirius_library.and.pass_hmlrad_to_sirius) then
+        call hmlrad_sirius                        ! sirius calls inside 
     else 
         call hmlrad
     endif    
@@ -308,7 +353,7 @@ subroutine gndstate
     if (wannier) call wann_ene_occ
     
     ! density and magnetisation
-    if (.false.) then !use_sirius_library.and.use_sirius_density) then
+    if (.false.) then             ! if (use_sirius_library.and.use_sirius_density) then
 !#ifdef _SIRIUS_
 !        do ik = 1, nkpt
 !            if (ndmag.eq.0.or.ndmag.eq.3) then
@@ -537,7 +582,8 @@ subroutine gndstate
   ! ================================================================== ! 
   !                               SCF loop                             ! 
   ! ================================================================== ! 
-  
+
+  write(*,*)'the whole gndstate scf loop done!'  
   
   ! write eigenvalues/vectors and occupancies to file
   if (mpi_grid_side(dims=(/dim_k/))) then
@@ -610,7 +656,7 @@ subroutine gndstate
   endif
 
   ! finalize SIRIUS at the end
-  if (use_sirius_library) then
+  if (use_sirius_library.and.use_sirius_init) then
 #ifdef _SIRIUS_
     call sirius_free_handler(gs_handler)
     call sirius_free_handler(ks_handler)
