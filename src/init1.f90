@@ -7,9 +7,9 @@ subroutine init1
   use modmain
   use modldapu
   use modtest
-#ifdef _SIRIUS_
-  use mod_sirius
-#endif
+!#ifdef _SIRIUS_
+!  use mod_sirius
+!#endif
 
 ! !DESCRIPTION:
 !   Generates the $k$-point set and then allocates and initialises global
@@ -172,7 +172,7 @@ end if
 !     G+k vectors     !
 !---------------------!
 
-  if (use_sirius_library) then
+  if (use_sirius_library.and.use_sirius_init) then
 #ifdef _SIRIUS_
     ! create a new k-set for density generation;
     ! the boolean indicates whether the k-set will be initialized;
@@ -202,10 +202,13 @@ end if
 #else
     stop sirius_error
 #endif
+  else
+    ! find the maximum number of G+k-vectors, in the original way
+    call getngkmax
   endif
 
-  ! find the maximum number of G+k-vectors
-  call getngkmax
+  !!! find the maximum number of G+k-vectors
+  !!call getngkmax
   ! allocate the G+k-vector arrays
   if (allocated(ngk)) deallocate(ngk)
   allocate(ngk(nspnfv,nkpt))
@@ -242,7 +245,7 @@ end if
         endif
 
 
-        if (use_sirius_library) then
+        if (use_sirius_library.and.use_sirius_init) then
 #ifdef _SIRIUS_
               
               ! memo from Sirius documents:
