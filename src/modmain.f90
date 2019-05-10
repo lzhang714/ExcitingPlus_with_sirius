@@ -9,8 +9,17 @@ use mod_mpi_grid
 use mod_timer
 use mod_addons
 use mod_papi
+#ifdef _SIRIUS_
+use sirius
+#endif
 
 use ISO_C_BINDING
+
+#ifdef _SIRIUS_
+type(C_PTR) :: sctx = C_NULL_PTR
+type(C_PTR) :: gs_handler = C_NULL_PTR
+type(C_PTR) :: ks_handler = C_NULL_PTR
+#endif
 
 !----------------------------!
 !     lattice parameters     !
@@ -940,15 +949,66 @@ integer notelns
 ! notes to include in INFO.OUT
 character(80) notes(maxnlns)
 
+!------------------------------------------!
+!     SIRIUS library control switches      !
+!------------------------------------------!
+
+! global on/off switch, "AND"ed with all other switches below.
+  logical use_sirius_library
+
+
+! initialization of sirius, show up only in init0.f90 and init1.f90
+  logical use_sirius_init
+
+
+! let sirius run a full scf calculation
+  logical sirius_run_full_scf
+
+
+! let sirius solve the eigen problem (diagonalisation)
+  logical use_sirius_eigen_states   
+! update sirius atomic potential
+  logical update_atomic_pot 
+! pass pw coefficients to sirius
+  logical pass_veffig_to_sirius
+! pass apw radial functions to sirius
+  logical pass_apwfr_to_sirius 
+! pass lo radial functions to sirius
+  logical pass_lofr_to_sirius 
+! pass overlap radial integrals to sirius
+  logical pass_olprad_to_sirius 
+! pass Hamiltonian radial integrals to sirius 
+  logical pass_hmlrad_to_sirius 
+
+
+! other jobs that could be outsourced. 
+! let sirius generate Hartree potential (solve Poisson equation)
+  logical use_sirius_vha 
+! let sirius generate exchange-correlation potential 
+  logical use_sirius_vxc 
+! let sirius generate charge density 
+  logical use_sirius_density 
+! let sirius generate the step-function
+  logical use_sirius_cfun 
+! let sirius generate G-vectors
+  logical use_sirius_gvec 
+! this is not useful any more, "sirius_radial_solver" is no longer available in SIRIUS API
+!  logical use_sirius_radial_solver 
+! let sirius generate initial charge density
+  logical use_sirius_rhoinit 
+! let sirius determine linearization energy automatically
+  logical use_sirius_autoenu 
+
+  character*100, parameter :: sirius_error = " The code is not compiled with SIRIUS library. "
+
 !-----------------------------------!
 !    SIRIUS library variables       !
 !-----------------------------------!
 
-integer sirius_fft_comm_rank
-integer :: ngr_loc                            
-integer, allocatable :: ngr_loc_all(:)         
-
-real (8), allocatable :: vmad (:)
+  integer sirius_fft_comm_rank
+  integer :: ngr_loc                            
+  integer, allocatable :: ngr_loc_all(:)         
+  real (8), allocatable :: vmad (:)
 
 end module
 
