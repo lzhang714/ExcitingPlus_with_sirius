@@ -1,0 +1,905 @@
+ 
+timestamp: 10.05.2019  00:26:17
+comment: [main] done mpi_world_initialize
+ 
+timestamp: 10.05.2019  00:26:17
+comment: [main] done readinput
+   
+  debug flag, init0, 1 
+ after sirius_init summary: 
+ lmaxapw   ( passed to sirius::lmax_apw )                 8
+ lmaxvr    ( passed to sirius::lmax_rho and lmax_pot )    8
+ gkmax     ( passed to sirius::gk_cutoff )               4.3750
+ gmaxvr    ( passed to sirius::pw_cutoff )              20.0000
+ ndmag     ( passed to sirius::num_mag_dims )             0
+ ngrid(1)  ( passed to sirius::fft_grid_size )           36
+ ngrid(2)  ( passed to sirius::fft_grid_size )           36
+ ngrid(3)  ( passed to sirius::fft_grid_size )           36
+ ngrtot    ( this is not passed to sirius )                 46656
+   
+  debug flag, init0, 2 
+   
+  debug flag, gengvec, 2 
+ debug flag, gengvec, ngrtot =      46656
+ debug flag, gengvec, ngvec  =      16529
+   
+  debug flag, init0, 3 
+  debug flag, init0, 4 
+  debug flag, gencfun, 1 
+  debug flag, genffacg, 1 
+  debug flag, genffacg, 2 
+  debug flag, gencfun, 2 
+  debug flag, gencfun, 1 
+  debug flag, genffacg, 1 
+  debug flag, genffacg, 2 
+  debug flag, gencfun, 2 
+  debug flag, gencfun, 3 
+  debug flag, gencfun, 4 
+  debug flag, gencfun, 5 
+  debug flag, init0, 5 
+  debug flag, init0, 6 
+  debug flag, init0, 7 
+  debug flag, init0, 8 
+  debug flag, init0, 9 
+  debug flag, init0, 10 
+ 
+[initmpigrid] mpi grid size :        1       1
+  SIRIUS full scf started! 
+SIRIUS 6.1.5, git hash: 8fd984bfccfd3c55448284c9a0a8a01f86c65ca9
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 200 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/K_point/k_point.hpp ===
+G+k cutoff (4.375) is too large for a given lmax (8) and a maximum MT radius (2)
+suggested minimum value for lmax : 9
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9971
+  target value : 36
+  difference : 0.00286171
+  total core leakage : 0.00287174
+    atom class : 0, core leakage : 0.00287162
+    atom class : 1, core leakage : 1.21346e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9976
+  target value : 36
+  difference : 0.00235613
+  total core leakage : 0.00235404
+    atom class : 0, core leakage : 0.00235391
+    atom class : 1, core leakage : 1.31915e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9971
+  target value : 36
+  difference : 0.00291378
+  total core leakage : 0.00292212
+    atom class : 0, core leakage : 0.002922
+    atom class : 1, core leakage : 1.22838e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9974
+  target value : 36
+  difference : 0.00264865
+  total core leakage : 0.00265678
+    atom class : 0, core leakage : 0.00265665
+    atom class : 1, core leakage : 1.21752e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9973
+  target value : 36
+  difference : 0.00268973
+  total core leakage : 0.0026961
+    atom class : 0, core leakage : 0.00269598
+    atom class : 1, core leakage : 1.22875e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9972
+  target value : 36
+  difference : 0.00275001
+  total core leakage : 0.00275745
+    atom class : 0, core leakage : 0  SIRIUS full scf done! 
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -2385.900318      -2.113672010    
+ for s.c. loop     1
+ 
+Warning(charge): total charge density incorrect for s.c. loop     1
+ Calculated :    1865.008151    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977718290      0.1500000000    
+ for s.c. loop     2
+ 
+Warning(charge): total charge density incorrect for s.c. loop     2
+ Calculated :    1847.817852    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977704672      0.1500000000    
+ for s.c. loop     3
+ 
+Warning(charge): total charge density incorrect for s.c. loop     3
+ Calculated :    1935.709395    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977664198      0.1500000000    
+ for s.c. loop     4
+ 
+Warning(charge): total charge density incorrect for s.c. loop     4
+ Calculated :    1969.504802    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977601223      0.1500000000    
+ for s.c. loop     5
+ 
+Warning(charge): total charge density incorrect for s.c. loop     5
+ Calculated :    1969.416390    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977534651      0.1500000000    
+ for s.c. loop     6
+ 
+Warning(charge): total charge density incorrect for s.c. loop     6
+ Calculated :    1966.593026    
+ Required   :    36.00000000    
+ 
+Warning(charge): total charge density incorrect for s.c. loop     7
+ Calculated :    1966.199592    
+ Required   :    36.00000000    
+ 
+Warning(charge): total charge density incorrect for s.c. loop     8
+ Calculated :    1964.600062    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977350404     -0.7352539866    
+ for s.c. loop     9
+ 
+Warning(charge): total charge density incorrect for s.c. loop     9
+ Calculated :    1963.113475    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977312353     -0.2053451653    
+ for s.c. loop    10
+ 
+Warning(charge): total charge density incorrect for s.c. loop    10
+ Calculated :    1962.054529    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977287509      0.1500000000    
+ for s.c. loop    11
+ 
+Warning(charge): total charge density incorrect for s.c. loop    11
+ Calculated :    1961.576010    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977274328      0.1500000000    
+ for s.c. loop    12
+ 
+Warning(charge): total charge density incorrect for s.c. loop    12
+ Calculated :    1960.902486    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977268042      0.1500000000    
+ for s.c. loop    13
+ 
+Warning(charge): total charge density incorrect for s.c. loop    13
+ Calculated :    1960.553057    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265621      0.1500000000    
+ for s.c. loop    14
+ 
+Warning(charge): total charge density incorrect for s.c. loop    14
+ Calculated :    1960.439831    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265084      0.1500000000    
+ for s.c. loop    15
+ 
+Warning(charge): total charge density incorrect for s.c. loop    15
+ Calculated :    1960.465927    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977264807      0.1500000000    
+ for s.c. loop    16
+ 
+Warning(charge): total charge density incorrect for s.c. loop    16
+ Calculated :    1960.476881    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977264801      0.1500000000    
+ for s.c. loop    17
+ 
+Warning(charge): total charge density incorrect for s.c. loop    17
+ Calculated :    1960.564059    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977264859      0.1500000000    
+ for s.c. loop    18
+ 
+Warning(charge): total charge density incorrect for s.c. loop    18
+ Calculated :    1960.522506    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265041      0.1500000000    
+ for s.c. loop    19
+ 
+Warning(charge): total charge density incorrect for s.c. loop    19
+ Calculated :    1960.514675    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265204      0.1500000000    
+ for s.c. loop    20
+ 
+Warning(charge): total charge density incorrect for s.c. loop    20
+ Calculated :    1960.517355    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265343      0.1500000000    
+ for s.c. loop    21
+ 
+Warning(charge): total charge density incorrect for s.c. loop    21
+ Calculated :    1960.520453    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265449      0.1500000000    
+ for s.c. loop    22
+ 
+Warning(charge): total charge density incorrect for s.c. loop    22
+ Calculated :    1960.524071    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265527      0.1500000000    
+ for s.c. loop    23
+ 
+Warning(charge): total charge density incorrect for s.c. loop    23
+ Calculated :    1960.526799    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265574      0.1500000000    
+ for s.c. loop    24
+ 
+Warning(charge): total charge density incorrect for s.c. loop    24
+ Calculated :    1960.531811    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265611      0.1500000000    
+ for s.c. loop    25
+ 
+Warning(charge): total charge density incorrect for s.c. loop    25
+ Calculated :    1960.525893    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265614      0.1500000000    
+ for s.c. loop    26
+ 
+Warning(charge): total charge density incorrect for s.c. loop    26
+ Calculated :    1960.537290    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265616      0.1500000000    
+ for s.c. loop    27
+ 
+Warning(charge): total charge density incorrect for s.c. loop    27
+ Calculated :    1960.536158    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265617      0.1500000000    
+ for s.c. loop    28
+ 
+Warning(charge): total charge density incorrect for s.c. loop    28
+ Calculated :    1960.533068    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265618      0.1500000000    
+ for s.c. loop    29
+ 
+Warning(charge): total charge density incorrect for s.c. loop    29
+ Calculated :    1960.533524    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265619      0.1500000000    
+ for s.c. loop    30
+ 
+Warning(charge): total charge density incorrect for s.c. loop    30
+ Calculated :    1960.533740    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265620      0.1500000000    
+ for s.c. loop    31
+ 
+Warning(charge): total charge density incorrect for s.c. loop    31
+ Calculated :    1960.533622    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265621      0.1500000000    
+ for s.c. loop    32
+ 
+Warning(charge): total charge density incorrect for s.c. loop    32
+ Calculated :    1960.533108    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265623      0.1500000000    
+ for s.c. loop    33
+ 
+Warning(charge): total charge density incorrect for s.c. loop    33
+ Calculated :    1960.533116    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265624      0.1500000000    
+ for s.c. loop    34
+ 
+Warning(charge): total charge density incorrect for s.c. loop    34
+ Calculated :    1960.533714    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    35
+ 
+Warning(charge): total charge density incorrect for s.c. loop    35
+ Calculated :    1960.533527    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    36
+ 
+Warning(charge): total charge density incorrect for s.c. loop    36
+ Calculated :    1960.533406    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    37
+ 
+Warning(charge): total charge density incorrect for s.c. loop    37
+ Calculated :    1960.533624    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    38
+ 
+Warning(charge): total charge density incorrect for s.c. loop    38
+ Calculated :    1960.533537    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    39
+ 
+Warning(charge): total charge density incorrect for s.c. loop    39
+ Calculated :    1960.533393    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    40
+ 
+Warning(charge): total charge density incorrect for s.c. loop    40
+ Calculated :    1960.534044    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    41
+ 
+Warning(charge): total charge density incorrect for s.c. loop    41
+ Calculated :    1960.533300    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    42
+ 
+Warning(charge): total charge density incorrect for s.c. loop    42
+ Calculated :    1960.533296    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    43
+ 
+Warning(charge): total charge density incorrect for s.c. loop    43
+ Calculated :    1960.534020    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    44
+ 
+Warning(charge): total charge density incorrect for s.c. loop    44
+ Calculated :    1960.533314    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    45
+ 
+Warning(charge): total charge density incorrect for s.c. loop    45
+ Calculated :    1960.533975    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    46
+ 
+Warning(charge): total charge density incorrect for s.c. loop    46
+ Calculated :    1960.533316    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    47
+ 
+Warning(charge): total charge density incorrect for s.c. loop    47
+ Calculated :    1960.533389    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    48
+ 
+Warning(charge): total charge density incorrect for s.c. loop    48
+ Calculated :    1960.533334    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    49
+ 
+Warning(charge): total charge density incorrect for s.c. loop    49
+ Calculated :    1960.534068    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    50
+ 
+Warning(charge): total charge density incorrect for s.c. loop    50
+ Calculated :    1960.533322    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    51
+ 
+Warning(charge): total charge density incorrect for s.c. loop    51
+ Calculated :    1960.533336    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    52
+ 
+Warning(charge): total charge density incorrect for s.c. loop    52
+ Calculated :    1960.533286    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    53
+ 
+Warning(charge): total charge density incorrect for s.c. loop    53
+ Calculated :    1960.533992    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    54
+ 
+Warning(charge): total charge density incorrect for s.c. loop    54
+ Calculated :    1960.533240    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    55
+ 
+Warning(charge): total charge density incorrect for s.c. loop    55
+ Calculated :    1960.534063    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    56
+ 
+Warning(charge): total charge density incorrect for s.c. loop    56
+ Calculated :    1960.533301    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    57
+ 
+Warning(charge): total charge density incorrect for s.c. loop    57
+ Calculated :    1960.533311    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    58
+ 
+Warning(charge): total charge density incorrect for s.c. loop    58
+ Calculated :    1960.534070    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    59
+ 
+Warning(charge): total charge density incorrect for s.c. loop    59
+ Calculated :    1960.533316    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    60
+ 
+Warning(charge): total charge density incorrect for s.c. loop    60
+ Calculated :    1960.533330    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    61
+ 
+Warning(charge): total charge density incorrect for s.c. loop    61
+ Calculated :    1960.533269    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    62
+ 
+Warning(charge): total charge density incorrect for s.c. loop    62
+ Calculated :    1960.533976    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    63
+ 
+Warning(charge): total charge density incorrect for s.c. loop    63
+ Calculated :    1960.534036    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    64
+ 
+Warning(charge): total charge density incorrect for s.c. loop    64
+ Calculated :    1960.533434    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    65
+ 
+Warning(charge): total charge density incorrect for s.c. loop    65
+ Calculated :    1960.533451    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    66
+ 
+Warning(charge): total charge density incorrect for s.c. loop    66
+ Calculated :    1960.533426    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    67
+ 
+Warning(charge): total charge density incorrect for s.c. loop    67
+ Calculated :    1960.533377    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    68
+ 
+Warning(charge): total charge density incorrect for s.c. loop    68
+ Calculated :    1960.533282    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    69
+ 
+Warning(charge): total charge density incorrect for s.c. loop    69
+ Calculated :    1960.533918    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    70
+ 
+Warning(charge): total charge density incorrect for s.c. loop    70
+ Calculated :    1960.533980    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    71
+ 
+Warning(charge): total charge density incorrect for s.c. loop    71
+ Calculated :    1960.533360    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    72
+ 
+Warning(charge): total charge density incorrect for s.c. loop    72
+ Calculated :    1960.533368    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    73
+ 
+Warning(charge): total charge density incorrect for s.c. loop    73
+ Calculated :    1960.533319    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    74
+ 
+Warning(charge): total charge density incorrect for s.c. loop    74
+ Calculated :    1960.534045    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    75
+ 
+Warning(charge): total charge density incorrect for s.c. loop    75
+ Calculated :    1960.533291    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    76
+ 
+Warning(charge): total charge density incorrect for s.c. loop    76
+ Calculated :    1960.533301    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    77
+ 
+Warning(charge): total charge density incorrect for s.c. loop    77
+ Calculated :    1960.534052    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    78
+ 
+Warning(charge): total charge density incorrect for s.c. loop    78
+ Calculated :    1960.533295    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    79
+ 
+Warning(charge): total charge density incorrect for s.c. loop    79
+ Calculated :    1960.533307    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    80
+ 
+Warning(charge): total charge density incorrect for s.c. loop    80
+ Calculated :    1960.534061    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    81
+ 
+Warning(charge): total charge density incorrect for s.c. loop    81
+ Calculated :    1960.533304    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    82
+ 
+Warning(charge): total charge density incorrect for s.c. loop    82
+ Calculated :    1960.533318    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    83
+ 
+Warning(charge): total charge density incorrect for s.c. loop    83
+ Calculated :    1960.534074    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    84
+ 
+Warning(charge): total charge density incorrect for s.c. loop    84
+ Calculated :    1960.533320    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    85
+ 
+Warning(charge): total charge density incorrect for s.c. loop    85
+ Calculated :    1960.533335    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    86
+ 
+Warning(charge): total charge density incorrect for s.c. loop    86
+ Calculated :    1960.533276    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    87
+ 
+Warning(charge): total charge density incorrect for s.c. loop    87
+ Calculated :    1960.533983    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    88
+ 
+Warning(charge): total charge density incorrect for s.c. loop    88
+ Calculated :    1960.533222    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    89
+ 
+Warning(charge): total charge density incorrect for s.c. loop    89
+ Calculated :    1960.534045    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    90
+ 
+Warning(charge): total charge density incorrect for s.c. loop    90
+ Calculated :    1960.533283    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    91
+ 
+Warning(charge): total charge density incorrect for s.c. loop    91
+ Calculated :    1960.533293    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    92
+ 
+Warning(charge): total charge density incorrect for s.c. loop    92
+ Calculated :    1960.534043    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    93
+ 
+Warning(charge): total charge density incorrect for s.c. loop    93
+ Calculated :    1960.533284    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    94
+ 
+Warning(charge): total charge density incorrect for s.c. loop    94
+ Calculated :    1960.533295    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    95
+ 
+Warning(charge): total charge density incorrect for s.c. loop    95
+ Calculated :    1960.534045    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    96
+ 
+Warning(charge): total charge density incorrect for s.c. loop    96
+ Calculated :    1960.533287    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    97
+ 
+Warning(charge): total charge density incorrect for s.c. loop    97
+ Calculated :    1960.533298    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    98
+ 
+Warning(charge): total charge density incorrect for s.c. loop    98
+ Calculated :    1960.534049    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop    99
+ 
+Warning(charge): total charge density incorrect for s.c. loop    99
+ Calculated :    1960.533291    
+ Required   :    36.00000000    
+ 
+Warning(occupy): minimum eigenvalue less than minimum linearisation energy :   -1.977265626      0.1500000000    
+ for s.c. loop   100
+ 
+Warning(charge): total charge density incorrect for s.c. loop   100
+ Calculated :    1960.533303    
+ Required   :    36.00000000    
+ the whole gndstate scf loop done!
+Total execution time :     211.5330 seconds
+.00275733
+    atom class : 1, core leakage : 1.2239e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9972
+  target value : 36
+  difference : 0.00275057
+  total core leakage : 0.00275782
+    atom class : 0, core leakage : 0.0027577
+    atom class : 1, core leakage : 1.22519e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9972
+  target value : 36
+  difference : 0.00275032
+  total core leakage : 0.00275752
+    atom class : 0, core leakage : 0.0027574
+    atom class : 1, core leakage : 1.22555e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9972
+  target value : 36
+  difference : 0.00275028
+  total core leakage : 0.00275748
+    atom class : 0, core leakage : 0.00275736
+    atom class : 1, core leakage : 1.22548e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9972
+  target value : 36
+  difference : 0.00275028
+  total core leakage : 0.00275748
+    atom class : 0, core leakage : 0.00275736
+    atom class : 1, core leakage : 1.2255e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9972
+  target value : 36
+  difference : 0.00275028
+  total core leakage : 0.00275748
+    atom class : 0, core leakage : 0.00275736
+    atom class : 1, core leakage : 1.22549e-07
+
+
+=== Warning at line 432 of file /global/homes/z/zhang714/install_sirius_2019_05_02/SIRIUS-develop/src/Density/density.hpp ===
+wrong number of electrons
+  obtained value : 35.9972
+  target value : 36
+  difference : 0.00275028
+  total core leakage : 0.00275748
+    atom class : 0, core leakage : 0.00275736
+    atom class : 1, core leakage : 1.22549e-07
+
