@@ -9,7 +9,7 @@ subroutine init0
   use modldapu
   use mod_mpi_grid
 #ifdef _SIRIUS_
-  use mod_sirius
+!  use mod_sirius
   use mpi
 #endif
 
@@ -281,58 +281,73 @@ subroutine init0
   end if
   ! effective Wigner radius
   rwigner=(3.d0/(fourpi*(chgtot/omega)))**(1.d0/3.d0)
-
-  ! determine gkmax from rgkmax and the muffin-tin radius
-  if (nspecies.gt.0) then
-    if ((isgkmax.ge.1).and.(isgkmax.le.nspecies)) then
-      ! use user-specified muffin-tin radius
-      gkmax=rgkmax/rmt(isgkmax)
-    else if (isgkmax.eq.-1) then
-      ! use average muffin-tin radius
-      sum=0.d0
-      do is=1,nspecies
-        sum=sum+dble(natoms(is))*rmt(is)
-      end do
-      sum=sum/dble(natmtot)
-      gkmax=rgkmax/sum
-    else
-      ! use minimum muffin-tin radius
-      gkmax=rgkmax/minval(rmt(1:nspecies))
-    end if
-  else
-    gkmax=rgkmax/2.d0
-  end if
-  gmaxvr=max(gmaxvr,2.d0*gkmax+epslat)
+  
 
   ! ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// !
   !                                                     initialize SIRIUS                                                         !
   ! ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// !                   
   
-  ! Global on/off switch that makes ALL other switches effective.
-  ! TODO: make the value assignment done in elk.in.
-  use_sirius_library=.true.
+
+
+  ! if working with sirius: 
+  ! 1. derive gkmax from rgkmax and the minimum muffin-tin radius,
+  !    i.e. gkmax(gk_cutoff) = rgkmax / min{R_mt},  
+  !    this is same as how SIRIUS set gk_cutoff: gk_cutoff = aw_cutoff() / unit_cell_.min_mt_radius() 
+  ! 2. gmaxvr will not be touched, 
+  !    i.e. user input will be passed to sirius directly
+  ! 
+  if (use_sirius_library.and.use_sirius_init) then
   
-  ! other control switches declared as parameter constant in modsirius.f90, copied here for memo. 
-  !
-  !use_sirius_vha=.true.
-  !use_sirius_vxc=.true.
-  !use_sirius_eigen_states=.true. 
-  !use_sirius_density=.true.  
-  !use_sirius_cfun=.true. 
-  !use_sirius_gvec=.true.
-  !
-  !use_sirius_radial_solver=.false.   ! have to set FALSE b/c "sirius_radial_solver" seems gone from the API
-  !use_sirius_apwfr=.false.           ! set FALSE b/c we want to pass apwfr to SIRIUS 
-  !use_sirius_lofr=.false.            ! set FALSE b/c we want to pass lofr to SIRIUS 
-  !use_sirius_olprad=.false.          ! set FALSE b/c we want to pass Olp radial integrals to SIRIUS
-  !use_sirius_hmlrad=.false.          ! set FALSE b/c we want to pass Ham radial integrals to SIRIUS
-  !
-  !use_sirius_autoenu=.false.         ! let sirius automatically determine linearization energy, for APW and LO
-  !use_sirius_rhoinit=.false.         ! false at the moment b/c it needs to be used with sirius species files
+#ifdef _SIRIUS_
+    if (nspecies.le.0) then 
+      write(*,*) ' SIRIUS interface error : nspecies must be >=1. '
+    endif
+    gkmax = rgkmax/minval(rmt(1:nspecies))
+#else
+    stop sirius_error
+#endif
+
+  else
+  
+    ! originally EP uses 3 kinds of R_mt: user input R_mt, average R_mt, mininum R_mt
+    if (nspecies.gt.0) then
+      if ((isgkmax.ge.1).and.(isgkmax.le.nspecies)) then
+          ! use user-specified muffin-tin radius
+          gkmax=rgkmax/rmt(isgkmax)
+      else if (isgkmax.eq.-1) then
+          ! use average muffin-tin radius
+          sum=0.d0
+          do is=1,nspecies
+            sum=sum+dble(natoms(is))*rmt(is)
+          end do
+          sum=sum/dble(natmtot)
+          gkmax=rgkmax/sum
+      else
+          ! use minimum muffin-tin radius
+          gkmax=rgkmax/minval(rmt(1:nspecies))
+      end if
+    else
+      ! why it's possible to be nspecies <= 0 ?? 
+      gkmax=rgkmax/2.d0
+    end if
+    ! originally EP requires gmaxvr >= 2*gkmax+epslat
+    gmaxvr=max(gmaxvr,2.d0*gkmax+epslat)
+
+  endif
+
+
+  ! moved "call gridsize" from after use_sirius_init to here b/c I want to pass ngrid(:) to sirius
+  ! 
+  ! EP side procedure: gmaxvr ---> ngrid(:) ---> ngrtot = ngrid(1)*ngrid(2)*ngrid(3)
+  !                                         ---> intgv(:,1)=ngrid(:)/2-ngrid(:)+1
+  !                                         ---> intgv(:,2)=ngrid(:)/2
+  call gridsize
+  
   
   ! ==================================================== 
-  if (use_sirius_library) then
+  if (use_sirius_library.and.use_sirius_init) then
 #ifdef _SIRIUS_
+
         ! init sirius (set to .false. b/c we assume "MPI_Init" is already done, otherwise it should be set to .true.)
         call sirius_initialize(bool(.false.))
         ! set global MPI communicator for sirius
@@ -342,17 +357,20 @@ subroutine init0
         ! set json string to specify calculation type fp-lapw or pp-pw
         call sirius_import_parameters(sctx, string('{"parameters" : {"electronic_structure_method" : "full_potential_lapwlo"}}'))
         ! set important parameters
-        call sirius_set_parameters(sctx,&
-                                  &lmax_apw=lmaxapw,&
-                                  &lmax_rho=lmaxvr,&
-                                  &lmax_pot=lmaxvr,&
-                                  &pw_cutoff=gmaxvr,&
-                                  &gk_cutoff=gkmax,&
-                                  &num_mag_dims=ndmag,&
-                                  &auto_rmt=0,&
-                                  &core_rel=string('none'),&
-                                  &valence_rel=string('none'),&
-                                  &verbosity=1)
+        ! core relativity can be 'none' or 'dirac', 
+        ! alence relativity can be 'none', 'zora' or 'iora'.
+        
+        call sirius_set_parameters(   sctx,&
+                                     &lmax_apw=lmaxapw,&
+                                     &lmax_rho=lmaxvr,&
+                                     &lmax_pot=lmaxvr,&
+                                     &gk_cutoff=gkmax,&
+                                     &pw_cutoff=gmaxvr,&
+                                     &fft_grid_size=ngrid(1),&
+                                     &num_mag_dims=ndmag,&
+                                     &auto_rmt=0,&
+                                     &core_rel=string('none'),&
+                                     &valence_rel=string('none')     )
         ! set lattice vectors
         call sirius_set_lattice_vectors( sctx, avec(1,1), avec(1,2), avec(1,3) )
 
@@ -394,7 +412,7 @@ subroutine init0
           ! set sirius apw descriptor.
           !
           ! 1. EXCITING sets "-1" to the 3rd argument, meaning the library will figure out principle quantum number. 
-          !    Here we use apwpqn(l,is), where l=0,lmaxapw. This variable is declared and read in in readspecies.f90. 
+          !    It seems we can use apwpqn(l,is), where l=0,lmaxapw. This variable is declared and read in from readspecies.f90. 
           !    EXCITING does not have this quantity.
           !
           ! 2. memo: 
@@ -419,8 +437,8 @@ subroutine init0
 
           ! set sirius lo descriptor: 
           !
-          ! 1. n = -1 means that the library will try to figure out principal quantum number itself.
-          !    we can also use: lopqn(ilo,is), which is also species file. 
+          ! 1. n = -1 in the 4th input argument means that the library will try to figure out principal quantum number itself.
+          !    It seems we can also use: lopqn(ilo,is), which is also in species file. 
           !    Exciting has the similar variable: lorbpqn(io, ilo, is), in mod_APW_LO.F90, but I am not sure where its value comes?
           !
           ! 2. lorbve, lorbe0, lorbdm, autoenu are all same as related apw quantities (note there is no "lorbe").
@@ -513,8 +531,24 @@ subroutine init0
         ! as initial test, use direct diagonalisation i.e. "exact"
         call sirius_set_parameters(sctx, iter_solver_type=string('exact'))
 
-        ! initialize global variables
+        ! initialize global variables. In SIRIUS this is doing: sim_ctx.initialize();
         call sirius_initialize_context(sctx)
+        
+        
+              write(*,*) '  '    
+              write(*,*) ' debug flag, init0, 1 '
+              write(*,'(" after sirius_init summary: ")')
+              write(*,'(" lmaxapw   ( passed to sirius::lmax_apw )              ", I4    )')  lmaxapw
+              write(*,'(" lmaxvr    ( passed to sirius::lmax_rho and lmax_pot ) ", I4    )')  lmaxvr
+              !write(*,'(" rgkmax    ( passed to sirius::aw_cutoff )             ", F8.4  )')  rgkmax
+              write(*,'(" gkmax     ( passed to sirius::gk_cutoff )             ", F8.4  )')  gkmax
+              write(*,'(" gmaxvr    ( passed to sirius::pw_cutoff )             ", F8.4  )')  gmaxvr
+              write(*,'(" ndmag     ( passed to sirius::num_mag_dims )          ", I4    )')  ndmag
+              write(*,'(" ngrid(1)  ( passed to sirius::fft_grid_size )         ", I4    )')  ngrid(1)
+              write(*,'(" ngrid(2)  ( passed to sirius::fft_grid_size )         ", I4    )')  ngrid(2)
+              write(*,'(" ngrid(3)  ( passed to sirius::fft_grid_size )         ", I4    )')  ngrid(3)
+              write(*,'(" ngrtot    ( this is not passed to sirius )            ", I10   )')  ngrtot
+              write(*,*) '  ' 
         
          
          
@@ -571,10 +605,40 @@ subroutine init0
 !-------------------------!
 !     G-vector arrays     !
 !-------------------------!
-! find the G-vector grid sizes
-call gridsize
+
+! this chunk below has been moved to right before use_sirius_init
+
+!! determine gkmax from rgkmax and the muffin-tin radius
+!! EP uses 3 kinds of R_mt: input R_mt, average R_mt, mininum R_mt
+!if (nspecies.gt.0) then
+!  if ((isgkmax.ge.1).and.(isgkmax.le.nspecies)) then
+!! use user-specified muffin-tin radius
+!    gkmax=rgkmax/rmt(isgkmax)
+!  else if (isgkmax.eq.-1) then
+!! use average muffin-tin radius
+!    sum=0.d0
+!    do is=1,nspecies
+!      sum=sum+dble(natoms(is))*rmt(is)
+!    end do
+!    sum=sum/dble(natmtot)
+!    gkmax=rgkmax/sum
+!  else
+!! use minimum muffin-tin radius
+!    gkmax=rgkmax/minval(rmt(1:nspecies))
+!  end if
+!else
+!  gkmax=rgkmax/2.d0
+!end if
+!gmaxvr=max(gmaxvr,2.d0*gkmax+epslat)
+!! find the G-vector grid sizes
+!call gridsize
+
+
+
 ! generate the G-vectors
+              write(*,*)' debug flag, init0, 2 '
 call gengvec
+              write(*,*)' debug flag, init0, 3 '
 ! generate the spherical harmonics of the G-vectors
 call genylmg
 ! allocate structure factor array for G-vectors
@@ -583,7 +647,9 @@ allocate(sfacg(ngvec,natmtot))
 ! generate structure factors for G-vectors
 call gensfacgp(ngvec,vgc,ngvec,sfacg)
 ! generate the characteristic function
+              write(*,*)' debug flag, init0, 4 '
 call gencfun
+              write(*,*)' debug flag, init0, 5 '
 
 !-------------------------!
 !     atoms and cores     !
@@ -614,6 +680,8 @@ if (pt_core) then
  if (allocated(ptrhocr)) deallocate(ptrhocr)
  allocate(ptrhocr(spnrmax,natmtot,nspncr))
 endif
+
+              write(*,*)' debug flag, init0, 6 '
 
 !---------------------------------------!
 !     charge density and potentials     !
@@ -694,6 +762,8 @@ allocate(chgmt(natmtot))
 if (allocated(mommt)) deallocate(mommt)
 allocate(mommt(3,natmtot))
 
+              write(*,*)' debug flag, init0, 7 '
+
 !--------------------------------------------!
 !     forces and structural optimisation     !
 !--------------------------------------------!
@@ -713,6 +783,8 @@ allocate(tauatm(natmtot))
 forcetp(:,:)=0.d0
 ! initial step sizes
 tauatm(:)=tau0atm
+
+              write(*,*)' debug flag, init0, 8 '
 
 !-------------------------!
 !     LDA+U variables     !
@@ -735,6 +807,8 @@ if ((ldapu.ne.0).or.(task.eq.17)) then
   if (allocated(alphalu)) deallocate(alphalu)
   allocate(alphalu(natmtot))
 end if
+
+              write(*,*)' debug flag, init0, 9 '
 
 !-----------------------!
 !     miscellaneous     !
@@ -765,6 +839,8 @@ if ((reducebf.lt.1.d0).and.(task.gt.3).and.(task.ne.700)) then
 end if
 ! set the Fermi energy to zero
 efermi=0.d0
+
+              write(*,*)' debug flag, init0, 10 '
 
 call timesec(ts1)
 timeinit=timeinit+ts1-ts0
