@@ -9,9 +9,9 @@
 subroutine genlofr
 ! !USES:
   use modmain
-#ifdef _SIRIUS_
-  use mod_sirius   
-#endif
+!#ifdef _SIRIUS_
+!  use mod_sirius   
+!#endif
 ! !DESCRIPTION:
 !   Generates the local-orbital radial functions. This is done by integrating
 !   the scalar relativistic Schr\"{o}dinger equation (or its energy deriatives)
@@ -144,7 +144,7 @@ subroutine genlofr
         end do
         
         ! pass lofr to sirius
-        if (use_sirius_library.and..not.use_sirius_lofr) then
+        if (use_sirius_library.and.pass_lofr_to_sirius) then
 #ifdef _SIRIUS_
           call sirius_set_radial_function(sctx, ias, 0, lofr(1, 1, ilo, ias), ilo=ilo)
           call sirius_set_radial_function(sctx, ias, 1, lofr(1, 2, ilo, ias), ilo=ilo)

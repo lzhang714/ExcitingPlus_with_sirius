@@ -12,9 +12,9 @@ subroutine energy
   use modldapu
   use modtest
   use mod_sic
-#ifdef _SIRIUS_
-  use mod_sirius
-#endif
+!#ifdef _SIRIUS_
+!  use mod_sirius
+!#endif
 ! !DESCRIPTION:
 !   Computes the total energy and its individual contributions. The kinetic
 !   energy is given by

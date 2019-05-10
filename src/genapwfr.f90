@@ -9,9 +9,9 @@
 subroutine genapwfr
 ! !USES:
   use modmain
-#ifdef _SIRIUS_
-  use mod_sirius
-#endif
+!#ifdef _SIRIUS_
+!  use mod_sirius
+!#endif
 ! !DESCRIPTION:
 !   Generates the APW radial functions. This is done by integrating the scalar
 !   relativistic Schr\"{o}dinger equation (or its energy deriatives) at the
@@ -133,7 +133,7 @@ subroutine genapwfr
             
             ! pass apwfr to sirius.
             ! should I put this after copying to equivalent atoms ?             
-            if (use_sirius_library.and..not.use_sirius_apwfr) then
+            if (use_sirius_library.and.pass_apwfr_to_sirius) then
 #ifdef _SIRIUS_
               call sirius_set_radial_function(sctx, ias, 0, apwfr(1, 1, io, l, ias), l=l, o=io)
               call sirius_set_radial_function(sctx, ias, 1, apwfr(1, 2, io, l, ias), l=l, o=io)
