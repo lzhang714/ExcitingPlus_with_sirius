@@ -370,7 +370,8 @@ subroutine init0
                                      &num_mag_dims=ndmag,&
                                      &auto_rmt=0,&
                                      &core_rel=string('none'),&
-                                     &valence_rel=string('none')     )
+                                     &valence_rel=string('none'),&
+                                     &verbosity=1)
         ! set lattice vectors
         call sirius_set_lattice_vectors( sctx, avec(1,1), avec(1,2), avec(1,3) )
 
