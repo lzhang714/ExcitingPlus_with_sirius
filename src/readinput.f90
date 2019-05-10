@@ -43,6 +43,7 @@ fname="elk.in"
 !------------------------!
 !     default values     !
 !------------------------!
+
 ntasks=1
 tasks(1)=-1
 avec(:,:)=0.d0
@@ -218,6 +219,27 @@ rho_val=.false.
 pt_core=.false.
 nebd_chi=1
 nebd_se=1
+! default values of SIRIUS control switches are all .false. 
+use_sirius_library=.false.
+
+use_sirius_init=.false.
+
+sirius_run_full_scf=.false.
+
+pass_apwfr_to_sirius=.false. 
+pass_lofr_to_sirius=.false. 
+pass_olprad_to_sirius=.false. 
+pass_hmlrad_to_sirius=.false. 
+
+use_sirius_vha=.false. 
+use_sirius_vxc=.false. 
+use_sirius_eigen_states=.false. 
+use_sirius_density=.false. 
+use_sirius_cfun=.false. 
+use_sirius_gvec=.false. 
+
+use_sirius_rhoinit=.false. 
+use_sirius_autoenu=.false. 
 
 !--------------------------!
 !     read from elk.in     !
@@ -262,6 +284,46 @@ case('tasks')
   stop
 case('species')
   call genspecies(50)
+! -------------------------- read SIRIUS control switch values
+case('use_sirius_library')
+  read(50,*,err=20) use_sirius_library
+
+case('use_sirius_init')
+  read(50,*,err=20) use_sirius_init
+
+case('sirius_run_full_scf')
+  read(50,*,err=20) sirius_run_full_scf
+
+case('use_sirius_eigen_states')
+  read(50,*,err=20) use_sirius_eigen_states
+case('update_atomic_pot')
+  read(50,*,err=20) update_atomic_pot
+case('pass_veffig_to_sirius')
+  read(50,*,err=20) pass_veffig_to_sirius
+case('pass_apwfr_to_sirius')
+  read(50,*,err=20) pass_apwfr_to_sirius
+case('pass_lofr_to_sirius')
+  read(50,*,err=20) pass_lofr_to_sirius
+case('pass_olprad_to_sirius')
+  read(50,*,err=20) pass_olprad_to_sirius
+case('pass_hmlrad_to_sirius')
+  read(50,*,err=20) pass_hmlrad_to_sirius
+
+case('use_sirius_vha')
+  read(50,*,err=20) use_sirius_vha
+case('use_sirius_vxc')
+  read(50,*,err=20) use_sirius_vxc
+case('use_sirius_density')
+  read(50,*,err=20) use_sirius_density
+case('use_sirius_cfun')
+  read(50,*,err=20) use_sirius_cfun
+case('use_sirius_gvec')
+  read(50,*,err=20) use_sirius_gvec
+case('use_sirius_rhoinit')
+  read(50,*,err=20) use_sirius_rhoinit
+case('use_sirius_autoenu')
+  read(50,*,err=20) use_sirius_autoenu
+! -------------------------- read SIRIUS control switch values
 case('avec')
   read(50,*,err=20) avec(:,1)
   read(50,*,err=20) avec(:,2)
