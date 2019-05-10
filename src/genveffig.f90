@@ -5,9 +5,9 @@
 subroutine genveffig
 
   use modmain
-#ifdef _SIRIUS_
-  use mod_sirius
-#endif
+!#ifdef _SIRIUS_
+!  use mod_sirius
+!#endif
 
 ! !DESCRIPTION:
 !   Generates the Fourier transform of the effective potential in the
@@ -39,7 +39,7 @@ subroutine genveffig
     deallocate(zfft)
 
 #ifdef _SIRIUS_
-    if (use_sirius_library.and.use_sirius_eigen_states) then
+    if (use_sirius_library.and.pass_veffig_to_sirius) then
       call sirius_set_pw_coeffs(gs_handler, string("veff"), veffig(1))
     endif
 #else
