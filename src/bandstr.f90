@@ -9,6 +9,9 @@
 subroutine bandstr
 ! !USES:
 use modmain
+!#ifdef _SIRIUS_
+!use mod_sirius
+!#endif
 ! !DESCRIPTION:
 !   Produces a band structure along the path in reciprocal-space which connects
 !   the vertices in the array {\tt vvlp1d}. The band structure is obtained from
@@ -66,7 +69,11 @@ call genlofr
 ! compute the overlap radial integrals
 call olprad
 ! compute the Hamiltonian radial integrals
-call hmlrad
+if (use_sirius_library) then
+  call hmlrad_sirius
+else 
+  call hmlrad
+endif 
 ! generate muffin-tin effective magnetic fields and s.o. coupling functions
 call genbeffmt
 ! get radial-muffint tin functions
@@ -78,12 +85,31 @@ emax=-1.d5
 allocate(evalfv(nstfv,nspnfv))
 allocate(evecfv(nmatmax,nstfv,nspnfv))
 allocate(evecsv(nstsv,nstsv))
+evalsv(:,:)=0.d0                     ! added for sirius call
 ! begin parallel loop over k-points
-do ikloc=1,nkptloc
-  ik=mpi_grid_map(nkpt,dim_k,loc=ikloc)
+!do ikloc=1,nkptloc
+!  ik=mpi_grid_map(nkpt,dim_k,loc=ikloc)
+do ik=1,nkpt
   write(*,'("Info(bandstr): ",I6," of ",I6," k-points")') ik,nkpt
-! solve the first- and second-variational secular equations
-  call seceqn(ikloc,evalfv,evecfv,evecsv)
+  ! 
+  ! let sirius solve for eigen energy
+  ! 
+  if (use_sirius_library.and.use_sirius_eigen_states) then
+#ifdef _SIRIUS_
+    call sirius_find_eigen_states(gs_handler, ks_handler, logical(.false.,kind=c_bool))  ! the actual diagonalisation
+    if (ndmag.eq.0.or.ndmag.eq.3) then
+      call sirius_get_band_energies(ks_handler, ik, 0, evalsv(1, ik))                    ! get eigen values from SIRIUS
+    else
+      call sirius_get_band_energies(ks_handler, ik, 0, evalsv(1, ik))
+      call sirius_get_band_energies(ks_handler, ik, 1, evalsv(nstfv+1, ik))
+    endif
+#endif
+  else 
+    ! original: solve the first- and second-variational secular equations
+    !call seceqn(ikloc,evalfv,evecfv,evecsv)  
+    call seceqn(ik,evalfv,evecfv,evecsv)    
+  endif
+
   do ist=1,nstsv
 ! subtract the Fermi energy
     e(ist,ik)=evalsv(ist,ik)-efermi
@@ -92,8 +118,8 @@ do ikloc=1,nkptloc
   if (task.eq.21) then
 ! find the matching coefficients
     do ispn=1,nspnfv
-      call match(ngk(ispn,ik),gkc(:,ispn,ikloc),tpgkc(:,:,ispn,ikloc), &
-       sfacgk(:,:,ispn,ikloc),apwalm(:,:,:,:,ispn))
+      !call match(ngk(ispn,ik),gkc(:,ispn,ikloc),tpgkc(:,:,ispn,ikloc),sfacgk(:,:,ispn,ikloc),apwalm(:,:,:,:,ispn))
+      call match(ngk(ispn,ik),gkc(:,ispn,ik),tpgkc(:,:,ispn,ik),sfacgk(:,:,ispn,ik),apwalm(:,:,:,:,ispn))
     end do
 ! average band character over spin and m for all atoms
     do is=1,nspecies
@@ -119,13 +145,19 @@ do ikloc=1,nkptloc
   end if
 ! end loop over k-points
 end do
+
 deallocate(evalfv,evecfv,evecsv)
-call mpi_grid_reduce(e(1,1),nkpt*nstsv,dims=(/dim_k/))
-if (task.eq.21) then
-  do ik=1,nkpt
-    call mpi_grid_reduce(bc(1,1,1,ik),(lmax+1)*natmtot*nstsv,dims=(/dim_k/))
-  enddo
-endif
+
+! changed k loop to be "do ik=1,nkpt", so we don't need the mpi reduce here
+!call mpi_grid_reduce(e(1,1),nkpt*nstsv,dims=(/dim_k/))
+
+! changed k loop, so don't need mpi reduce here too 
+!if (task.eq.21) then
+!  do ik=1,nkpt
+!    !call mpi_grid_reduce(bc(1,1,1,ik),(lmax+1)*natmtot*nstsv,dims=(/dim_k/))
+!  enddo
+!endif
+
 do ik=1,nkpt
   do ist=1,nstsv
     emin=min(emin,e(ist,ik))
@@ -134,6 +166,7 @@ do ik=1,nkpt
 enddo
 emax=emax+(emax-emin)*0.5d0
 emin=emin-(emax-emin)*0.5d0
+
 if (mpi_grid_root()) then
 ! output the band structure
   if (task.eq.20) then
