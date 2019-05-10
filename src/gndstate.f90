@@ -137,7 +137,8 @@ subroutine gndstate
                                                     &sprho(1, is), spnr(is))
         enddo
         write(*,*)' SIRIUS full scf started! '
-        call sirius_find_ground_state(gs_handler, bool(.false.))
+        call sirius_find_ground_state(gs_handler, potential_tol=epspot, energy_tol=epsengy, niter=maxscl,&
+                                     &save_state=bool(.false.))
         write(*,*)' SIRIUS full scf done! '
       else
         ! origianl EP rhoinit should be "OR"ed with sirius full scf run
