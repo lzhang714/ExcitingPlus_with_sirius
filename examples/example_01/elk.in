@@ -8,7 +8,7 @@ use_sirius_library
 use_sirius_init
                         .true
 sirius_run_full_scf
-                        .true.
+                        .false.
 
 use_sirius_eigen_states
    .false.
@@ -35,6 +35,8 @@ use_sirius_cfun
    .true.
 use_sirius_gvec
    .true.
+use_sirius_gkvec
+   .false.
 use_sirius_rhoinit
    .false.
 use_sirius_autoenu
@@ -42,7 +44,7 @@ use_sirius_autoenu
   
 
 maxscl
-  100
+  10
 
 scale
   7.880157372    !!   = 4.17 Angs
