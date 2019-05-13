@@ -38,7 +38,6 @@ subroutine gencfun
   integer is,ia,ig,ifg,m
   real(8) t1
   complex(8) zt1
-
   ! allocatable arrays
   real(8), allocatable :: ffacg(:)
   complex(8), allocatable :: zfft(:)
@@ -54,12 +53,14 @@ subroutine gencfun
   
   ! ----------------------------------------------------------------------------    
   if (use_sirius_library.and.use_sirius_cfun) then
+    if (allocated(cfunig)) deallocate(cfunig)
+    allocate(cfunig(ngvec))
 
 #ifdef _SIRIUS_
     !m = sum(ngr_loc_all(0:sirius_fft_comm_rank)) - ngr_loc + 1
     m = 1
     call sirius_get_step_function(sctx, cfunig(1), cfunir(m))
-    !call gatherir(cfunir(1))   
+    !call gatherir(cfunir(1))
 #else
     stop sirius_error
 #endif

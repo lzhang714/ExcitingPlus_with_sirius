@@ -992,6 +992,8 @@ character(80) notes(maxnlns)
   logical use_sirius_cfun 
 ! let sirius generate G-vectors
   logical use_sirius_gvec 
+! let sirius generate G+k vectors
+  logical use_sirius_gkvec 
 ! this is not useful any more, "sirius_radial_solver" is no longer available in SIRIUS API
 !  logical use_sirius_radial_solver 
 ! let sirius generate initial charge density

@@ -167,11 +167,6 @@ end if
   nkptloc=mpi_grid_map(nkpt,dim_k)
   nkptnrloc=mpi_grid_map(nkptnr,dim_k)
 
-
-!---------------------!
-!     G+k vectors     !
-!---------------------!
-
   if (use_sirius_library.and.use_sirius_init) then
 #ifdef _SIRIUS_
     ! create a new k-set for density generation;
@@ -197,18 +192,25 @@ end if
       call sirius_set_periodic_function_ptr(gs_handler, string("by"),   f_mt=bxcmt(1, 1, 1, 2), f_rg=bxcir(m, 2))
       call sirius_set_periodic_function_ptr(gs_handler, string("bz"),   f_mt=bxcmt(1, 1, 1, 3), f_rg=bxcir(m, 3))
     endif
-    ! EXCITING has this here, but "ngkmax" seems overwritten anyway by the "getngkmax" call right below ...... 
-    ngkmax = sirius_get_max_num_gkvec(ks_handler) 
+#else
+    stop sirius_error
+#endif
+  endif
+
+!---------------------!
+!     G+k vectors     !
+!---------------------!
+
+  ! find the maximum number of G+k-vectors
+  if (use_sirius_library.and.use_sirius_gkvec) then
+#ifdef _SIRIUS_
+      ngkmax = sirius_get_max_num_gkvec(ks_handler) 
 #else
     stop sirius_error
 #endif
   else
-    ! find the maximum number of G+k-vectors, in the original way
     call getngkmax
   endif
-
-  !!! find the maximum number of G+k-vectors
-  !!call getngkmax
   ! allocate the G+k-vector arrays
   if (allocated(ngk)) deallocate(ngk)
   allocate(ngk(nspnfv,nkpt))
@@ -245,7 +247,7 @@ end if
         endif
 
 
-        if (use_sirius_library.and.use_sirius_init) then
+        if (use_sirius_library.and.use_sirius_gkvec) then
 #ifdef _SIRIUS_
               
               ! memo from Sirius documents:

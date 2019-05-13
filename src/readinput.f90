@@ -237,6 +237,7 @@ use_sirius_eigen_states=.false.
 use_sirius_density=.false. 
 use_sirius_cfun=.false. 
 use_sirius_gvec=.false. 
+use_sirius_gkvec=.false. 
 
 use_sirius_rhoinit=.false. 
 use_sirius_autoenu=.false. 
@@ -319,6 +320,8 @@ case('use_sirius_cfun')
   read(50,*,err=20) use_sirius_cfun
 case('use_sirius_gvec')
   read(50,*,err=20) use_sirius_gvec
+case('use_sirius_gkvec')
+  read(50,*,err=20) use_sirius_gkvec
 case('use_sirius_rhoinit')
   read(50,*,err=20) use_sirius_rhoinit
 case('use_sirius_autoenu')
