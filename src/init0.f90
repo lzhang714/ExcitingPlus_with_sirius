@@ -408,8 +408,8 @@ subroutine init0
           ! set elecronic configuration for each atom specie,
           ! (spnst - number of states, spn/spl/spk - quantum numbers)
           do ist = 1, spnst(is)
-            call sirius_set_atom_type_configuration( sctx, &
-                 &string(trim(label)), spn(ist,is), spl(ist,is), spk(ist,is), spocc(ist,is), logical(spcore(ist,is),kind=c_bool) )
+            call sirius_set_atom_type_configuration(sctx, string(trim(label)), spn(ist,is), spl(ist,is),&
+                                                   &spk(ist,is), spocc(ist,is), logical(spcore(ist,is),kind=c_bool) )
           enddo
           
           ! set sirius apw descriptor.
@@ -434,7 +434,7 @@ subroutine init0
               autoenu = .false.
               if (use_sirius_autoenu.and.apwve(io,l,is)) autoenu = .true.
               call sirius_add_atom_type_aw_descriptor(sctx, string(trim(label)), apwpqn(l,is), l, &
-                                                      &apwe0(io, l, is), apwdm(io, l, is), logical(autoenu,kind=c_bool))
+                                                     &apwe0(io, l, is), apwdm(io, l, is), logical(autoenu,kind=c_bool))
             enddo
           enddo
 
@@ -452,7 +452,7 @@ subroutine init0
               autoenu = .false.
               if (use_sirius_autoenu.and.lorbve(io, ilo, is)) autoenu = .true.
               call sirius_add_atom_type_lo_descriptor(sctx, string(trim(label)), ilo, lopqn(ilo,is), lorbl(ilo, is),&
-                                                      &lorbe0(io, ilo, is), lorbdm(io, ilo, is), logical(autoenu,kind=c_bool))
+                                                     &lorbe0(io, ilo, is), lorbdm(io, ilo, is), logical(autoenu,kind=c_bool))
             enddo
           enddo
 
@@ -497,6 +497,8 @@ subroutine init0
         !call sirius_add_xc_functional(sctx, string('XC_GGA_C_PBE'))
         call sirius_add_xc_functional(sctx, string('XC_LDA_X'))
         call sirius_add_xc_functional(sctx, string('XC_LDA_C_PW'))
+        ! this is to compare with NIST atomic energies
+        !call sirius_add_xc_functional(sctx, string('XC_LDA_C_VWN'))
         
         
         
