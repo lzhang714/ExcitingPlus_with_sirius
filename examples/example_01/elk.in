@@ -4,11 +4,11 @@ tasks
    0
 
 use_sirius_library
-                        .true. 
+   .true.
 use_sirius_init
-                        .true
+   .true
 sirius_run_full_scf
-                        .false.
+   .true.
 
 use_sirius_eigen_states
    .false.
@@ -36,7 +36,7 @@ use_sirius_cfun
 use_sirius_gvec
    .true.
 use_sirius_gkvec
-   .false.
+   .true.
 use_sirius_rhoinit
    .false.
 use_sirius_autoenu
@@ -44,7 +44,7 @@ use_sirius_autoenu
   
 
 maxscl
-  10
+  100
 
 scale
   7.880157372    !!   = 4.17 Angs
@@ -94,7 +94,7 @@ ngridk
   4 4 4
 
 xctype
-  20 0 0
+  3 0 0
  
 plot1d
   6  180                 ! # of k-points to be sampled
