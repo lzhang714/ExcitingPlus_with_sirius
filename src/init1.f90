@@ -232,72 +232,67 @@ end if
     ik=mpi_grid_map(nkpt,dim_k,loc=ikloc)         ! EXCITING has loop for ALL k-points: Do ik = 1, nkpt
     do ispn=1,nspnfv
 
-        if (spinsprl) then
-              ! spin-spiral case
-              if (ispn.eq.1) then
-                vl(:)=vkl(:,ik)+0.5d0*vqlss(:)
-                vc(:)=vkc(:,ik)+0.5d0*vqcss(:)
-              else
-                vl(:)=vkl(:,ik)-0.5d0*vqlss(:)
-                vc(:)=vkc(:,ik)-0.5d0*vqcss(:)
-              endif
+      if (spinsprl) then
+        ! spin-spiral case
+        if (ispn.eq.1) then
+          vl(:)=vkl(:,ik)+0.5d0*vqlss(:)
+          vc(:)=vkc(:,ik)+0.5d0*vqcss(:)
         else
-              vl(:)=vkl(:,ik)
-              vc(:)=vkc(:,ik)
+          vl(:)=vkl(:,ik)-0.5d0*vqlss(:)
+          vc(:)=vkc(:,ik)-0.5d0*vqcss(:)
         endif
+      else
+        vl(:)=vkl(:,ik)
+        vc(:)=vkc(:,ik)
+      endif
 
-
-        if (use_sirius_library.and.use_sirius_gkvec) then
+      if (use_sirius_library.and.use_sirius_gkvec) then
 #ifdef _SIRIUS_
-              
-              ! memo from Sirius documents:
-              !sirius_get_gkvec_arrays() input/output: 
-              ![in]	ks_handler	K-point set handler
-              ![in]	ik	        Global index of k-point
-              ![out]	num_gkvec	Number of G+k vectors.
-              ![out]	gvec_index	Index of the G-vector part of G+k vector.
-              ![out]	gkvec	        G+k vectors in (lattice)fractional coordinates.
-              ![out]	gkvec_cart	G+k vectors in Cartesian coordinates.
-              ![out]	gkvec_len	Length of G+k vectors.
-              ![out]	gkvec_tp	Theta and Phi angles of G+k vectors. 
-              !
-              ! EP definitions:
-              ! ngk:   number of G+k-vectors for APW
-              ! igkig: index from G+k-vectors to G-vectors
-              ! vgkl:  G+k-vectors in lattice(fractional) coordinates
-              ! vgkc:  G+k-vectors in Cartesian coordinates
-              ! gkc:   length of G+k-vectors
-              ! tpgkc: (theta, phi) coordinates of G+k-vectors
+        ! memo from Sirius documents:
+        !sirius_get_gkvec_arrays() input/output: 
+        ![in]	ks_handler	K-point set handler
+        ![in]	ik	        Global index of k-point
+        ![out]	num_gkvec	Number of G+k vectors.
+        ![out]	gvec_index	Index of the G-vector part of G+k vector.
+        ![out]	gkvec	        G+k vectors in (lattice)fractional coordinates.
+        ![out]	gkvec_cart	G+k vectors in Cartesian coordinates.
+        ![out]	gkvec_len	Length of G+k vectors.
+        ![out]	gkvec_tp	Theta and Phi angles of G+k vectors. 
+        !
+        ! EP definitions:
+        ! ngk:   number of G+k-vectors for APW
+        ! igkig: index from G+k-vectors to G-vectors
+        ! vgkl:  G+k-vectors in lattice(fractional) coordinates
+        ! vgkc:  G+k-vectors in Cartesian coordinates
+        ! gkc:   length of G+k-vectors
+        ! tpgkc: (theta, phi) coordinates of G+k-vectors
 
-              call sirius_get_gkvec_arrays(ks_handler, ik, ngk(1, ik), igkig(1, 1, ik),&
-                                           &vgkl(1, 1, 1, ik), vgkc(1, 1, 1, ik), gkc(1, 1, ik),&
-                                           &tpgkc(1, 1, 1, ik))
+        call sirius_get_gkvec_arrays(ks_handler, ik, ngk(1, ik), igkig(1, 1, ik),&
+                                     &vgkl(1, 1, 1, ik), vgkc(1, 1, 1, ik), gkc(1, 1, ik),&
+                                     &tpgkc(1, 1, 1, ik))
 #else
-              stop sirius_error
+        stop sirius_error
 #endif
-        else
-              ! generate the G+k-vectors
-              call gengpvec(vl,vc,ngk(ispn,ik),igkig(:,ispn,ikloc),vgkl(:,:,ispn,ikloc), &
-                            &vgkc(:,:,ispn,ikloc),gkc(:,ispn,ikloc),tpgkc(:,:,ispn,ikloc))
-              ! generate structure factors for G+k-vectors
-              call gensfacgp(ngk(ispn,ik),vgkc(:,:,ispn,ikloc),ngkmax,sfacgk(:,:,ispn,ikloc))
-
-              ! Exciting version of the same calls, put here for reference.
-              !! generate the G+k-vectors
-              !! commented and uncommented versions differ by igkfft(:,ik)
-              !!            Call gengpvec (vl, vc, ngk(ispn, ik), igkig(:, ispn, ik), &
-              !!           & vgkl(:, :, ispn, ik), vgkc(:, :, ispn, ik), gkc(:, ispn, &
-              !!           & ik), tpgkc(:, :, ispn, ik),igkfft(:,ik))
-              !              Call gengpvec (vl, vc, ngk(ispn, ik), igkig(:, ispn, ik), &
-              !             & vgkl(:, :, ispn, ik), vgkc(:, :, ispn, ik), gkc(:, ispn, &
-              !             & ik), tpgkc(:, :, ispn, ik))
-              !! generate structure factors for G+k-vectors
-              !              Call gensfacgp (ngk(ispn, ik), vgkc(:, :, ispn, ik), ngkmax, sfacgk(:, :, ispn, ik))
-        endif
-
-
-  end do  ! ispn
-end do  ! ikloc
+      else
+        ! generate the G+k-vectors
+        call gengpvec(vl,vc,ngk(ispn,ik),igkig(:,ispn,ikloc),vgkl(:,:,ispn,ikloc), &
+                      &vgkc(:,:,ispn,ikloc),gkc(:,ispn,ikloc),tpgkc(:,:,ispn,ikloc))
+        ! Exciting version of the same calls, put here for reference.
+        !! generate the G+k-vectors
+        !! commented and uncommented versions differ by igkfft(:,ik)
+        !!            Call gengpvec (vl, vc, ngk(ispn, ik), igkig(:, ispn, ik), &
+        !!           & vgkl(:, :, ispn, ik), vgkc(:, :, ispn, ik), gkc(:, ispn, &
+        !!           & ik), tpgkc(:, :, ispn, ik),igkfft(:,ik))
+        !              Call gengpvec (vl, vc, ngk(ispn, ik), igkig(:, ispn, ik), &
+        !             & vgkl(:, :, ispn, ik), vgkc(:, :, ispn, ik), gkc(:, ispn, &
+        !             & ik), tpgkc(:, :, ispn, ik))
+        !! generate structure factors for G+k-vectors
+        !              Call gensfacgp (ngk(ispn, ik), vgkc(:, :, ispn, ik), ngkmax, sfacgk(:, :, ispn, ik))
+      endif
+      ! generate structure factors for G+k-vectors
+      call gensfacgp(ngk(ispn,ik),vgkc(:,:,ispn,ikloc),ngkmax,sfacgk(:,:,ispn,ikloc))
+    end do  ! ispn
+  end do  ! ikloc
 
 call mpi_grid_reduce(ngk(1,1),nspnfv*nkpt,dims=(/dim_k/),all=.true.)
 

@@ -356,6 +356,8 @@ subroutine init0
         sctx = sirius_create_context(MPI_COMM_WORLD)
         ! set json string to specify calculation type fp-lapw or pp-pw
         call sirius_import_parameters(sctx, string('{"parameters" : {"electronic_structure_method" : "full_potential_lapwlo"}}'))
+
+        !call sirius_import_parameters(sctx, string('{"mixer" : {"beta" : 0.5}}'))
         ! set important parameters
         ! core relativity can be 'none' or 'dirac', 
         ! alence relativity can be 'none', 'zora' or 'iora'.
@@ -369,9 +371,9 @@ subroutine init0
                                      &fft_grid_size=ngrid(1),&
                                      &num_mag_dims=ndmag,&
                                      &auto_rmt=0,&
-                                     &core_rel=string('none'),&
-                                     &valence_rel=string('none'),&
-                                     &verbosity=1)
+                                     &core_rel=string('dirac'),&
+                                     &valence_rel=string('koelling_harmon'),&
+                                     &verbosity=2)
         ! set lattice vectors
         call sirius_set_lattice_vectors( sctx, avec(1,1), avec(1,2), avec(1,3) )
 
@@ -494,7 +496,7 @@ subroutine init0
         !call sirius_add_xc_functional(sctx, string('XC_GGA_X_PBE'))
         !call sirius_add_xc_functional(sctx, string('XC_GGA_C_PBE'))
         call sirius_add_xc_functional(sctx, string('XC_LDA_X'))
-        call sirius_add_xc_functional(sctx, string('XC_LDA_C_PZ'))
+        call sirius_add_xc_functional(sctx, string('XC_LDA_C_PW'))
         
         
         
