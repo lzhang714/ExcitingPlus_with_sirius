@@ -18,9 +18,7 @@ t1=fourpi/omega
 ffacg(1)=(t1/3.d0)*rmt(is)**3
 do ig=2,ngv                     ! Long: btw, why the loop "ig=2,ngv" rather than "ig=1,ngv"?
   t2=gc(ig)*rmt(is)
-          if (ig.eq.2)  write(*,*)' debug flag, genffacg, 1 '
   ffacg(ig)=t1*(sin(t2)-t2*cos(t2))/(gc(ig)**3)
-          if (ig.eq.2)  write(*,*)' debug flag, genffacg, 2 '
 end do
 return
 end subroutine
@@ -43,9 +41,7 @@ end subroutine
 !ffacg(1)=(t1/3.d0)*rmt(is)**3
 !do ig=2,ngv                     ! Long: btw, why the loop "ig=2,ngv" rather than "ig=1,ngv"?
 !  t2=gc(ig)*rmt(is)
-!          if (ig .eq. 2)  write(*,*)' debug flag, genffacg, 1 '
 !  ffacg(ig)=t1*(sin(t2)-t2*cos(t2))/(gc(ig)**3)
-!          if (ig .eq. 2)  write(*,*)' debug flag, genffacg, 2 '
 !end do
 !return
 !end subroutine
