@@ -167,6 +167,7 @@ end if
   nkptloc=mpi_grid_map(nkpt,dim_k)
   nkptnrloc=mpi_grid_map(nkptnr,dim_k)
 
+
   if (use_sirius_library.and.use_sirius_init) then
 #ifdef _SIRIUS_
     ! create a new k-set for density generation;
@@ -204,7 +205,7 @@ end if
   ! find the maximum number of G+k-vectors
   if (use_sirius_library.and.use_sirius_gkvec) then
 #ifdef _SIRIUS_
-      ngkmax = sirius_get_max_num_gkvec(ks_handler) 
+    ngkmax = sirius_get_max_num_gkvec(ks_handler) 
 #else
     stop sirius_error
 #endif
@@ -226,10 +227,10 @@ end if
   allocate(tpgkc(2,ngkmax,nspnfv,nkptloc))
   if (allocated(sfacgk)) deallocate(sfacgk)
   allocate(sfacgk(ngkmax,natmtot,nspnfv,nkptloc))
-
+  ! 
   ngk=0
-  do ikloc=1,nkptloc                              ! EXCITING has loop for ALL k-points: Do ik = 1, nkpt
-    ik=mpi_grid_map(nkpt,dim_k,loc=ikloc)         ! EXCITING has loop for ALL k-points: Do ik = 1, nkpt
+  do ikloc=1,nkptloc                              
+    ik=mpi_grid_map(nkpt,dim_k,loc=ikloc)         
     do ispn=1,nspnfv
 
       if (spinsprl) then
@@ -246,7 +247,9 @@ end if
         vc(:)=vkc(:,ik)
       endif
 
+      ! -------------------------------------------------
       if (use_sirius_library.and.use_sirius_gkvec) then
+
 #ifdef _SIRIUS_
         ! memo from Sirius documents:
         !sirius_get_gkvec_arrays() input/output: 
@@ -266,14 +269,19 @@ end if
         ! vgkc:  G+k-vectors in Cartesian coordinates
         ! gkc:   length of G+k-vectors
         ! tpgkc: (theta, phi) coordinates of G+k-vectors
-
         call sirius_get_gkvec_arrays(ks_handler, ik, ngk(1, ik), igkig(1, 1, ik),&
                                      &vgkl(1, 1, 1, ik), vgkc(1, 1, 1, ik), gkc(1, 1, ik),&
                                      &tpgkc(1, 1, 1, ik))
+        ! checked EXCITING interface again, gensfacgp was called here when NOT using sirius eigen solver
+        !if (.not.usesirius_eigen_states) then
+        !  Call gensfacgp (ngk(ispn, ik), vgkc(:, :, ispn, ik), ngkmax, sfacgk(:, :, ispn, ik))
+        !endif
 #else
         stop sirius_error
 #endif
+
       else
+
         ! generate the G+k-vectors
         call gengpvec(vl,vc,ngk(ispn,ik),igkig(:,ispn,ikloc),vgkl(:,:,ispn,ikloc), &
                       &vgkc(:,:,ispn,ikloc),gkc(:,ispn,ikloc),tpgkc(:,:,ispn,ikloc))
@@ -288,9 +296,13 @@ end if
         !             & ik), tpgkc(:, :, ispn, ik))
         !! generate structure factors for G+k-vectors
         !              Call gensfacgp (ngk(ispn, ik), vgkc(:, :, ispn, ik), ngkmax, sfacgk(:, :, ispn, ik))
+
       endif
+      ! -------------------------------------------------
+
       ! generate structure factors for G+k-vectors
       call gensfacgp(ngk(ispn,ik),vgkc(:,:,ispn,ikloc),ngkmax,sfacgk(:,:,ispn,ikloc))
+
     end do  ! ispn
   end do  ! ikloc
 
@@ -421,6 +433,10 @@ end do
 !      addons     !
 !-----------------!
 call init3
+
+              write(*,*)' -------------------------- '    
+              write(*,*)' debug flag, init1/init3 done. '
+              write(*,*)' -------------------------- ' 
 
 call timesec(ts1)
 timeinit=timeinit+ts1-ts0
