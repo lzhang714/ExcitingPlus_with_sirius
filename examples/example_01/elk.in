@@ -6,7 +6,7 @@ tasks
 use_sirius_library
    .true.
 use_sirius_init
-   .true
+   .true.
 sirius_run_full_scf
    .true.
 
