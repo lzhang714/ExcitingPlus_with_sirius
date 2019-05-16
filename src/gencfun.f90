@@ -53,13 +53,14 @@ subroutine gencfun
   
   ! ----------------------------------------------------------------------------    
   if (use_sirius_library.and.use_sirius_cfun) then
+
+    ! allocate cfunig(ngvec) rather than cfunig(ngrtot)
     if (allocated(cfunig)) deallocate(cfunig)
     allocate(cfunig(ngvec))
-
 #ifdef _SIRIUS_
     !m = sum(ngr_loc_all(0:sirius_fft_comm_rank)) - ngr_loc + 1
-    m = 1
-    call sirius_get_step_function(sctx, cfunig(1), cfunir(m))
+    !m = 1
+    call sirius_get_step_function(sctx, cfunig(1), cfunir(1))
     !call gatherir(cfunir(1))
 #else
     stop sirius_error
@@ -72,9 +73,7 @@ subroutine gencfun
     ! begin loop over species
     do is=1,nspecies
       ! generate the smooth step function form factors
-          write(*,*)' debug flag, gencfun, 1 '
       call genffacg(is,ngrtot,ffacg)
-          write(*,*)' debug flag, gencfun, 2 '
       ! loop over atoms
       do ia=1,natoms(is)
         do ig=1,ngrtot
@@ -87,24 +86,22 @@ subroutine gencfun
       end do
     end do
 
-          write(*,*)' debug flag, gencfun, 3 '
-
     do ig=1,ngrtot
       ifg=igfft(ig)
       zfft(ifg)=cfunig(ig)
     end do
-
-          write(*,*)' debug flag, gencfun, 4 '
 
     ! Fourier transform to real-space
     call zfftifc(3,ngrid,1,zfft)
     cfunir(:)=dble(zfft(:))
     deallocate(ffacg,zfft)
 
-          write(*,*)' debug flag, gencfun, 5 '
-
   end if
   ! ----------------------------------------------------------------------------    
+
+              write(*,*)' -------------------------- '    
+              write(*,*)' debug flag, gencfun done. '
+              write(*,*)' -------------------------- ' 
 
   return
 
