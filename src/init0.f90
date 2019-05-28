@@ -379,8 +379,8 @@ subroutine init0
                                      &fft_grid_size=ngrid(1),&
                                      &num_mag_dims=ndmag,&
                                      &auto_rmt=0,&
-                                     &core_rel=string('dirac'),&
-                                     &valence_rel=string('koelling_harmon'),&
+                                     !&core_rel=string('dirac'),&
+                                     !&valence_rel=string('zora'),&
                                      &verbosity=2)
         
         ! set lattice vectors.
