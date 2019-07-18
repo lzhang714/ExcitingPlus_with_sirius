@@ -128,6 +128,8 @@ integer ,parameter :: mpigrid_maxndim=3
 integer mpigrid_ndim
 ! dimensions of mpi grid
 integer mpigrid(mpigrid_maxndim)
+! local fraction of fv eigen values         
+real(8), allocatable :: evalfvloc(:,:,:)       ! LZ, moved "evalfv" from gndstate.f90 to here and renamed it to "evalfvloc"
 ! local fraction of fv eigen vectors
 complex(8), allocatable :: evecfvloc(:,:,:,:)
 ! local fraction of sv eigen vectors
