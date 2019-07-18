@@ -630,8 +630,22 @@ real(8) bandgap(2)
 integer ikgap(3)
 ! error tolerance for the first-variational eigenvalues
 real(8) evaltol
+
+! first-variational eigen values                   ! LZ added for checking EP-SIRIUS interface
+real(8), allocatable :: evalfv(:,:,:)              ! LZ added for checking EP-SIRIUS interface
+! first-variational eigen values                   ! LZ added for checking EP-SIRIUS interface
+real(8), allocatable :: evalfv_sirius(:,:,:)       ! LZ added for checking EP-SIRIUS interface
+! first-variational eigen vectors                  ! LZ added for checking EP-SIRIUS interface
+complex(8), allocatable :: evecfv3(:,:,:,:)        ! LZ added for checking EP-SIRIUS interface, "3" because "evecfv" and "evecfv2" are already used.  
+! first-variational eigen vectors                  ! LZ added for checking EP-SIRIUS interface
+complex(8), allocatable :: evecfv_sirius(:,:,:,:)  ! LZ added for checking EP-SIRIUS interface
+
 ! second-variational eigenvalues
 real(8), allocatable :: evalsv(:,:)
+
+! second-variational eigenvalues                ! LZ added for checking EP-SIRIUS interface
+real(8), allocatable :: evalsv_sirius(:,:)      ! LZ added for checking EP-SIRIUS interface
+
 ! tevecsv is .true. if second-variational eigenvectors are calculated
 logical tevecsv
 ! maximum number of k-point and states indices in user-defined list

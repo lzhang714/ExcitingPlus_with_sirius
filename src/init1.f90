@@ -390,9 +390,23 @@ do ik=1,nkpt
     nstfv=min(nstfv,nmat(ispn,ik))
   end do
 end do
+
+! allocate first-variational eigen value array   
+if (allocated(evalfv_sirius)) deallocate(evalfv_sirius)  ! LZ added for checking EP-SIRIUS interface
+allocate(evalfv_sirius(nstfv,nspnfv,nkpt))               ! LZ added for checking EP-SIRIUS interface
+if (allocated(evalfv)) deallocate(evalfv)                ! LZ added for checking EP-SIRIUS interface
+allocate(evalfv(nstfv,nspnfv,nkpt))                      ! LZ added for checking EP-SIRIUS interface
+! allocate first-variational eigen vector array   
+if (allocated(evecfv_sirius)) deallocate(evecfv_sirius)  ! LZ added for checking EP-SIRIUS interface
+allocate(evecfv_sirius(nmatmax,nstfv,nspnfv,nkpt))       ! LZ added for checking EP-SIRIUS interface
+if (allocated(evecfv3)) deallocate(evecfv3)              ! LZ added for checking EP-SIRIUS interface, "3" because "evecfv" and "evecfv2" are already used.
+allocate(evecfv3(nmatmax,nstfv,nspnfv,nkpt))             ! LZ added for checking EP-SIRIUS interface
+
 ! number of second-variational states
 nstsv=nstfv*nspinor
 ! allocate second-variational arrays
+if (allocated(evalsv_sirius)) deallocate(evalsv_sirius)  ! LZ added for checking EP-SIRIUS interface
+allocate(evalsv_sirius(nstsv,nkpt))                      ! LZ added for checking EP-SIRIUS interface 
 if (allocated(evalsv)) deallocate(evalsv)
 allocate(evalsv(nstsv,nkpt))
 if (allocated(occsv)) deallocate(occsv)
