@@ -32,7 +32,7 @@ complex(8) v(1)
 ! allocatable arrays
 integer, allocatable :: ijg(:)
 real(8), allocatable :: dp(:)
-real(8), allocatable :: evalfv(:,:)
+real(8), allocatable :: evalfv_org(:,:)
 complex(8), allocatable :: apwalm(:,:,:,:)
 complex(8), allocatable :: evecfv(:,:,:)
 complex(8), allocatable :: evecsv(:,:)
@@ -53,7 +53,7 @@ if (spinsprl) np=max(np,npmat(2,ik))
 ! allocate local arrays
 allocate(ijg(np))
 allocate(dp(np))
-allocate(evalfv(nstfv,nspnfv))
+allocate(evalfv_org(nstfv,nspnfv))
 allocate(apwalm(ngkmax,apwordmax,lmmaxapw,natmtot))
 allocate(evecfv(nmatmax,nstfv,nspnfv))
 allocate(evecsv(nstsv,nstsv))
@@ -65,7 +65,7 @@ allocate(ffv(nstfv,nstfv))
 allocate(y(nstfv))
 ! get the eigenvalues/vectors and occupancies from file
 if (mpi_grid_side(dims=(/dim_k/))) then
-  call getevalfv(vkl(:,ik),evalfv)
+  call getevalfv(vkl(:,ik),evalfv_org)
   call getevecfv(vkl(:,ik),vgkl(:,:,:,ikloc),evecfv)
   call getevecsv(vkl(:,ik),evecsv)
   call getoccsv(vkl(:,ik),occsv(:,ik))
@@ -133,7 +133,7 @@ do ispn=1,nspnfv
         do jst=1,nstfv
           call zhpmv('U',nmat(ispn,ik),zone,dlh,evecfv(:,jst,ispn),1,zzero,vh,1)
           call zhpmv('U',nmat(ispn,ik),zone,dlo,evecfv(:,jst,ispn),1,zzero,vo,1)
-          t1=evalfv(jst,ispn)
+          t1=evalfv_org(jst,ispn)
           do ist=1,nstfv
             zt1=zdotc(nmat(ispn,ik),evecfv(:,ist,ispn),1,vh,1)
             zt2=zdotc(nmat(ispn,ik),evecfv(:,ist,ispn),1,vo,1)
@@ -179,7 +179,7 @@ do ispn=1,nspnfv
   end do
 ! end loop over first-variational spins
 end do
-deallocate(ijg,dp,evalfv,apwalm,evecfv,evecsv)
+deallocate(ijg,dp,evalfv_org,apwalm,evecfv,evecsv)
 deallocate(h,o,dlh,dlo,vh,vo,ffv,y)
 return
 end subroutine

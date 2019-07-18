@@ -19,7 +19,7 @@ integer, allocatable :: ipiv(:)
 real(8), allocatable :: a(:,:)
 real(8), allocatable :: b(:,:,:,:)
 real(8), allocatable :: c(:,:,:)
-real(8), allocatable :: evalfv(:,:)
+real(8), allocatable :: evalfv_org(:,:)
 complex(8), allocatable :: evecfv(:,:,:)
 complex(8), allocatable :: evecsv(:,:)
 ! initialise universal variables
@@ -47,19 +47,19 @@ call genbeffmt
 ik0=0
 ! begin parallel loop over k-points
 do ik=1,nkpt
-  allocate(evalfv(nstfv,nspnfv))
+  allocate(evalfv_org(nstfv,nspnfv))
   allocate(evecfv(nmatmax,nstfv,nspnfv))
   allocate(evecsv(nstsv,nstsv))
   i1=ivk(1,ik); i2=ivk(2,ik); i3=ivk(3,ik)
   if ((i1.eq.0).and.(i2.eq.0).and.(i3.eq.0)) ik0=ik
 ! solve the first- and second-variational secular equations
-  call seceqn(ik,evalfv,evecfv,evecsv)
+  call seceqn(ik,evalfv_org,evecfv,evecsv)
 ! copy eigenvalues to new array
   j1=i1+ndspem; j2=i2+ndspem; j3=i3+ndspem
   do ist=1,nstsv
     b(j1,j2,j3,ist)=evalsv(ist,ik)
   end do
-  deallocate(evalfv,evecfv,evecsv)
+  deallocate(evalfv_org,evecfv,evecsv)
 end do
 ! set up polynomial matrix
 i=0

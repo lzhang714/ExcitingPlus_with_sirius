@@ -12,7 +12,7 @@ integer ld,is,ia,ias
 integer ik,ist
 ! allocatable arrays
 real(8), allocatable :: rfmt(:,:,:)
-real(8), allocatable :: evalfv(:,:)
+real(8), allocatable :: evalfv_org(:,:)
 complex(8), allocatable :: apwalm(:,:,:,:)
 complex(8), allocatable :: evecfv(:,:)
 complex(8), allocatable :: evecsv(:,:)
@@ -23,7 +23,7 @@ complex(8), allocatable :: bmat(:,:)
 complex(8), allocatable :: c(:,:)
 ! allocate local arrays
 allocate(rfmt(lmmaxvr,nrcmtmax,natmtot))
-allocate(evalfv(nstfv,nspnfv))
+allocate(evalfv_org(nstfv,nspnfv))
 allocate(apwalm(ngkmax,apwordmax,lmmaxapw,natmtot))
 allocate(evecfv(nmatmax,nstfv))
 allocate(evecsv(nstsv,nstsv))
@@ -46,10 +46,10 @@ call genbeffmt
 ! loop over k-points
 do ik=1,nkpt
 ! solve the first- and second-variational secular equations
-  call seceqn(ik,evalfv,evecfv,evecsv)
+  call seceqn(ik,evalfv_org,evecfv,evecsv)
 ! write the first variational eigenvalues/vectors to file (this ensures the
 ! phase in eigenvectors is the same for subsequent matrix element evaluations)
-  call putevalfv(ik,evalfv)
+  call putevalfv(ik,evalfv_org)
   call putevecfv(ik,evecfv)
 ! find the matching coefficients
   call match(ngk(1,ik),gkc(:,1,ik),tpgkc(:,:,1,ik),sfacgk(:,:,1,ik),apwalm)
@@ -74,7 +74,7 @@ do ik=1,nkpt
   call zgemm('N','N',nstsv,nstsv,nstsv,zone,evecsv,nstsv,c,nstsv,zzero, &
    kinmatc(:,:,ik),nstsv)
 end do
-deallocate(rfmt,evalfv,apwalm,evecfv,evecsv)
+deallocate(rfmt,evalfv_org,apwalm,evecfv,evecsv)
 deallocate(wfmt,wfir,vmat,bmat,c)
 return
 end subroutine

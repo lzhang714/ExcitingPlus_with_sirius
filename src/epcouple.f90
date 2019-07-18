@@ -18,7 +18,7 @@ complex(8) zt1
 ! allocatable arrays
 real(8), allocatable :: wq(:,:)
 real(8), allocatable :: gq(:,:)
-real(8), allocatable :: evalfv(:,:)
+real(8), allocatable :: evalfv_org(:,:)
 complex(8), allocatable :: evecfv(:,:,:)
 complex(8), allocatable :: evecsv(:,:)
 complex(8), allocatable :: dynq(:,:,:)
@@ -80,15 +80,15 @@ call genbeffmt
 ! begin parallel loop over k-points
   do ik=1,nkpt
 ! every thread should allocate its own arrays
-    allocate(evalfv(nstfv,nspnfv))
+    allocate(evalfv_org(nstfv,nspnfv))
     allocate(evecfv(nmatmax,nstfv,nspnfv))
     allocate(evecsv(nstsv,nstsv))
 ! solve the first- and second-variational secular equations
-    call seceqn(ik,evalfv,evecfv,evecsv)
+    call seceqn(ik,evalfv_org,evecfv,evecsv)
 ! write the eigenvectors to file
     call putevecfv(ik,evecfv)
     call putevecsv(ik,evecsv)
-    deallocate(evalfv,evecfv,evecsv)
+    deallocate(evalfv_org,evecfv,evecsv)
   end do
 ! reset the speed of light
 solsc=sol

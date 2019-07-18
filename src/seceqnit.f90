@@ -3,7 +3,7 @@
 ! This file is distributed under the terms of the GNU General Public License.
 ! See the file COPYING for license details.
 
-subroutine seceqnit(nmatp,ngp,igpig,vpl,vgpl,vgpc,apwalm,evalfv,evecfv)
+subroutine seceqnit(nmatp,ngp,igpig,vpl,vgpl,vgpc,apwalm,evalfv_org,evecfv)
 use modmain
 implicit none
 ! arguments
@@ -14,7 +14,7 @@ real(8), intent(in) :: vpl(3)
 real(8), intent(in) :: vgpl(3,ngkmax)
 real(8), intent(in) :: vgpc(3,ngkmax)
 complex(8), intent(in) :: apwalm(ngkmax,apwordmax,lmmaxapw,natmtot)
-real(8), intent(out) :: evalfv(nstfv)
+real(8), intent(out) :: evalfv_org(nstfv)
 complex(8), intent(out) :: evecfv(nmatmax,nstfv)
 ! local variables
 integer is,ia,it
@@ -32,7 +32,7 @@ call timesec(ts0)
 allocate(o(nmatp,nstfv))
 if ((iscl.ge.2).or.(task.eq.1).or.(task.eq.3)) then
 ! read in the eigenvalues/vectors from file
-  call getevalfv(vpl,evalfv)
+  call getevalfv(vpl,evalfv_org)
   call getevecfv(vpl,vgpl,evecfv)
 else
 ! initialise the eigenvectors to canonical basis vectors
@@ -74,9 +74,9 @@ do it=1,nseqit
       o(:,ist)=t1*o(:,ist)
     end if
 ! estimate the eigenvalue
-    evalfv(ist)=dble(zdotc(nmatp,evecfv(:,ist),1,h,1))
+    evalfv_org(ist)=dble(zdotc(nmatp,evecfv(:,ist),1,h,1))
 ! subtract the gradient of the Rayleigh quotient from the eigenvector
-    t1=evalfv(ist)
+    t1=evalfv_org(ist)
     evecfv(1:nmatp,ist)=evecfv(1:nmatp,ist)-tauseq*(h(1:nmatp) &
      -t1*o(1:nmatp,ist))
 ! normalise
