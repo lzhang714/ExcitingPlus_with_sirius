@@ -36,9 +36,12 @@ do itask=1,ntasks
     stop
   case(0,1)
     call gndstate
+  case(1000)
+    call gndstate_1000 ! this is the SIRIUS interface freezed on 2019/07/14, this does not do the passing of eigen values/vectors
+  case(1001)
+    call gndstate_1001 ! this is the SIRIUS interface being tested, this has the passing of eigen values/vectors
   case(2,3)
-!    structual optimization
-    call geomopt
+    call geomopt       ! structual optimization 
   case(5,6)
     call hartfock
   case(10)
