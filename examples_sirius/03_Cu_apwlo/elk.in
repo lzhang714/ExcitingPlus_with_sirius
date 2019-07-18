@@ -1,1 +1,90 @@
+! diamagnetic fcc cooper example. 
 
+tasks
+  1001
+
+use_sirius_library
+                          .true.
+use_sirius_init
+                          .true.
+sirius_run_full_scf
+                          .true.
+
+use_sirius_eigen_states
+   .false.
+update_atomic_pot
+   .false.
+pass_veffig_to_sirius
+   .false.
+pass_apwfr_to_sirius
+   .false.
+pass_lofr_to_sirius
+   .false.
+pass_olprad_to_sirius
+   .false.
+pass_hmlrad_to_sirius
+   .false.
+
+use_sirius_vha
+   .false. 
+use_sirius_vxc
+   .false.
+use_sirius_density
+   .false.
+use_sirius_cfun
+                       .true.
+use_sirius_gvec
+                       .true.
+use_sirius_gkvec
+                       .true.
+use_sirius_rhoinit
+   .false.
+use_sirius_autoenu
+   .false.
+
+!spinpol
+! .true.
+
+!bfieldc
+!  0.0  0.0  0.01
+
+!reducebf
+!  0.4  
+
+nempty
+  20
+
+avec
+  0.0  0.5  0.5
+  0.5  0.0  0.5
+  0.5  0.5  0.0
+
+scale         ! 6.7973449 Bohr = 3.597 Angs
+  6.7973449  
+
+sppath
+  './'
+
+atoms
+  1                                   : nspecies
+  'Cu.in'                             : spfname
+  1                                   : natoms
+  0.0  0.0  0.0    0.0  0.0  0.0      : atposl, bfcmt
+
+rgkmax      !! R_mt*max{|G+k|}, this determines max{|G+k|}.  SIRIUS::aw_cutoff
+   8.5
+
+gmaxvr      !! max{|G|} for interstitial density & potential. SIRIUS::pw_cutoff
+  14
+
+lmaxapw     !! l cut-off for the APW functions, default 8, must be >=0. SIRIUS::lmax_apw
+  10
+
+lmaxvr      !! l cut-off for for potentials and densities, default 7, must be >=3. SIRIUS::lmax_rho/lmax_pot
+   8
+
+ngridk
+  16  16  16
+
+xctype
+  3  0  0
