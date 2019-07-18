@@ -357,19 +357,27 @@ subroutine init0
         !       and that there are no unused MPI ranks
         sctx = sirius_create_context(MPI_COMM_WORLD)
         
-        ! set json string to specify calculation type fp-lapw or pp-pw, and possibly other parameters. 
-        ! NOTE: order of initialization of the simulation context is: 
-        !       1st default parameter values set by constructor of class Simulation_context;
-        !       2nd import() method can be called to overwrite some parameters;
-        !       3rd user can set the values with "sirius_set_parameters" method;
-        call sirius_import_parameters(sctx, string('{"parameters" : {"electronic_structure_method" : "full_potential_lapwlo"}}'))
-        !TODO: pass mixer and numerical parameters for solvers? especially for full scf run by sirius. 
-        !call sirius_import_parameters(sctx, string('{"mixer" : {"beta" : 0.5}}'))
+        ! set parameters via import method or set method. 
+        ! NOTE: (1) order of initialization of the simulation context: 
+        !             1st default parameter values set by constructor of class Simulation_context;
+        !             2nd import() method can be called to overwrite some parameters;
+        !             3rd user can set the values with "sirius_set_parameters" method;
+        !       (2) rgkmax is not supposed to pass to aw_cutoff;
+        !       (3) core relativity can be 'none' or 'dirac'; 
+        !       (4) valence relativity can be 'none', 'zora', 'koelling_harmon' or 'iora';
+        !       (5) solver type can be "exact" or "davidson",
+        !           in case of "davidson" we probably need to set some other parameters; 
+        
+        nstfv = int(chgval/2.d0) + nempty
 
-        ! set parameters. 
-        ! NOTE: rgkmax is not supposed to pass to aw_cutoff;
-        !       core relativity can be 'none' or 'dirac'; 
-        !       valence relativity can be 'none', 'zora', 'koelling_harmon' or 'iora';
+        ! control block
+        call sirius_import_parameters(sctx, string('{"control" : {"cyclic_block_size"   : 16}}'))
+        call sirius_import_parameters(sctx, string('{"control" : {"processing_unit"     : "cpu"}}'))      
+        call sirius_import_parameters(sctx, string('{"control" : {"std_evp_solver_type" : "scalapack"}}'))  
+        call sirius_import_parameters(sctx, string('{"control" : {"gen_evp_solver_type" : "scalapack"}}'))
+        ! parameter block
+        !call sirius_import_parameters(sctx, string('{"parameters" : {"xc_functionals" : ["XC_LDA_X", "XC_LDA_C_PZ"]}}'))
+        call sirius_import_parameters(sctx, string('{"parameters" : {"electronic_structure_method" : "full_potential_lapwlo"}}'))
         call sirius_set_parameters(   sctx,&
                                      &lmax_apw=lmaxapw,&
                                      &lmax_rho=lmaxvr,&
@@ -378,12 +386,18 @@ subroutine init0
                                      &pw_cutoff=gmaxvr,&
                                      &fft_grid_size=ngrid(1),&
                                      &num_mag_dims=ndmag,&
+                                     &num_fv_states=nstfv,&
                                      &auto_rmt=0,&
-                                     !&core_rel=string('dirac'),&
-                                     !&valence_rel=string('zora'),&
+                                     &use_symmetry=bool(.false.),&
+                                     &iter_solver_type=string('exact'),&
+                                     &core_rel=string('dirac'),&
+                                     &valence_rel=string('zora'),&
                                      &verbosity=2)
-        
-        ! set lattice vectors.
+        ! mixer block 
+        call sirius_import_parameters(sctx, string('{"mixer" : {"type" : "broyden1"}}')) 
+        call sirius_import_parameters(sctx, string('{"mixer" : {"beta" : 0.75}}')) 
+        call sirius_import_parameters(sctx, string('{"mixer" : {"max_history" : 8}}'))                                     
+        ! unit_cell block
         call sirius_set_lattice_vectors( sctx, avec(1,1), avec(1,2), avec(1,3) )
 
         ! ----------------------------------------------------------------------- loop species
@@ -532,16 +546,7 @@ subroutine init0
         !mpi_grid(1) = 1 
         !mpi_grid(2) = 1                
         !call sirius_set_mpi_grid_dims(sctx, 2, mpi_grid(1))
-
-
-        ! set number of fv states and aw cutoff, the same is also set in init1.f90
-        ! (EXCITING has: nstfv = Int (chgval/2.d0) + input%groundstate%nempty + 1. I don't understant why +1 ?)
-        nstfv = int(chgval/2.d0) + nempty
-        call sirius_set_parameters(sctx, num_fv_states=nstfv)
-
-        ! set the solver type, the string can be "exact" or "davidson"
-        ! as initial test, use direct diagonalisation i.e. "exact"
-        call sirius_set_parameters(sctx, iter_solver_type=string('exact'))
+        
 
         ! initialize global variables. In SIRIUS this is doing: sim_ctx.initialize();
         call sirius_initialize_context(sctx)
