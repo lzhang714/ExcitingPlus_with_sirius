@@ -47,7 +47,7 @@ write(fnum,'("Time (hh:mm:ss)   : ",A2,":",A2,":",A2)') tim(1:2),tim(3:4), &
 write(fnum,*)
 write(fnum,'("All units are atomic (Hartree, Bohr, etc.)")')
 select case(task)
-case(0)
+case(0,1000,1001)
   write(fnum,*)
   write(fnum,'("+-------------------------------------------------+")')
   write(fnum,'("| Ground-state run starting from atomic densities |")')
