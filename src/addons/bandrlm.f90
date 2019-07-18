@@ -33,7 +33,7 @@ integer lmax,lmmax,lm,i,j,n
 integer ik,ikloc,ispn,is,ia,ias,iv,ist,ig
 real(8) emin,emax
 ! allocatable arrays
-real(8), allocatable :: evalfv(:,:)
+real(8), allocatable :: evalfv_org(:,:)
 complex(8), allocatable :: evecfv(:,:,:)
 complex(8), allocatable :: evecsv(:,:)
 complex(8), allocatable :: evecfd(:,:)
@@ -51,7 +51,7 @@ if (.not.mpi_grid_in()) return
 lmax=min(3,lmaxapw)
 lmmax=(lmax+1)**2
 allocate(bc(lmmax,natmtot,nspinor,nstsv,nkpt))
-allocate(evalfv(nstfv,nspnfv))
+allocate(evalfv_org(nstfv,nspnfv))
 allocate(evecfv(nmatmax,nstfv,nspnfv))
 allocate(evecsv(nstsv,nstsv))
 allocate(evecfd(nspinor*nmatmax,nstsv)) 
@@ -92,7 +92,7 @@ do ikloc=1,nkptloc
   ik=mpi_grid_map(nkpt,dim_k,loc=ikloc)
   write(*,'("Info(bandstr): ",I6," of ",I6," k-points")') ik,nkpt
   if (tsveqn) then
-    call seceqn(ikloc,evalfv,evecfv,evecsv)
+    call seceqn(ikloc,evalfv_org,evecfv,evecsv)
     call evecsvfd(evecfv,evecsv,evecfd)
   else
     call seceqnfd(ikloc,evecfd)
@@ -117,7 +117,7 @@ do ikloc=1,nkptloc
   endif
   call bandchar(.false.,lmax,lmmax,wfsvmt,bc(1,1,1,1,ik))
 enddo
-deallocate(evalfv,evecfv,evecsv,evecfd,wfsvmt,apwalm)
+deallocate(evalfv_org,evecfv,evecsv,evecfd,wfsvmt,apwalm)
 call mpi_grid_reduce(evalsv(1,1),nstsv*nkpt,dims=(/dim_k/),side=.true.)
 if (wannier) call mpi_grid_reduce(wann_e(1,1),nwantot*nkpt,dims=(/dim_k/),&
   &side=.true.)
