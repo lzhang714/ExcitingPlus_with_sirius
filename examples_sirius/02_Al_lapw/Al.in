@@ -1,0 +1,17 @@
+ 'Al'                                       : spsymb
+ 'aluminium'                                : spname
+  -13.0000                                  : spzn
+   49184.33492                              : spmass
+  0.554700E-06    2.2000   55.3437   400    : sprmin, rmt, sprmax, nrmt
+   6                                        : spnst
+   1   0   1   2.00000    T                 : spn, spl, spk, spocc, spcore
+   2   0   1   2.00000    T
+   2   1   1   2.00000    F
+   2   1   2   4.00000    F
+   3   0   1   2.00000    F
+   3   1   1  1.000000    F
+   2                                        : apword
+    0.1500   0  F                           : apwe0, apwdm, apwve
+    0.1500   1  F                           : apwe0, apwdm, apwve
+   0                                        : nlx
+   0

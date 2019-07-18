@@ -1,1 +1,87 @@
+! ground state of bulk aluminum
 
+tasks
+  1001
+
+use_sirius_library
+                          .true.
+use_sirius_init
+                          .true.
+sirius_run_full_scf
+                          .true.
+
+use_sirius_eigen_states
+   .false.
+update_atomic_pot
+   .false.
+pass_veffig_to_sirius
+   .false.
+pass_apwfr_to_sirius
+   .false.
+pass_lofr_to_sirius
+   .false.
+pass_olprad_to_sirius
+   .false.
+pass_hmlrad_to_sirius
+   .false.
+
+use_sirius_vha
+   .false. 
+use_sirius_vxc
+   .false.
+use_sirius_density
+   .false.
+use_sirius_cfun
+                       .true.
+use_sirius_gvec
+                       .true.
+use_sirius_gkvec
+                       .true.
+use_sirius_rhoinit
+   .false.
+use_sirius_autoenu
+   .false.
+
+avec
+  0.0  1.0  1.0
+  1.0  0.0  1.0
+  1.0  1.0  0.0
+
+scale
+  3.8267
+
+atoms
+  1                                   : nspecies
+  'Al.in'                             : spfname
+  1                                   : natoms
+  0.0  0.0  0.0    0.0  0.0  0.0      : atposl, bfcmt
+
+sppath
+  './'
+
+rgkmax      !! R_mt*max{|G+k|}, this determines max{|G+k|}.  SIRIUS::aw_cutoff
+  7
+
+gmaxvr      !! max{|G|} for interstitial density & potential. SIRIUS::pw_cutoff
+  12
+
+lmaxapw     !! l cut-off for the APW functions, default 8, must be >=0. SIRIUS::lmax_apw
+   8
+
+lmaxvr      !! l cut-off for for potentials and densities, default 7, must be >=3. SIRIUS::lmax_rho/lmax_pot
+   8
+
+nempty      !! number of empty states per atom and spin, default 4
+  10
+
+autoswidth  !! smearing parameter "swidth" determined automatically
+  .true.
+
+xctype
+   3  0  0
+
+ngridk
+  16  16  16
+
+!vkloff
+!  0.5  0.5  0.5
