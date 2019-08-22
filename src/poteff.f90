@@ -63,7 +63,18 @@ subroutine poteff
       !offs = sum(ngr_loc_all(0:sirius_fft_comm_rank)) - ngr_loc + 1
       offs = 1
       ! generate XC potential with SIRIUS.
-      call sirius_generate_xc_potential(gs_handler, vxcmt(1,1,1), vxcir(offs), bxcmt(1,1,1,1), bxcir(offs,1))
+      if (ndmag.eq.0) then
+        call sirius_generate_xc_potential(gs_handler, bool(.false.), vxcmt(1,1,1), vxcir(1))
+      else if (ndmag.eq.1) then
+        call sirius_generate_xc_potential(gs_handler, bool(.false.), vxcmt(1,1,1), vxcir(1),&
+                                         &bxcmt_z=bxcmt(1,1,1,1), bxcrg_z=bxcir(1,1))
+      else 
+        call sirius_generate_xc_potential(gs_handler, bool(.false.), vxcmt(1,1,1), vxcir(1),&
+                                         &bxcmt_x=bxcmt(1,1,1,1), bxcrg_x=bxcir(1,1),&
+                                         &bxcmt_y=bxcmt(1,1,1,2), bxcrg_y=bxcir(1,2),&
+                                         &bxcmt_z=bxcmt(1,1,1,3), bxcrg_z=bxcir(1,3))
+
+      endif
       !call gatherir(vxcir(1))
       !do j = 1, ndmag
       !  call gatherir(bxcir(1, j))

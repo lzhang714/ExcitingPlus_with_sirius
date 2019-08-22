@@ -139,12 +139,39 @@ subroutine gndstate
         write(*,*)' SIRIUS full scf started! '
         call sirius_find_ground_state(gs_handler, potential_tol=epspot, energy_tol=epsengy, niter=maxscl,&
                                      &save_state=bool(.false.))
+        ! get local fraction of eigen-vectors
+        do ikloc=1,nkptloc
+          ik=mpi_grid_map(nkpt,dim_k,loc=ikloc)
+          call sirius_get_fv_eigen_vectors(ks_handler, ik, evecfvloc(1, 1, 1, ikloc), nmatmax, nstfv)
+          call sirius_get_sv_eigen_vectors(ks_handler, ik, evecsvloc(1, 1, ikloc), nstsv)
+          write(*,*)'evecfv=',evecfvloc(:,:,:,ikloc)
+          write(*,*)'evecsv=',evecsvloc(:,:,ikloc)
+        enddo !ikloc
+        ! get all eigen-values and band occupancies
+        do ik = 1, nkpt
+          if (ndmag.eq.0.or.ndmag.eq.3) then
+            call sirius_get_band_energies(ks_handler, ik, 0, evalsv(1, ik))
+            call sirius_get_band_occupancies(ks_handler, ik, 0, occsv(1, ik))
+          else
+            call sirius_get_band_energies(ks_handler, ik, 0, evalsv(1, ik))
+            call sirius_get_band_energies(ks_handler, ik, 1, evalsv(nstfv+1, ik))
+            call sirius_get_band_occupancies(ks_handler, ik, 0, occsv(1, ik))
+            call sirius_get_band_occupancies(ks_handler, ik, 1, occsv(nstfv+1, ik))
+          endif
+          write(*,*)'evalsv=',evalsv(:,ik)
+          write(*,*)'occsv=',occsv(:,ik)
+        enddo
+        ! TODO:
+        !  1) get radial functions and derivatives for APW and LO
+        !  2) get surface derivatives for APW (is this is needed by EP)
+        !  3) get charge density and potential
+
         write(*,*)' SIRIUS full scf done! '
       else
         ! origianl EP rhoinit should be "OR"ed with sirius full scf run
-        call rhoinit  
+        call rhoinit
       endif
-      
+
       call poteff      ! sirius calls 
       !call genveffig   ! EXCITING
       call timer_stop(t_rhoinit)
