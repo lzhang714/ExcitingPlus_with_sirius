@@ -7,9 +7,9 @@ subroutine init1
   use modmain
   use modldapu
   use modtest
-!#ifdef _SIRIUS_
-!  use mod_sirius
-!#endif
+#ifdef _MPI_
+  use mpi
+#endif
 
 ! !DESCRIPTION:
 !   Generates the $k$-point set and then allocates and initialises global
@@ -159,13 +159,22 @@ end if
 ! write the k-points to test file
   call writetest(910,'k-points (Cartesian)',nv=3*nkpt,tol=1.d-8,rva=vkc)
 
-  if ((task.ne.2).and.(task.ne.3)) then ! will be called in geomopt.f90
-    call initmpigrid
-  endif
 
-  if (.not.mpi_grid_in()) return
-  nkptloc=mpi_grid_map(nkpt,dim_k)
-  nkptnrloc=mpi_grid_map(nkptnr,dim_k)
+
+!!!  if ((task.ne.2).and.(task.ne.3)) then ! will be called in geomopt.f90
+!!!    call initmpigrid
+!!!  endif
+!!!
+!!!  if (.not.mpi_grid_in()) return
+!!!  nkptloc=mpi_grid_map(nkpt,dim_k)
+!!!  nkptnrloc=mpi_grid_map(nkptnr,dim_k)
+!!!  
+!!!  By taking out the above 6 lines and setting nkptloc=nkpt and nkptnrloc=nkptnr, we no longer have k-points distributed. 
+!!!  Thus, in the rest of init1.f90 and in the gndstate_901.f90, we also need to take out the mpi-gather command, and mapping from ikloc to ik
+!!!   
+     nkptloc = nkpt 
+     nkptnrloc = nkptnr
+
 
 
   if (use_sirius_library.and.use_sirius_init) then
@@ -212,25 +221,31 @@ end if
   else
     call getngkmax
   endif
+  
   ! allocate the G+k-vector arrays
   if (allocated(ngk)) deallocate(ngk)
-  allocate(ngk(nspnfv,nkpt))
+  allocate(ngk(nspnfv,nkpt))                   !!! nkpt
   if (allocated(igkig)) deallocate(igkig)
-  allocate(igkig(ngkmax,nspnfv,nkptloc))
+  allocate(igkig(ngkmax,nspnfv,nkptloc))       !!! nkptloc = nkpt
   if (allocated(vgkl)) deallocate(vgkl)
-  allocate(vgkl(3,ngkmax,nspnfv,nkptloc))
+  allocate(vgkl(3,ngkmax,nspnfv,nkptloc))      !!! nkptloc = nkpt
   if (allocated(vgkc)) deallocate(vgkc)
-  allocate(vgkc(3,ngkmax,nspnfv,nkptloc))
+  allocate(vgkc(3,ngkmax,nspnfv,nkptloc))      !!! nkptloc = nkpt
   if (allocated(gkc)) deallocate(gkc)
-  allocate(gkc(ngkmax,nspnfv,nkptloc))
+  allocate(gkc(ngkmax,nspnfv,nkptloc))         !!! nkptloc = nkpt
   if (allocated(tpgkc)) deallocate(tpgkc)
-  allocate(tpgkc(2,ngkmax,nspnfv,nkptloc))
+  allocate(tpgkc(2,ngkmax,nspnfv,nkptloc))     !!! nkptloc = nkpt
   if (allocated(sfacgk)) deallocate(sfacgk)
-  allocate(sfacgk(ngkmax,natmtot,nspnfv,nkptloc))
-  ! 
+  allocate(sfacgk(ngkmax,natmtot,nspnfv,nkptloc))   !!! nkptloc = nkpt
+  
   ngk=0
-  do ikloc=1,nkptloc                              
-    ik=mpi_grid_map(nkpt,dim_k,loc=ikloc)         
+
+!!! modified the loop, to go over all k-points
+!!!  do ikloc=1,nkptloc                              
+!!!    ik=mpi_grid_map(nkpt,dim_k,loc=ikloc)         
+  do ikloc=1,nkpt                             !!!
+    ik=ikloc                                  !!!
+
     do ispn=1,nspnfv
 
       if (spinsprl) then
@@ -306,7 +321,8 @@ end if
     end do  ! ispn
   end do  ! ikloc
 
-call mpi_grid_reduce(ngk(1,1),nspnfv*nkpt,dims=(/dim_k/),all=.true.)
+!!! NOTE: no need to reduce
+!!! call mpi_grid_reduce(ngk(1,1),nspnfv*nkpt,dims=(/dim_k/),all=.true.)
 
 !---------------------------------!
 !     APWs and local-orbitals     !
@@ -360,6 +376,7 @@ allocate(lofr(nrmtmax,2,nlomax,natmtot))
 !-------------------------!
 !     LDA+U variables     !
 !-------------------------!
+
 if (ldapu.ne.0) then
 ! allocate energy arrays to calculate Slater integrals with Yukawa potential
   if (allocated(flue)) deallocate(flue)
@@ -372,6 +389,7 @@ end if
 !------------------------------------!
 !     secular equation variables     !
 !------------------------------------!
+
 ! number of first-variational states
 nstfv=int(chgval/2.d0)+nempty
 ! overlap and Hamiltonian matrix sizes
@@ -390,28 +408,40 @@ do ik=1,nkpt
     nstfv=min(nstfv,nmat(ispn,ik))
   end do
 end do
-
-! allocate first-variational eigen value array   
-if (allocated(evalfv_sirius)) deallocate(evalfv_sirius)  ! LZ added for checking EP-SIRIUS interface
-allocate(evalfv_sirius(nstfv,nspnfv,nkpt))               ! LZ added for checking EP-SIRIUS interface
-if (allocated(evalfv)) deallocate(evalfv)                ! LZ added for checking EP-SIRIUS interface
-allocate(evalfv(nstfv,nspnfv,nkpt))                      ! LZ added for checking EP-SIRIUS interface
-! allocate first-variational eigen vector array   
-if (allocated(evecfv_sirius)) deallocate(evecfv_sirius)  ! LZ added for checking EP-SIRIUS interface
-allocate(evecfv_sirius(nmatmax,nstfv,nspnfv,nkpt))       ! LZ added for checking EP-SIRIUS interface
-if (allocated(evecfv3)) deallocate(evecfv3)              ! LZ added for checking EP-SIRIUS interface, "3" because "evecfv" and "evecfv2" are already used.
-allocate(evecfv3(nmatmax,nstfv,nspnfv,nkpt))             ! LZ added for checking EP-SIRIUS interface
-
 ! number of second-variational states
 nstsv=nstfv*nspinor
 ! allocate second-variational arrays
-if (allocated(evalsv_sirius)) deallocate(evalsv_sirius)  ! LZ added for checking EP-SIRIUS interface
-allocate(evalsv_sirius(nstsv,nkpt))                      ! LZ added for checking EP-SIRIUS interface 
 if (allocated(evalsv)) deallocate(evalsv)
 allocate(evalsv(nstsv,nkpt))
 if (allocated(occsv)) deallocate(occsv)
 allocate(occsv(nstsv,nkpt))
 occsv(:,:)=0.d0
+
+! =======================================================================================================================
+! 7 new arrays for testing parsing eigen values/vectors from SIRIUS, declared in modmain.f90, allocate here. 
+if (test_sirius_evec) then 
+  ! 1st-variational
+  if (allocated(evalfv_allk_sirius)) deallocate(evalfv_allk_sirius)     ! evalfv_allk_sirius (nstfv,nspnfv,nkpt)
+       allocate(evalfv_allk_sirius(nstfv,nspnfv,nkpt)) 
+  if (allocated(evalfv_allk)) deallocate(evalfv_allk)                   ! evalfv_allk        (nstfv,nspnfv,nkpt)
+       allocate(evalfv_allk(nstfv,nspnfv,nkpt))
+  if (allocated(evecfv_allk_sirius)) deallocate(evecfv_allk_sirius)     ! evecfv_allk_sirius (nmatmax,nstfv,nspnfv,nkpt)
+       allocate(evecfv_allk_sirius(nmatmax,nstfv,nspnfv,nkpt))
+  if (allocated(evecfv_allk)) deallocate(evecfv_allk)                   ! evecfv_allk        (nmatmax,nstfv,nspnfv,nkpt)
+       allocate(evecfv_allk(nmatmax,nstfv,nspnfv,nkpt))
+  ! 2nd-variational 
+  if (allocated(evalsv_allk_sirius)) deallocate(evalsv_allk_sirius)     ! evalsv_allk_sirius (nstsv,nkpt)
+       allocate(evalsv_allk_sirius(nstsv,nkpt))
+     !  evalsv_allk <---> evalsv                                        ! evalsv             (nstsv,nkpt)
+     !  evalsv_allk <---> evalsv
+  if (allocated(evecsv_allk_sirius)) deallocate(evecsv_allk_sirius)     ! evecsv_allk_sirius (nstsv,nstsv,nkpt)
+       allocate(evecsv_allk_sirius(nstsv,nstsv,nkpt))             
+  if (allocated(evecsv_allk)) deallocate(evecsv_allk)                   ! evecsv_allk        (nstsv,nstsv,nkpt)
+       allocate(evecsv_allk(nstsv,nstsv,nkpt))
+endif
+!                                     7 new arrays for testing parsing eigen values/vectors from SIRIUS
+! =======================================================================================================================
+
 ! allocate overlap and Hamiltonian integral arrays
 if (allocated(oalo)) deallocate(oalo)
 allocate(oalo(apwordmax,nlomax,natmtot))
@@ -448,9 +478,9 @@ end do
 !-----------------!
 call init3
 
-              write(*,*)' -------------------------- '    
-              write(*,*)' debug flag, init1/init3 done. '
-              write(*,*)' -------------------------- ' 
+!              write(*,*)' -------------------------- '    
+!              write(*,*)' debug flag, init1/init3 done. '
+!              write(*,*)' -------------------------- ' 
 
 call timesec(ts1)
 timeinit=timeinit+ts1-ts0
