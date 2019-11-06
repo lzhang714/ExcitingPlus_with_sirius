@@ -631,22 +631,24 @@ integer ikgap(3)
 ! error tolerance for the first-variational eigenvalues
 real(8) evaltol
 
-! first-variational eigen values                   ! LZ added for checking EP-SIRIUS interface
-real(8), allocatable :: evalfv(:,:,:)              ! LZ added for checking EP-SIRIUS interface
-! first-variational eigen values                   ! LZ added for checking EP-SIRIUS interface
-real(8), allocatable :: evalfv_sirius(:,:,:)       ! LZ added for checking EP-SIRIUS interface
-! first-variational eigen vectors                  ! LZ added for checking EP-SIRIUS interface
-complex(8), allocatable :: evecfv3(:,:,:,:)        ! LZ added for checking EP-SIRIUS interface, "3" because "evecfv" and "evecfv2" are already used.  
-! first-variational eigen vectors                  ! LZ added for checking EP-SIRIUS interface
-complex(8), allocatable :: evecfv_sirius(:,:,:,:)  ! LZ added for checking EP-SIRIUS interface
+! ----------------------------------------------------------------- ! 
+!      7 new arrays, solely for checking EP-SIRIUS interface        ! 
+ 
+! 1st-variational eigen values and vectors, all k-points    
+real(8),    allocatable :: evalfv_allk(:,:,:)                
+real(8),    allocatable :: evalfv_allk_sirius(:,:,:)         
+complex(8), allocatable :: evecfv_allk(:,:,:,:)              
+complex(8), allocatable :: evecfv_allk_sirius(:,:,:,:)       
+! 2nd-variational eigen values and vectors, all k-points
+real(8),    allocatable :: evalsv(:,:)                          ! this is the one already existing in EP, for ALL k-points
+real(8),    allocatable :: evalsv_allk_sirius(:,:)
+complex(8), allocatable :: evecsv_allk(:,:,:)              
+complex(8), allocatable :: evecsv_allk_sirius(:,:,:)
+ 
+!      7 new arrays, solely for checking EP-SIRIUS interface        ! 
+! ----------------------------------------------------------------- ! 
 
-! second-variational eigenvalues
-real(8), allocatable :: evalsv(:,:)
-
-! second-variational eigenvalues                ! LZ added for checking EP-SIRIUS interface
-real(8), allocatable :: evalsv_sirius(:,:)      ! LZ added for checking EP-SIRIUS interface
-
-! tevecsv is .true. if second-variational eigenvectors are calculated
+! tevecsv is .true. second-variational eigenvectors are calculated
 logical tevecsv
 ! maximum number of k-point and states indices in user-defined list
 integer, parameter :: maxkst=20
@@ -967,17 +969,21 @@ character(80) notes(maxnlns)
 !     SIRIUS library control switches      !
 !------------------------------------------!
 
+! allocate large arrays for eigen vectors of all k-points, solely for debugging the parsing of eigen vectors
+! set to .true. ONLY when debugging with small systems. 
+  logical test_sirius_evec
+
 ! global on/off switch, "AND"ed with all other switches below.
   logical use_sirius_library
-
 
 ! initialization of sirius, show up only in init0.f90 and init1.f90
   logical use_sirius_init
 
-
 ! let sirius run a full scf calculation
   logical sirius_run_full_scf
 
+! use iterative solver for the eigen value problem 
+  logical sirius_davidson_eigen_solver
 
 ! let sirius solve the eigen problem (diagonalisation)
   logical use_sirius_eigen_states   
@@ -1015,16 +1021,17 @@ character(80) notes(maxnlns)
 ! let sirius determine linearization energy automatically
   logical use_sirius_autoenu 
 
+  real (8), allocatable :: vmad (:)
+
+  !!integer sirius_fft_comm_rank
+  !!integer :: ngr_loc                            
+  !!integer, allocatable :: ngr_loc_all(:)         
+
   character*100, parameter :: sirius_error = " The code is not compiled with SIRIUS library. "
 
 !-----------------------------------!
 !    SIRIUS library variables       !
 !-----------------------------------!
-
-  integer sirius_fft_comm_rank
-  integer :: ngr_loc                            
-  integer, allocatable :: ngr_loc_all(:)         
-  real (8), allocatable :: vmad (:)
 
 end module
 
