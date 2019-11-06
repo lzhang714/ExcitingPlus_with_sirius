@@ -879,9 +879,9 @@ end if
 ! set the Fermi energy to zero
 efermi=0.d0
 
-              write(*,*)' -------------------------- '    
-              write(*,*)' debug flag, init0 done. '
-              write(*,*)' -------------------------- ' 
+!              write(*,*)' -------------------------- '    
+!              write(*,*)' debug flag, init0 done. '
+!              write(*,*)' -------------------------- ' 
 
 call timesec(ts1)
 timeinit=timeinit+ts1-ts0
