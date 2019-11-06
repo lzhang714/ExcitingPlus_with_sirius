@@ -7,12 +7,11 @@ subroutine init0
   use modmain
   use modxcifc
   use modldapu
-  use mod_mpi_grid
-#ifdef _SIRIUS_
-!  use mod_sirius
+  !!use mod_mpi_grid
+#ifdef _MPI_
   use mpi
 #endif
-
+  
   !DESCRIPTION:
   !  Performs basic consistency checks as well as allocating and initialising
   !  global variables not dependent on the $k$-point set. 
@@ -31,7 +30,6 @@ subroutine init0
   integer, allocatable :: icls(:)
   character(100) :: label
   logical(1) :: flg, autoenu
-  
   ! zero timing variables
   timeinit=0.d0
   timemat=0.d0
@@ -287,8 +285,6 @@ subroutine init0
   !                                                     initialize SIRIUS                                                         !
   ! ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// !                   
   
-
-
   ! if working with sirius: 
   ! 1. derive gkmax from rgkmax and the minimum muffin-tin radius,
   !    i.e. gkmax(gk_cutoff) = rgkmax / min{R_mt},  
@@ -342,62 +338,90 @@ subroutine init0
   !                                         ---> intgv(:,1)=ngrid(:)/2-ngrid(:)+1
   !                                         ---> intgv(:,2)=ngrid(:)/2
   call gridsize
-  
-  
-  ! ==================================================== 
+    
+  ! ========================================================================================================= 
   if (use_sirius_library.and.use_sirius_init) then
 #ifdef _SIRIUS_
 
-        ! init sirius. 
+        ! ---------------- init sirius. 
         ! NOTE: set to .false. b/c we assume "MPI_Init" is already done, otherwise it should be set to .true.
         call sirius_initialize(bool(.false.))
-        
-        ! set global MPI communicator for sirius. 
+
+        ! ---------------- set global MPI communicator for sirius. 
         ! NOTE: the current assumption is that the mpi_grid communicator is also derived from MPI_COMM_WORLD 
         !       and that there are no unused MPI ranks
         sctx = sirius_create_context(MPI_COMM_WORLD)
-        
-        ! set parameters via import method or set method. 
-        ! NOTE: (1) order of initialization of the simulation context: 
-        !             1st default parameter values set by constructor of class Simulation_context;
-        !             2nd import() method can be called to overwrite some parameters;
-        !             3rd user can set the values with "sirius_set_parameters" method;
-        !       (2) rgkmax is not supposed to pass to aw_cutoff;
-        !       (3) core relativity can be 'none' or 'dirac'; 
-        !       (4) valence relativity can be 'none', 'zora', 'koelling_harmon' or 'iora';
-        !       (5) solver type can be "exact" or "davidson",
-        !           in case of "davidson" we probably need to set some other parameters; 
-        
+
+        ! ------------------------------------------------------------------------------------------- !
+        ! set sirius parameters via import method or set method.                                      !
+        ! NOTE: (1) the order of initialization of simulation context is as following:                !
+        !             1st default parameter values set by constructor of class Simulation_context;    !
+        !             2nd import() method can be called to overwrite parameters;                      !
+        !             3rd user can set the values with "sirius_set_parameters" method;                !
+        !       (2) rgkmax is NOT supposed to pass to aw_cutoff, SIRIUS will determine it by itself;  !
+        !       (3) core relativity can be 'none' or 'dirac';                                         !
+        !       (4) valence relativity can be 'none', 'zora', 'koelling_harmon' or 'iora';            !
+        !       (5) solver type can be "exact" or "davidson",                                         !
+        !           in case of "davidson" we need to specify the "iterative_solver" block;            !
+        !       (6) smearing width of EP is not parsed to SIRIUS, we explicitly set the value here;   !
+        ! ------------------------------------------------------------------------------------------- !
+
+        ! ---------------- number of fv states
         nstfv = int(chgval/2.d0) + nempty
 
-        ! control block
-        call sirius_import_parameters(sctx, string('{"control" : {"cyclic_block_size"   : 16}}'))
-        call sirius_import_parameters(sctx, string('{"control" : {"processing_unit"     : "cpu"}}'))      
-        call sirius_import_parameters(sctx, string('{"control" : {"std_evp_solver_type" : "scalapack"}}'))  
-        call sirius_import_parameters(sctx, string('{"control" : {"gen_evp_solver_type" : "scalapack"}}'))
-        ! parameter block
+        ! ---------------- control block
+        call sirius_import_parameters(sctx, string('{"control" : {"cyclic_block_size"   : 16 }}'))
+        call sirius_import_parameters(sctx, string('{"control" : {"processing_unit"     : "cpu" }}'))      
+        call sirius_import_parameters(sctx, string('{"control" : {"std_evp_solver_type" : "lapack" }}'))  
+        call sirius_import_parameters(sctx, string('{"control" : {"gen_evp_solver_type" : "lapack" }}'))
+        call sirius_import_parameters(sctx, string('{"control" : {"verbosity"           : 2 }}'))
+        call sirius_import_parameters(sctx, string('{"control" : {"verification"        : 0 }}'))
+        
+        ! ---------------- settings: auto enu tolerance
+        !call sirius_import_parameters(sctx, string('{"settings" : {"auto_enu_tol"        : 0.1 }}'))
+
+        ! ---------------- parameters
         !call sirius_import_parameters(sctx, string('{"parameters" : {"xc_functionals" : ["XC_LDA_X", "XC_LDA_C_PZ"]}}'))
-        call sirius_import_parameters(sctx, string('{"parameters" : {"electronic_structure_method" : "full_potential_lapwlo"}}'))
+        call sirius_import_parameters(sctx, string('{"parameters" : {"electronic_structure_method" : "full_potential_lapwlo"   }}'))
+        !call sirius_import_parameters(sctx, string('{"parameters" : {"smearing_width"              : 0.001   }}'))
+        !call sirius_import_parameters(sctx, string('{"parameters" : {"potential_tol"               : 1e-7   }}'))
+        !call sirius_import_parameters(sctx, string('{"parameters" : {"energy_tol"                  : 1e-6   }}'))
+
+	! ---------------- mixer settings 
+        call sirius_import_parameters(sctx, string('{"mixer" : {"beta"         : 0.75 }}'))
+        call sirius_import_parameters(sctx, string('{"mixer" : {"type"         : "broyden1" }}'))
+        call sirius_import_parameters(sctx, string('{"mixer" : {"max_history"  : 8 }}'))
+
+        ! ---------------- choose eigen solver      
+        if (sirius_davidson_eigen_solver) then 
+          call sirius_set_parameters(sctx, iter_solver_type=string('davidson'))                                         ! duplicated?
+          call sirius_import_parameters(sctx, string('{"iterative_solver" : {"type"                 : "davidson" }}'))  ! duplicated?
+          call sirius_import_parameters(sctx, string('{"iterative_solver" : {"energy_tolerance"     : 1e-13}}'))
+          call sirius_import_parameters(sctx, string('{"iterative_solver" : {"residual_tolerance"   : 1e-6}}'))
+          call sirius_import_parameters(sctx, string('{"iterative_solver" : {"num_steps"            : 32}}'))
+          call sirius_import_parameters(sctx, string('{"iterative_solver" : {"subspace_size"        : 8 }}'))         ! default 8, for large molecules
+          call sirius_import_parameters(sctx, string('{"iterative_solver" : {"converge_by_energy"   : 1 }}'))
+	  call sirius_import_parameters(sctx, string('{"iterative_solver" : {"num_singular"         : 20 }}'))  
+        else 
+          call sirius_set_parameters(sctx, iter_solver_type=string('exact'))
+        endif
+        
+        ! ---------------- cutoffs,relativity,mag-dim,symm
         call sirius_set_parameters(   sctx,&
-                                     &lmax_apw=lmaxapw,&
-                                     &lmax_rho=lmaxvr,&
-                                     &lmax_pot=lmaxvr,&
-                                     &gk_cutoff=gkmax,&
-                                     &pw_cutoff=gmaxvr,&
-                                     &fft_grid_size=ngrid(1),&
-                                     &num_mag_dims=ndmag,&
-                                     &num_fv_states=nstfv,&
-                                     &auto_rmt=0,&
-                                     &use_symmetry=bool(.false.),&
-                                     &iter_solver_type=string('exact'),&
-                                     &core_rel=string('dirac'),&
-                                     &valence_rel=string('zora'),&
-                                     &verbosity=2)
-        ! mixer block 
-        call sirius_import_parameters(sctx, string('{"mixer" : {"type" : "broyden1"}}')) 
-        call sirius_import_parameters(sctx, string('{"mixer" : {"beta" : 0.75}}')) 
-        call sirius_import_parameters(sctx, string('{"mixer" : {"max_history" : 8}}'))                                     
-        ! unit_cell block
+                                      &use_symmetry=bool(.true.),&
+                                      &valence_rel=string('none'),&
+                                      &core_rel=string('none'),&
+                                      &auto_rmt=0,&
+                                      &fft_grid_size=ngrid(1),&
+                                      &num_mag_dims=ndmag,& 
+                                      &num_fv_states=nstfv,&
+                                      &pw_cutoff=gmaxvr,&
+                                      &gk_cutoff=gkmax,&
+                                      &lmax_apw=lmaxapw,&
+                                      &lmax_rho=lmaxvr,&
+                                      &lmax_pot=lmaxvr        )
+
+        ! ---------------- unit cell a-vectors 
         call sirius_set_lattice_vectors( sctx, avec(1,1), avec(1,2), avec(1,3) )
 
         ! ----------------------------------------------------------------------- loop species
@@ -479,8 +503,7 @@ subroutine init0
 
         enddo 
         ! ----------------------------------------------------------------------- loop species
-
-
+        
         ! add atoms to the unit cell, 
         ! (atposl = atom position in lattice coord; bfcmt0 = starting magnetization;)
         do is = 1, nspecies
@@ -508,7 +531,7 @@ subroutine init0
         enddo
         call sirius_set_equivalent_atoms(sctx, icls(1))
         deallocate(icls)
-        
+
         ! LDA+U is not activated for the moment.
         ! if (ldapu.ne.0) call sirius_set_uj_correction(1)
         
@@ -517,12 +540,10 @@ subroutine init0
         !call sirius_add_xc_functional(sctx, string('XC_GGA_X_PBE'))
         !call sirius_add_xc_functional(sctx, string('XC_GGA_C_PBE'))
         call sirius_add_xc_functional(sctx, string('XC_LDA_X'))
-        call sirius_add_xc_functional(sctx, string('XC_LDA_C_PW'))
+        !call sirius_add_xc_functional(sctx, string('XC_LDA_C_PW'))
         ! this is to compare with NIST atomic energies
-        !call sirius_add_xc_functional(sctx, string('XC_LDA_C_VWN'))
-        
-        
-        
+        call sirius_add_xc_functional(sctx, string('XC_LDA_C_VWN'))
+
         ! use square distribution over k-points
         ! note: this part seems for band structure plot, commented out for now
         !kpt_groups=input%groundstate%kptgroups
@@ -537,36 +558,33 @@ subroutine init0
         !  cols_per_kpt=cols_per_kpt-1
         !enddo
         !rows_per_kpt=ranks_per_kpt/cols_per_kpt
-        
-        
-        
+
         ! as initial test, use sequential diagonalisation in lapack, i.e. sirius not running parallel.
         !mpi_grid(1)=rows_per_kpt 
         !mpi_grid(2)=cols_per_kpt
         !mpi_grid(1) = 1 
         !mpi_grid(2) = 1                
         !call sirius_set_mpi_grid_dims(sctx, 2, mpi_grid(1))
-        
 
         ! initialize global variables. In SIRIUS this is doing: sim_ctx.initialize();
         call sirius_initialize_context(sctx)
         
-        
-              write(*,*) '  '    
-              write(*,*) ' debug flag, init0, 1 '
-              write(*,'(" after sirius_init summary: ")')
-              write(*,'(" lmaxapw   ( passed to sirius::lmax_apw )              ", I4    )')  lmaxapw
-              write(*,'(" lmaxvr    ( passed to sirius::lmax_rho and lmax_pot ) ", I4    )')  lmaxvr
-              !write(*,'(" rgkmax    ( passed to sirius::aw_cutoff )             ", F8.4  )')  rgkmax
-              write(*,'(" gkmax     ( passed to sirius::gk_cutoff )             ", F8.4  )')  gkmax
-              write(*,'(" gmaxvr    ( passed to sirius::pw_cutoff )             ", F8.4  )')  gmaxvr
-              write(*,'(" ndmag     ( passed to sirius::num_mag_dims )          ", I4    )')  ndmag
-              write(*,'(" ngrid(1)  ( passed to sirius::fft_grid_size )         ", I4    )')  ngrid(1)
-              write(*,'(" ngrid(2)  ( passed to sirius::fft_grid_size )         ", I4    )')  ngrid(2)
-              write(*,'(" ngrid(3)  ( passed to sirius::fft_grid_size )         ", I4    )')  ngrid(3)
-              write(*,'(" ngrtot    ( this is not passed to sirius )            ", I10   )')  ngrtot
-              write(*,*) '  ' 
-        
+        ! debug only
+        if (wproc) then
+          write(*,*) '   '
+          write(*,'(" after sirius_init summary (these are all EP side values): ")')
+          write(*,'(" lmaxapw   ( passed to sirius::lmax_apw )              ", I4    )')  lmaxapw
+          write(*,'(" lmaxvr    ( passed to sirius::lmax_rho and lmax_pot ) ", I4    )')  lmaxvr
+          write(*,'(" rgkmax    ( NOT passed to sirius::aw_cutoff )         ", F8.4  )')  rgkmax
+          write(*,'(" gkmax     ( passed to sirius::gk_cutoff )             ", F8.4  )')  gkmax
+          write(*,'(" gmaxvr    ( passed to sirius::pw_cutoff )             ", F8.4  )')  gmaxvr
+          write(*,'(" ndmag     ( passed to sirius::num_mag_dims )          ", I4    )')  ndmag
+          write(*,'(" ngrid(1)  ( passed to sirius::fft_grid_size )         ", I4    )')  ngrid(1)
+          write(*,'(" ngrid(2)  ( passed to sirius::fft_grid_size )         ", I4    )')  ngrid(2)
+          write(*,'(" ngrid(3)  ( passed to sirius::fft_grid_size )         ", I4    )')  ngrid(3)
+          write(*,'(" ngrtot    ( NOT passed to sirius )                    ", I10   )')  ngrtot
+          write(*,*) '   ' 
+        endif
          
          
         ! ------------------ FFT MPI related variables 
@@ -602,23 +620,16 @@ subroutine init0
         !call mpi_comm_size(all_kpts_comm, all_kpts_comm_size, ierr)
         !call mpi_comm_rank(all_kpts_comm, all_kpts_comm_rank, ierr)
 
-#else
-    stop sirius_error
 #endif
   endif
-  ! ==================================================== 
+  ! ========================================================================================================= 
   
-  if (.not.use_sirius_library) then
-    ! EXCITING sets square distribution of k-points, 
-    ! at the moment I do nothing here. 
-  endif
-
 !-------------------------!
 !     G-vector arrays     !
 !-------------------------!
 
-! this chunk below has been moved to right before use_sirius_init
-
+! this chunk below has been moved to above, right before "if (use_sirius_library.and.use_sirius_init)"
+! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 !! determine gkmax from rgkmax and the muffin-tin radius
 !! EP uses 3 kinds of R_mt: input R_mt, average R_mt, mininum R_mt
 !if (nspecies.gt.0) then
@@ -643,18 +654,22 @@ subroutine init0
 !gmaxvr=max(gmaxvr,2.d0*gkmax+epslat)
 !! find the G-vector grid sizes
 !call gridsize
+! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+  ! generate the G-vectors
+  call gengvec                                               ! calls SIRIUS, no mpi distribution of anything
 
-! generate the G-vectors
-call gengvec                                         ! sirius calls inside
-! generate the spherical harmonics of the G-vectors
-call genylmg
-! allocate structure factor array for G-vectors
-if (allocated(sfacg)) deallocate(sfacg)
-allocate(sfacg(ngvec,natmtot))
-! generate structure factors for G-vectors
-call gensfacgp(ngvec,vgc,ngvec,sfacg)
+  ! generate the spherical harmonics of the G-vectors
+  call genylmg
 
+  ! allocate structure factor array for G-vectors
+  if (allocated(sfacg)) deallocate(sfacg)
+  allocate(sfacg(ngvec,natmtot))
+
+  ! generate structure factors for G-vectors
+  call gensfacgp(ngvec,vgc,ngvec,sfacg)
+
+! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 ! checked EXCITING interface again, different logic controlled by use_sirius_vha
 !! generate the spherical harmonics of the G-vectors
 !!      Call genylmg
@@ -672,10 +687,10 @@ call gensfacgp(ngvec,vgc,ngvec,sfacg)
 !! generate structure factors for G-vectors
 !        Call gensfacgp (ngvec, vgc, ngvec, sfacg)
 !      endif
+! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
-! generate the characteristic function
-call gencfun                                         ! sirius calls inside
-
+  ! generate the step function
+  call gencfun                                               ! calls SIRIUS, no mpi distribution of anything
 
   ! ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// !
   !                                                     initialize SIRIUS                                                         !
@@ -836,6 +851,7 @@ end if
 !-----------------------!
 !     miscellaneous     !
 !-----------------------!
+
 ! determine the nuclear-nuclear energy
 call energynn
 ! get smearing function description
