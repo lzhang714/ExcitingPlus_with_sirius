@@ -5,7 +5,7 @@
 
 !BOP
 ! !ROUTINE: seceqn
-subroutine seceqn(ikloc,evalfv_org,evecfv,evecsv)
+subroutine seceqn(ikloc,evalfv,evecfv,evecsv)
 ! !USES:
 use modmain
 use mod_wannier
@@ -13,7 +13,7 @@ use mod_sic
 use mod_libapw
 ! !INPUT/OUTPUT PARAMETERS:
 !   ik     : k-point number (in,integer)
-!   evalfv_org : first-variational eigenvalues (out,real(nstfv))
+!   evalfv : first-variational eigenvalues (out,real(nstfv))
 !   evecfv : first-variational eigenvectors (out,complex(nmatmax,nstfv))
 !   evecsv : second-variational eigenvectors (out,complex(nstsv,nstsv))
 ! !DESCRIPTION:
@@ -27,7 +27,7 @@ use mod_libapw
 implicit none
 ! arguments
 integer, intent(in) :: ikloc
-real(8), intent(out) :: evalfv_org(nstfv,nspnfv)
+real(8), intent(out) :: evalfv(nstfv,nspnfv)
 complex(8), intent(out) :: evecfv(nmatmax,nstfv,nspnfv)
 complex(8), intent(out) :: evecsv(nstsv,nstsv)
 ! local variables
@@ -55,22 +55,22 @@ do ispn=1,nspnfv
 ! iteratively
     call seceqnit(nmat(ispn,ik),ngk(ispn,ik),igkig(:,ispn,ikloc),vkl(:,ik), &
      &vgkl(:,:,ispn,ikloc),vgkc(:,:,ispn,ikloc),apwalm(:,:,:,:,ispn), &
-     &evalfv_org(:,ispn),evecfv(:,:,ispn))
+     &evalfv(:,ispn),evecfv(:,:,ispn))
   else
 ! directly
     call seceqnfv(ik,nmat(ispn,ik),ngk(ispn,ik),igkig(:,ispn,ikloc), &
-     &vgkc(:,:,ispn,ikloc),apwalm(:,:,:,:,ispn),evalfv_org(:,ispn),evecfv(:,:,ispn))
+     &vgkc(:,:,ispn,ikloc),apwalm(:,:,:,:,ispn),evalfv(:,ispn),evecfv(:,:,ispn))
   end if
 end do
 if (spinsprl) then
 ! solve the spin-spiral second-variational secular equation
-  call seceqnss(ikloc,apwalm,evalfv_org,evecfv,evecsv)
+  call seceqnss(ikloc,apwalm,evalfv,evecfv,evecsv)
 else
 ! solve the second-variational secular equation
   if (texactrho) then
-    call seceqnsv_exact(ikloc,apwalm,evalfv_org,evecfv,evecsv)
+    call seceqnsv_exact(ikloc,apwalm,evalfv,evecfv,evecsv)
   else
-    call seceqnsv(ikloc,apwalm,evalfv_org,evecfv,evecsv)
+    call seceqnsv(ikloc,apwalm,evalfv,evecfv,evecsv)
   endif
 end if
 ! apply scissor correction if required

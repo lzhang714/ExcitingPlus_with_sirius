@@ -4,7 +4,7 @@
 ! This file is distributed under the terms of the GNU General Public License.
 ! See the file COPYING for license details.
 
-subroutine seceqnsv(ikloc,apwalm,evalfv_org,evecfv,evecsv)
+subroutine seceqnsv(ikloc,apwalm,evalfv,evecfv,evecsv)
 use modmain
 use modldapu
 use mod_sic
@@ -12,7 +12,7 @@ implicit none
 ! arguments
 integer, intent(in) :: ikloc
 complex(8), intent(in) :: apwalm(ngkmax,apwordmax,lmmaxapw,natmtot)
-real(8), intent(in) :: evalfv_org(nstfv)
+real(8), intent(in) :: evalfv(nstfv)
 complex(8), intent(in) :: evecfv(nmatmax,nstfv)
 complex(8), intent(out) :: evecsv(nstsv,nstsv)
 ! local variables
@@ -45,7 +45,7 @@ call timer_start(t_seceqnsv_setup)
 ! no calculation of second-variational eigenvectors
 if (.not.tevecsv) then  
   do i=1,nstsv
-    evalsv(i,ik)=evalfv_org(i)
+    evalsv(i,ik)=evalfv(i)
   end do
   evecsv(:,:)=0.d0
   do i=1,nstsv
@@ -260,7 +260,7 @@ i=0
 do ispn=1,nspinor
   do ist=1,nstfv
     i=i+1
-    evecsv(i,i)=evecsv(i,i)+evalfv_org(ist)
+    evecsv(i,i)=evecsv(i,i)+evalfv(ist)
   end do
 end do
 call timer_stop(t_seceqnsv_setup)

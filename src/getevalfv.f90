@@ -3,12 +3,12 @@
 ! This file is distributed under the terms of the GNU General Public License.
 ! See the file COPYING for license details.
 
-subroutine getevalfv(vpl,evalfv_org)
+subroutine getevalfv(vpl,evalfv)
 use modmain
 implicit none
 ! arguments
 real(8), intent(in) :: vpl(3)
-real(8), intent(out) :: evalfv_org(nstfv,nspnfv)
+real(8), intent(out) :: evalfv(nstfv,nspnfv)
 ! local variables
 integer isym,ik
 integer recl,nstfv_,nspnfv_
@@ -16,10 +16,10 @@ real(8) vkl_(3),t1
 ! find the k-point number
 call findkpt(vpl,isym,ik)
 ! find the record length
-inquire(iolength=recl) vkl_,nstfv_,nspnfv_,evalfv_org
+inquire(iolength=recl) vkl_,nstfv_,nspnfv_,evalfv
 open(70,file=trim(scrpath)//'EVALFV'//trim(filext),action='READ', &
  form='UNFORMATTED',access='DIRECT',recl=recl)
-read(70,rec=ik) vkl_,nstfv_,nspnfv_,evalfv_org
+read(70,rec=ik) vkl_,nstfv_,nspnfv_,evalfv
 close(70)
 t1=abs(vkl(1,ik)-vkl_(1))+abs(vkl(2,ik)-vkl_(2))+abs(vkl(3,ik)-vkl_(3))
 if (t1.gt.epslat) then

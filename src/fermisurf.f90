@@ -11,7 +11,7 @@ integer ik,jk,ist
 integer ist0,ist1,nst
 real(8) prd1,prd2
 ! allocatable arrays
-real(8), allocatable :: evalfv_org(:,:)
+real(8), allocatable :: evalfv(:,:)
 complex(8), allocatable :: evecfv(:,:,:)
 complex(8), allocatable :: evecsv(:,:)
 ! initialise universal variables
@@ -35,13 +35,13 @@ call hmlrad
 call genbeffmt
 ! begin parallel loop over reduced k-points set
 do ik=1,nkpt
-  allocate(evalfv_org(nstfv,nspnfv))
+  allocate(evalfv(nstfv,nspnfv))
   allocate(evecfv(nmatmax,nstfv,nspnfv))
   allocate(evecsv(nstsv,nstsv))
   write(*,'("Info(fermisurf): ",I6," of ",I6," k-points")') ik,nkpt
 ! solve the first- and second-variational secular equations
-  call seceqn(ik,evalfv_org,evecfv,evecsv)
-  deallocate(evalfv_org,evecfv,evecsv)
+  call seceqn(ik,evalfv,evecfv,evecsv)
+  deallocate(evalfv,evecfv,evecsv)
 ! end loop over reduced k-points set
 end do
 if (ndmag.eq.1) then

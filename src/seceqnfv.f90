@@ -6,7 +6,7 @@
 !BOP
 ! !ROUTINE: seceqnfv
 ! !INTERFACE:
-subroutine seceqnfv(ik,nmatp,ngp,igpig,vgpc,apwalm,evalfv_org,evecfv)
+subroutine seceqnfv(ik,nmatp,ngp,igpig,vgpc,apwalm,evalfv,evecfv)
 ! !USES:
 use modmain
 use mod_seceqn
@@ -18,7 +18,7 @@ use mod_libapw
 !   vgpc   : G+k-vectors in Cartesian coordinates (in,real(3,ngkmax))
 !   apwalm : APW matching coefficients
 !            (in,complex(ngkmax,apwordmax,lmmaxapw,natmtot))
-!   evalfv_org : first-variational eigenvalues (out,real(nstfv))
+!   evalfv : first-variational eigenvalues (out,real(nstfv))
 !   evecfv : first-variational eigenvectors (out,complex(nmatmax,nstfv))
 ! !DESCRIPTION:
 !   Solves the secular equation,
@@ -37,7 +37,7 @@ integer, intent(in) :: ngp
 integer, intent(in) :: igpig(ngkmax)
 real(8), intent(in) :: vgpc(3,ngkmax)
 complex(8), intent(in) :: apwalm(ngkmax,apwordmax,lmmaxapw,natmtot)
-real(8), intent(out) :: evalfv_org(nstfv)
+real(8), intent(out) :: evalfv(nstfv)
 complex(8), intent(out) :: evecfv(nmatmax,nstfv)
 ! local variables
 integer is,ia,i,m,np,info,nb,lwork,ir
@@ -98,7 +98,7 @@ else
   call sethml(ngp,nmatp,vgpc,igpig,apwalm,h)
   call setovl(ngp,nmatp,igpig,apwalm,o)
 !#ifdef _LIBAPW_
-!  call lapw_seceqn_fv_org(ik,apwalm,h1,o1,evalfv_org,evecfv)
+!  call lapw_seceqn_fv(ik,apwalm,h1,o1,evalfv,evecfv)
 !  write(*,*)"diff h=",sum(abs(h-h1))
 !  write(*,*)"diff o=",sum(abs(o-o1))
 !  !h=h1
@@ -124,7 +124,7 @@ if (mpi_grid_root((/dim2/))) then
     allocate(work(2*nmatp))
     call zhpgvx(1,'V','I','U',nmatp,h,o,vl,vu,1,nstfv,evaltol,m,w,evecfv,nmatmax, &
       work,rwork,iwork,ifail,info)
-    evalfv_org(1:nstfv)=w(1:nstfv)
+    evalfv(1:nstfv)=w(1:nstfv)
     deallocate(iwork,ifail,w,rwork,work)
     if (info.ne.0) then
       write(*,*)
@@ -140,13 +140,13 @@ if (mpi_grid_root((/dim2/))) then
       call pstop
     end if
   else
-    call diagzheg(nmatp,nstfv,nmatmax,evaltol,h,o,evalfv_org,evecfv)
+    call diagzheg(nmatp,nstfv,nmatmax,evaltol,h,o,evalfv,evecfv)
   endif
   call timesec(ts1)
   call timer_stop(t_seceqnfv_diag)
 endif
 call mpi_grid_bcast(evecfv(1,1),nmatmax*nstfv,dims=(/dim2/))
-call mpi_grid_bcast(evalfv_org(1),nstfv,dims=(/dim2/))
+call mpi_grid_bcast(evalfv(1),nstfv,dims=(/dim2/))
 timefv=timefv+ts1-ts0
 call timer_stop(t_seceqnfv)
 deallocate(h,o)

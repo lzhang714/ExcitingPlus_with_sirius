@@ -33,7 +33,7 @@ integer ik,ispn,is,ia,ias,iv,ist,ikloc
 real(8) emin,emax,sum
 character(256) fname
 ! allocatable arrays
-real(8), allocatable :: evalfv_org(:,:)
+real(8), allocatable :: evalfv(:,:)
 real(8), allocatable :: e(:,:)
 ! low precision for band character array saves memory
 real(4), allocatable :: bc(:,:,:,:)
@@ -82,7 +82,7 @@ call getufr
 call genufrp  
 emin=1.d5
 emax=-1.d5
-allocate(evalfv_org(nstfv,nspnfv))
+allocate(evalfv(nstfv,nspnfv))
 allocate(evecfv(nmatmax,nstfv,nspnfv))
 allocate(evecsv(nstsv,nstsv))
 evalsv(:,:)=0.d0                     ! added for sirius call
@@ -106,8 +106,8 @@ do ik=1,nkpt
 #endif
   else 
     ! original: solve the first- and second-variational secular equations
-    !call seceqn(ikloc,evalfv_org,evecfv,evecsv)  
-    call seceqn(ik,evalfv_org,evecfv,evecsv)    
+    !call seceqn(ikloc,evalfv,evecfv,evecsv)  
+    call seceqn(ik,evalfv,evecfv,evecsv)    
   endif
 
   do ist=1,nstsv
@@ -146,7 +146,7 @@ do ik=1,nkpt
 ! end loop over k-points
 end do
 
-deallocate(evalfv_org,evecfv,evecsv)
+deallocate(evalfv,evecfv,evecsv)
 
 ! changed k loop to be "do ik=1,nkpt", so we don't need the mpi reduce here
 !call mpi_grid_reduce(e(1,1),nkpt*nstsv,dims=(/dim_k/))

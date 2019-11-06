@@ -3,14 +3,14 @@
 ! This file is distributed under the terms of the GNU General Public License.
 ! See the file COPYING for license details.
 
-subroutine seceqnss(ikloc,apwalm,evalfv_org,evecfv,evecsv)
+subroutine seceqnss(ikloc,apwalm,evalfv,evecfv,evecsv)
 use modmain
 use modldapu
 implicit none
 ! arguments
 integer, intent(in) :: ikloc
 complex(8), intent(in) :: apwalm(ngkmax,apwordmax,lmmaxapw,natmtot,nspnfv)
-real(8), intent(in) :: evalfv_org(nstfv,nspnfv)
+real(8), intent(in) :: evalfv(nstfv,nspnfv)
 complex(8), intent(in) :: evecfv(nmatmax,nstfv,nspnfv)
 complex(8), intent(out) :: evecsv(nstsv,nstsv)
 ! local variables
@@ -203,7 +203,7 @@ i=0
 do ispn=1,nspinor
   do ist=1,nstfv
     i=i+1
-    evecsv(i,i)=evecsv(i,i)+evalfv_org(ist,ispn)
+    evecsv(i,i)=evecsv(i,i)+evalfv(ist,ispn)
   end do
 end do
 ! diagonalise the Hamiltonian
