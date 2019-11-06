@@ -32,24 +32,6 @@ integer ik,is,ia,ias,ist,i,ikloc
 integer n,nwork
 real(8) dv,etp,de,timetot
 
-  ! ------------------------------------------------------------------------------------------------- 
-  ! L.Z., 2019/July/02
-  ! some addition and re-naming of variables are done: 
-  ! 
-  ! 1. "evalfv" in src/*.f90 was originally 2- or 1-dimensional array, used as evalfv(nstfv,nspnfv) 
-  !    or evalfv(nstfv). It is now all re-named to "evalfv_org", EXCEPT in this gndstate.f90. 
-  ! 
-  ! 2. "evalfv" in this gndstate.f90 was originally 3-dimensional evalfv(nstfv,nspnfv,nkptloc), 
-  !    but it is actually used for local fraction of k-points, so it's now re-named to "evalfvloc". 
-  !    And, the declaration of evalfvloc is moved to addons/mod_addons.f90. 
-  ! 
-  ! 3. In modmin/init1, "evalfv(nstfv,nspnfv,nkpt)" and some other arrays are added for all k-points. 
-  !    It's defined in the similar way as the evalsv(nstsv,nkpt). 
-  !
-  !    These newely defined arrays in modmain/init1 are used for comparing with SIRIUS. 
-  !    They do NOT affect THIS "gndstate" subroutine !!!
-  ! ------------------------------------------------------------------------------------------------- 
-
 ! allocatable arrays
 real(8), allocatable :: v(:)
 real(8), allocatable :: work(:)
