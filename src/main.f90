@@ -5,30 +5,42 @@
 
 ! main routine for the Elk code
 program main
-use modmain
-use mod_hdf5
-use mod_timer
-implicit none
-! local variables
-integer itask
-call timer_start(t_runtime,.true.)
-#ifdef _MAD_
-call madness_init
-#else
-call mpi_initialize
+
+  use modmain
+  use mod_hdf5
+  use mod_timer
+#ifdef _MPI_
+  use mpi
 #endif
-call mpi_world_initialize
-if (iproc.eq.0) call timestamp(6,"[main] done mpi_world_initialize")
-call hdf5_initialize
-! read input files
-call readinput
-if (iproc.eq.0) call timestamp(6,"[main] done readinput")
-call papi_initialize(npapievents,papievent)
-#ifdef _MAGMA_
-call cublas_init
-#endif
-! perform the appropriate task
-do itask=1,ntasks
+
+  implicit none
+
+  ! local variables
+  integer itask
+
+  call timer_start(t_runtime,.true.)
+
+  call mpi_initialize           !!  addons/mod_mpi_grid.f90 :: mpi_init(ierr); 
+  call mpi_world_initialize     !!  addons/mod_mpi_grid.f90 :: mpi_comm_size(MPI_COMM_WORLD,nproc,ierr); 
+                                !!                             mpi_comm_rank(MPI_COMM_WORLD,iproc,ierr);
+
+  !! In gndstate* task: 
+  !! "call init0" will pass MPI_COMM_WORLD to SIRIUS; 
+  !! "call init1" will call initmpigrid (addons/initmpigrid.f90), which has mip_grid_initialize(d) at the end;   
+
+
+  if (iproc.eq.0) call timestamp(6,"[main] done mpi_world_initialize")
+
+  call hdf5_initialize
+
+  call readinput
+
+  if (iproc.eq.0) call timestamp(6,"[main] done readinput")
+
+  call papi_initialize(npapievents,papievent)
+
+  ! ---------- perform the appropriate tasks
+  do itask=1,ntasks
   task=tasks(itask)
   select case(task)
   case(-1)
@@ -36,12 +48,8 @@ do itask=1,ntasks
     stop
   case(0,1)
     call gndstate
-  case(1000)
-    call gndstate_1000 ! this is the SIRIUS interface freezed on 2019/07/14, this does not do the passing of eigen values/vectors
-  case(1001)
-    call gndstate_1001 ! this is the SIRIUS interface being tested, this has the passing of eigen values/vectors
-  case(2,3)
-    call geomopt       ! structual optimization 
+  case(2,3) 
+    call geomopt
   case(5,6)
     call hartfock
   case(10)
@@ -116,10 +124,6 @@ do itask=1,ntasks
     call sic_gndstate 
   case(701)
     call sic_main
-  !case(702)
-  !  call sic_test_vme
-  !case(703)
-  !  call sic_test_localize
   case(800)
     call response
   case(801)
@@ -150,12 +154,10 @@ do itask=1,ntasks
     call test_bloch_wf
   case(882)
     call writewf
-  !case(883)
-  !  call test_potcoul
-!#ifdef _MAD_
-!  case(890)
-!    call test_madness
-!#endif
+  case(900)             !! SIRIUS related task
+    call gndstate_900
+  case(901)             !! SIRIUS related task
+    call gndstate_901
   case default
     write(*,*)
     write(*,'("Error(main): task not defined : ",I8)') task
@@ -163,18 +165,28 @@ do itask=1,ntasks
     stop
   end select
   call mpi_world_barrier
-end do
-#ifdef _MAGMA_
-call cublas_shutdown
-#endif
-call papi_finalize
-call hdf5_finalize
-call mpi_grid_finalize
-call mpi_world_finalize
-call timer_stop(t_runtime)
-if (iproc.eq.0) write(*,'("Total execution time : ",F12.4," seconds")')timer_get_value(t_runtime)
-stop
+  end do
+  ! ---------- perform the appropriate tasks
+
+  call papi_finalize
+  call hdf5_finalize
+
+  call mpi_grid_finalize
+  call mpi_world_finalize  !! this is doing: call mpi_barrier(MPI_COMM_WORLD,ierr)
+                           !!                call mpi_finalize(ierr)
+
+  call timer_stop(t_runtime)
+
+  if (iproc.eq.0) write(*,'("Total execution time : ",F12.4," seconds")')timer_get_value(t_runtime)
+
+  stop
+
 end program
+
+
+
+
+
 
 !BOI
 ! !TITLE: {\huge{\sc The Elk Code Manual}}\\ \Large{\sc Version 1.0.17}\\ \vskip 0.5cm \includegraphics[height=1cm]{elk_silhouette.pdf}
