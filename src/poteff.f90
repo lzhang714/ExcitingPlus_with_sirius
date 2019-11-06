@@ -1,33 +1,23 @@
-
 ! Copyright (C) 2002-2005 J. K. Dewhurst, S. Sharma and C. Ambrosch-Draxl.
 ! This file is distributed under the terms of the GNU General Public License.
 ! See the file COPYING for license details.
 
-!BOP
-! !ROUTINE: poteff
-! !INTERFACE:
-
 subroutine poteff
 
   use modmain
-!#ifdef _SIRIUS_
-!  use mod_sirius
-!#endif
 
 ! !DESCRIPTION:
 !   Computes the effective potential by adding together the Coulomb and
 !   exchange-correlation potentials. See routines {\tt potcoul} and {\tt potxc}.
-!
 ! !REVISION HISTORY:
 !   Created April 2003 (JKD)
-!EOP
-!BOC
 
   implicit none
-
+  
   ! local variables
   integer is,ia,ias,ir,offs,i,j
   real(8) ts0,ts1
+  
   call timesec(ts0)
   call timer_start(t_pot)
 
@@ -45,8 +35,6 @@ subroutine poteff
       !call gatherir(vclir(1))
       ! Exciting gets "vmad" from SIRIUS, do I need this? 
       call sirius_get_vha_el(gs_handler, vmad(1))
-#else
-      stop sirius_error
 #endif
   else
       call potcoul
@@ -68,8 +56,6 @@ subroutine poteff
       !do j = 1, ndmag
       !  call gatherir(bxcir(1, j))
       !enddo
-#else
-      stop sirius_error
 #endif
   else
       call potxc
