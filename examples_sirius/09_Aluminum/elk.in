@@ -1,54 +1,36 @@
-! ground state of bulk aluminum
-
+! --------------------------------------------------------------------------------------- !
+! ground state of bulk aluminum.
+! 
+! If you set sirius_davidson_eigen_solver=.true., then you need smaller subspace. 
+! For example try setting "subspace_size"=2 in init0.f90 and re-compile. 
+! The default value of subspace size is 8, for large magnetic molecules.
+! --------------------------------------------------------------------------------------- !
+ 
 tasks
-  2000
+  901
 
 tevecsv
-  .true.
+  .false.
 
-test_sirius_evec
-                          .true.
+sirius_davidson_eigen_solver
+                             .false.
 use_sirius_library
-                          .true.
+                       .true.
 use_sirius_init
-                          .true.
+                       .true.
 sirius_run_full_scf
-                          .true.
-
-use_sirius_eigen_states
-   .false.
-update_atomic_pot
-   .false.
-pass_veffig_to_sirius
-   .false.
-pass_apwfr_to_sirius
-   .false.
-pass_lofr_to_sirius
-   .false.
-pass_olprad_to_sirius
-   .false.
-pass_hmlrad_to_sirius
-   .false.
-
-use_sirius_vha
-   .false. 
-use_sirius_vxc
-   .false.
-use_sirius_density
-   .false.
+                       .true.
 use_sirius_cfun
                        .true.
 use_sirius_gvec
                        .true.
 use_sirius_gkvec
                        .true.
-use_sirius_rhoinit
-   .false.
-use_sirius_autoenu
-   .false.
+test_sirius_evec
+                       .false.
 
 maxscl
-  3
+  100
 
 avec
   0.0  1.0  1.0
