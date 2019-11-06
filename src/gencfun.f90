@@ -1,4 +1,3 @@
-
 ! Copyright (C) 2002-2005 J. K. Dewhurst, S. Sharma and C. Ambrosch-Draxl.
 ! This file is distributed under the terms of the GNU General Public License.
 ! See the file COPYING for license details.
@@ -8,10 +7,7 @@
 ! !INTERFACE:
 subroutine gencfun
 ! !USES:
-  use modmain
-!#ifdef _SIRIUS_
-!  use mod_sirius
-!#endif
+use modmain
 ! !DESCRIPTION:
 !   Generates the smooth characteristic function. This is the function which is
 !   0 within the muffin-tins and 1 in the intersitial region and is constructed
@@ -49,8 +45,7 @@ subroutine gencfun
   allocate(cfunig(ngrtot))
   if (allocated(cfunir)) deallocate(cfunir)
   allocate(cfunir(ngrtot))
-  
-  
+    
   ! ----------------------------------------------------------------------------    
   if (use_sirius_library.and.use_sirius_cfun) then
 
@@ -58,12 +53,7 @@ subroutine gencfun
     if (allocated(cfunig)) deallocate(cfunig)
     allocate(cfunig(ngvec))
 #ifdef _SIRIUS_
-    !m = sum(ngr_loc_all(0:sirius_fft_comm_rank)) - ngr_loc + 1
-    !m = 1
     call sirius_get_step_function(sctx, cfunig(1), cfunir(1))
-    !call gatherir(cfunir(1))
-#else
-    stop sirius_error
 #endif
 
   else
@@ -98,10 +88,6 @@ subroutine gencfun
 
   end if
   ! ----------------------------------------------------------------------------    
-
-              write(*,*)' -------------------------- '    
-              write(*,*)' debug flag, gencfun done. '
-              write(*,*)' -------------------------- ' 
 
   return
 

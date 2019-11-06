@@ -6,11 +6,8 @@
 ! !INTERFACE:
 subroutine gengvec
 ! !USES:
-  use modmain
-  use modtest
-!#ifdef _SIRIUS_
-!  use mod_sirius
-!#endif
+use modmain
+use modtest
 ! !DESCRIPTION:
 !   Generates a set of ${\bf G}$-vectors used for the Fourier transform of the
 !   charge density and potential and sorts them according to length. Integers
@@ -39,9 +36,7 @@ subroutine gengvec
 
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   if (use_sirius_library.and.use_sirius_gvec) then
-  
 #ifdef _SIRIUS_
-
     ! ---------------------------------------------------------------
     ! remind myself some EP definitions: 
     !   ivg:   G-vec in integer(lattice) coordi
@@ -78,15 +73,6 @@ subroutine gengvec
     ! 
     call sirius_get_gvec_arrays(sctx, ivg(1,1), vgc(1,1), gc(1), ivgig(intgv(1,1), intgv(2,1), intgv(3,1)))
     call sirius_get_fft_index(sctx, igfft(1))
-
-              !write(*,*)'  '    
-              !write(*,*)' debug flag, gengvec, 1 '
-              !write(*,'(" debug flag, gengvec, ngrtot(from EP)     = ", I10    )') ngrtot
-              !write(*,'(" debug flag, gengvec, ngvec(from SIRIUS)  = ", I10    )') ngvec
-              !write(*,*)'  ' 
-    
-#else
-    stop sirius_error
 #endif
 
   else
@@ -127,10 +113,10 @@ subroutine gengvec
     call sortidx(ngrtot,gc,idx)
     ! re-order arrays
     do ig=1,ngrtot
-      rar(ig)=gc(ig)            ! copy gc to rar
+      rar(ig)=gc(ig)              ! copy gc to rar
     end do
     do ig=1,ngrtot 
-      gc(ig)=rar(idx(ig))       ! re-assign rar to gc
+      gc(ig)=rar(idx(ig))         ! re-assign rar to gc
     end do
     do k=1,3
       do ig=1,ngrtot
@@ -181,20 +167,8 @@ subroutine gengvec
     ! 
     deallocate(idx,iar,rar)
 
-
-              !write(*,*)'  '    
-              !write(*,*)' debug flag, gengvec, 2 '
-              !write(*,'(" debug flag, gengvec, ngrtot = ", I10    )') ngrtot
-              !write(*,'(" debug flag, gengvec, ngvec  = ", I10    )') ngvec
-              !write(*,*)'  ' 
-
   end if
   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-              write(*,*)' -------------------------- '    
-              write(*,*)' debug flag, gengvec done. '
-              write(*,*)' -------------------------- ' 
-
 
   return
 
