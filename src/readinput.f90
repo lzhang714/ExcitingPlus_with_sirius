@@ -123,7 +123,7 @@ spinorb=.false.
 tau0atm=0.1d0
 nstfsp=6
 lradstp=4
-chgexs=0.d0
+ chgexs=0.d0 
 nprad=4
 scissor=0.d0
 noptcomp=1
@@ -172,6 +172,7 @@ nwrite=2
 tevecsv=.false.
 
 ! LDA+U defaults
+
 ldapu=0
 inptypelu=1
 llu(:)=-1
@@ -185,6 +186,7 @@ tmomlu=.false.
 readalu=.false.
 
 ! reduced density matrix functional theory (RMDFT) defaults
+
 rdmxctype=2
 rdmmaxscl=1
 maxitn=250
@@ -210,7 +212,9 @@ frozencr=.false.
 spincore=.false.
 solscf=1.d0
 emaxelnes=-1.2d0
+
 ! GW calculations
+
 qpnb(1:2)=1
 upm(1)=2
 upm(2)=5
@@ -219,12 +223,20 @@ rho_val=.false.
 pt_core=.false.
 nebd_chi=1
 nebd_se=1
-! default values of SIRIUS control switches are all .false. 
+
+! SIRIUS control switches are all set to .false. by default.  
+
 use_sirius_library=.false.
-
 use_sirius_init=.false.
-
 sirius_run_full_scf=.false.
+use_sirius_cfun=.false. 
+use_sirius_gvec=.false. 
+use_sirius_gkvec=.false. 
+
+sirius_davidson_eigen_solver=.false.
+
+test_sirius_evec=.false.
+
 
 pass_apwfr_to_sirius=.false. 
 pass_lofr_to_sirius=.false. 
@@ -235,9 +247,6 @@ use_sirius_vha=.false.
 use_sirius_vxc=.false. 
 use_sirius_eigen_states=.false. 
 use_sirius_density=.false. 
-use_sirius_cfun=.false. 
-use_sirius_gvec=.false. 
-use_sirius_gkvec=.false. 
 
 use_sirius_rhoinit=.false. 
 use_sirius_autoenu=.false. 
@@ -245,6 +254,7 @@ use_sirius_autoenu=.false.
 !--------------------------!
 !     read from elk.in     !
 !--------------------------!
+
 open(50,file=trim(adjustl(fname)),action='READ',status='OLD',form='FORMATTED',iostat=iostat)
 if (iostat.ne.0) then
   write(*,*)
@@ -285,7 +295,12 @@ case('tasks')
   stop
 case('species')
   call genspecies(50)
-! -------------------------- read SIRIUS control switch values
+  
+! SIRIUS control switches:
+
+case('test_sirius_evec')
+  read(50,*,err=20) test_sirius_evec
+   
 case('use_sirius_library')
   read(50,*,err=20) use_sirius_library
 
@@ -294,6 +309,9 @@ case('use_sirius_init')
 
 case('sirius_run_full_scf')
   read(50,*,err=20) sirius_run_full_scf
+
+case('sirius_davidson_eigen_solver')
+  read(50,*,err=20) sirius_davidson_eigen_solver
 
 case('use_sirius_eigen_states')
   read(50,*,err=20) use_sirius_eigen_states
@@ -326,7 +344,9 @@ case('use_sirius_rhoinit')
   read(50,*,err=20) use_sirius_rhoinit
 case('use_sirius_autoenu')
   read(50,*,err=20) use_sirius_autoenu
-! -------------------------- read SIRIUS control switch values
+
+
+
 case('avec')
   read(50,*,err=20) avec(:,1)
   read(50,*,err=20) avec(:,2)
