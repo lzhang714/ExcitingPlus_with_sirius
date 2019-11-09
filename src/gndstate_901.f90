@@ -25,14 +25,10 @@ subroutine gndstate_901
   implicit none
 
   ! ------------------------------------------------------------------------------------------------- 
-  ! L.Z., 2019/July/02, some re-name and addition of variables: 
-  ! 
-  ! 1. "evalfv" in this gndstate.f90 was originally 3-dimensional evalfv(nstfv,nspnfv,nkptloc), 
-  !    but it is actually used for local fraction of k-points, so it's now re-named to "evalfvloc". 
-  !    And, the declaration of evalfvloc is moved to addons/mod_addons.f90. 
-  ! 
-  ! 2. In modmain/init1, 7 new arrays are added for eigen values/vectors of all k-points. 
-  !    The new arrarys are allocated only if "test_sirius_evec" is true. 
+  ! L.Z., 2019 Nov. 02 
+  ! 1. This task will only do init0 ---> init1 ---> SIRIUS Full SCF.
+  ! 2. This task does not involve parsing of eigen vectors, all related arrays are not used.  
+  ! 3. "evalfv" is re-named to "evalfvloc". 
   ! ------------------------------------------------------------------------------------------------- 
 
   ! local variables
@@ -79,53 +75,6 @@ subroutine gndstate_901
   else
     allocate(evecfdloc(nspinor*nmatmax,nstsv,nkptloc))  ! declared addons/mod_addons.f90
   endif
-
-
-
-!! =======================================================================================================================
-!!                                     7 new arrays for testing parsing eigen values/vectors from SIRIUS
-!if (test_sirius_evec) then 
-!  ! 1st-variational
-!  if (allocated(evalfv_allk_sirius)) deallocate(evalfv_allk_sirius)     ! evalfv_allk_sirius (nstfv,nspnfv,nkpt)
-!       allocate(evalfv_allk_sirius(nstfv,nspnfv,nkpt)) 
-!  if (allocated(evalfv_allk)) deallocate(evalfv_allk)                   ! evalfv_allk        (nstfv,nspnfv,nkpt)
-!       allocate(evalfv_allk(nstfv,nspnfv,nkpt))
-!  if (allocated(evecfv_allk_sirius)) deallocate(evecfv_allk_sirius)     ! evecfv_allk_sirius (nmatmax,nstfv,nspnfv,nkpt)
-!       allocate(evecfv_allk_sirius(nmatmax,nstfv,nspnfv,nkpt))
-!  if (allocated(evecfv_allk)) deallocate(evecfv_allk)                   ! evecfv_allk        (nmatmax,nstfv,nspnfv,nkpt)
-!       allocate(evecfv_allk(nmatmax,nstfv,nspnfv,nkpt))
-!  ! 2nd-variational 
-!  if (allocated(evalsv_allk_sirius)) deallocate(evalsv_allk_sirius)     ! evalsv_allk_sirius (nstsv,nkpt)
-!       allocate(evalsv_allk_sirius(nstsv,nkpt))
-!     !  evalsv_allk <---> evalsv                                        ! evalsv             (nstsv,nkpt)
-!     !  evalsv_allk <---> evalsv
-!  if (allocated(evecsv_allk_sirius)) deallocate(evecsv_allk_sirius)     ! evecsv_allk_sirius (nstsv,nstsv,nkpt)
-!       allocate(evecsv_allk_sirius(nstsv,nstsv,nkpt))             
-!  if (allocated(evecsv_allk)) deallocate(evecsv_allk)                   ! evecsv_allk        (nstsv,nstsv,nkpt)
-!       allocate(evecsv_allk(nstsv,nstsv,nkpt))
-!endif
-!!                                     7 new arrays for testing parsing eigen values/vectors from SIRIUS
-!! =======================================================================================================================
-
-
-
-  ! zero eigen value/vector arrays
-!  evalfvloc(:,:,:)=0.d0             ! local fraction nkptloc  
-!  evecfvloc(:,:,:,:)=zzero          ! local fraction nkptloc  
-!  evecsvloc(:,:,:)=zzero            ! local fraction nkptloc  
-  ! 
-!  evalfv_tmp(:,:)=0.d0              ! all nkpt 
-!  evecfv_tmp(:,:,:)=zzero           ! all nkpt
-  ! 
-!  evalfv_allk(:,:,:)=0.d0           ! all nkpt 
-!  evalfv_allk_sirius(:,:,:)=0.d0    ! all nkpt 
-!  evecfv_allk(:,:,:,:)=zzero        ! all nkpt 
-!  evecfv_allk_sirius(:,:,:,:)=zzero ! all nkpt 
-  ! 
-!  evalsv(:,:)=0.d0                  ! all nkpt 
-!  evalsv_allk_sirius(:,:)=0.d0      ! all nkpt
-!  evecsv_allk(:,:,:)=zzero          ! all nkpt
-!  evecsv_allk_sirius(:,:,:)=zzero   ! all nkpt
   
   ! write info and open files
   if (wproc) then
@@ -168,20 +117,7 @@ subroutine gndstate_901
   ! determine the size of the mixer work array
   nwork=-1
   call mixerifc(mixtype,n,v,dv,nwork,v)
-  allocate(work(nwork))
-
-
-  !!if (wproc) then
-  !!  write(*,*)'  '
-  !!  write(*,*)' -------------------------- '
-  !!  write(*,*)' gnd901 - flag 2           '
-  !!  write(*,*)'  '
-  !!endif
-
-
-
-
-  
+  allocate(work(nwork))  
   
   ! -----------------------------------------------------------------! 
   ! initialize or read the charge density and potentials from file   ! 
