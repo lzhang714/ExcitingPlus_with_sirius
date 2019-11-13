@@ -1,10 +1,10 @@
 #!/bin/bash -l
 #SBATCH --constraint=haswell
 #SBATCH --partition=debug
-#SBATCH --account=m526
+#SBATCH --account=m3346
 #SBATCH --time=00:30:00
 #SBATCH --nodes=16
-#SBATCH --ntasks-per-node=2
+#SBATCH --ntasks-per-node=1
 #SBATCH --job-name=1stbloodmpi
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=longzhang2008@gmail.com

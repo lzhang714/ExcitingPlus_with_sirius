@@ -1,0 +1,157 @@
+forrtl: severe (174): SIGSEGV, segmentation fault occurred
+Image              PC                Routine            Line        Source             
+elk                0000000021653553  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021711A4A  __intel_avx_rep_m     Unknown  Unknown
+elk                0000000020CB5FC6  Unknown               Unknown  Unknown
+elk                0000000021009F42  Unknown               Unknown  Unknown
+elk                0000000020D990AD  Unknown               Unknown  Unknown
+elk                0000000020CC7872  Unknown               Unknown  Unknown
+elk                0000000020CC7381  Unknown               Unknown  Unknown
+elk                0000000020D1B7A6  Unknown               Unknown  Unknown
+elk                0000000020BD4514  Unknown               Unknown  Unknown
+elk                0000000020BBA5AE  Unknown               Unknown  Unknown
+elk                00000000207DD9F2  Unknown               Unknown  Unknown
+elk                000000002087C09C  Unknown               Unknown  Unknown
+elk                0000000020014812  Unknown               Unknown  Unknown
+libc-2.26.so       00002AAADC156F8A  __libc_start_main     Unknown  Unknown
+elk                000000002001472A  Unknown               Unknown  Unknown
+srun: error: nid00564: task 0: Exited with exit code 174
+srun: Terminating job step 25763202.0
+forrtl: error (78): process killed (SIGTERM)
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+
+Stack trace terminated abnormally.
+forrtl: error (78): process killed (SIGTERM)
+forrtl: error (78): process killed (SIGTERM)
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+
+Stack trace terminated abnormally.
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+
+Stack trace terminated abnormally.
+forrtl: error (78): process killed (SIGTERM)
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+
+Stack trace terminated abnormally.
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                0000000021653584  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021652FD0  for__signal_handl     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                0000000021653584  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021652FD0  for__signal_handl     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                0000000021653584  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021652FD0  for__signal_handl     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                0000000021653584  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021652FD0  for__signal_handl     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                0000000021653584  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021652FD0  for__signal_handl     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                0000000021653584  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021652FD0  for__signal_handl     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                0000000021653584  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021653010  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021652FD0  for__signal_handl     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                0000000021653584  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021653010  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021652FD0  for__signal_handl     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                0000000021653584  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021653010  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021652FD0  for__signal_handl     Unknown  Unknown
+forrtl: severe (174): SIGSEGV, segmentation fault occurred
+Image              PC                Routine            Line        Source             
+elk                00000000216535F9  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+libc-2.26.so       00002AAADC23D5BE  __vsnprintf_chk       Unknown  Unknown
+libc-2.26.so       00002AAADC23D515  __snprintf_chk        Unknown  Unknown
+elk                00000000216FF52B  Unknown               Unknown  Unknown
+elk                0000000021B0F776  Unknown               Unknown  Unknown
+forrtl: severe (174): SIGSEGV, segmentation fault occurred
+Image              PC                Routine            Line        Source             
+elk                00000000216535F9  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+libc-2.26.so       00002AAADC23D5BE  __vsnprintf_chk       Unknown  Unknown
+libc-2.26.so       00002AAADC23D515  __snprintf_chk        Unknown  Unknown
+elk                00000000216FF52B  Unknown               Unknown  Unknown
+elk                0000000021B0F776  Unknown               Unknown  Unknown
+forrtl: severe (174): SIGSEGV, segmentation fault occurred
+Image              PC                Routine            Line        Source             
+elk                00000000216535F9  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+libc-2.26.so       00002AAADC23D5BE  __vsnprintf_chk       Unknown  Unknown
+libc-2.26.so       00002AAADC23D515  __snprintf_chk        Unknown  Unknown
+elk                00000000216FF52B  Unknown               Unknown  Unknown
+elk                0000000021B0F776  Unknown               Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                0000000021653584  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021652FD0  for__signal_handl     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                0000000021653584  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021653010  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+elk                0000000021652FD0  for__signal_handl     Unknown  Unknown
+forrtl: severe (174): SIGSEGV, segmentation fault occurred
+Image              PC                Routine            Line        Source             
+elk                00000000216535F9  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAADBF2A360  Unknown               Unknown  Unknown
+libc-2.26.so       00002AAADC23D5BE  __vsnprintf_chk       Unknown  Unknown
+libc-2.26.so       00002AAADC23D515  __snprintf_chk        Unknown  Unknown
+elk                00000000216FF52B  Unknown               Unknown  Unknown
+elk                0000000021B0F776  Unknown               Unknown  Unknown
+srun: error: nid00592: task 1: Bus error
+srun: error: nid00595: task 4: Bus error
+srun: error: nid00594: task 3: Bus error
+srun: error: nid00685: task 13: Bus error
+srun: error: nid00658: task 8: Bus error
+srun: error: nid00683: task 11: Bus error
+srun: error: nid00660: task 10: Bus error
+srun: error: nid00655: task 6: Bus error
+srun: error: nid00659: task 9: Bus error
+srun: error: nid00654: task 5: Bus error (core dumped)
+srun: error: nid00656: task 7: Killed
+srun: error: nid00593: task 2: Killed
+srun: error: nid00686: task 14: Killed
+srun: error: nid00687: task 15: Killed
+srun: error: nid00684: task 12: Killed
+srun: Force Terminated job step 25763202.0
+ 
+ ================================================= 
+ The job is done in time.                          
+ Time used for execution: 1 min 29 sec 
+ ================================================= 
+ 

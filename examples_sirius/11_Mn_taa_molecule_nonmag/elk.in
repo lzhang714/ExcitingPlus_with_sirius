@@ -1,5 +1,4 @@
-! ground state of non-magnetic Mn-taa molecule, 
-! must set: sirius_davidson_eigen_solver=.true.
+! ground state of non-magnetic Mn-taa molecule
 
 tasks
   901
@@ -7,25 +6,49 @@ tasks
 tevecsv
   .false.
 
-sirius_davidson_eigen_solver
-                             .true.
+test_sirius_evec
+                          .false.
 use_sirius_library
-                       .true.
+                          .true.
 use_sirius_init
-                       .true.
+                          .true.
 sirius_run_full_scf
-                       .true.
+                          .true.
+
+use_sirius_eigen_states
+   .false.
+update_atomic_pot
+   .false.
+pass_veffig_to_sirius
+   .false.
+pass_apwfr_to_sirius
+   .false.
+pass_lofr_to_sirius
+   .false.
+pass_olprad_to_sirius
+   .false.
+pass_hmlrad_to_sirius
+   .false.
+
+use_sirius_vha
+   .false. 
+use_sirius_vxc
+   .false.
+use_sirius_density
+   .false.
 use_sirius_cfun
                        .true.
 use_sirius_gvec
                        .true.
 use_sirius_gkvec
                        .true.
-test_sirius_evec
-                       .false.
+use_sirius_rhoinit
+   .false.
+use_sirius_autoenu
+   .false.
 
 maxscl
-  200
+  30
 
 avec
   1.0  0.0  0.0
