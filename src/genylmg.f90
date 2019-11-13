@@ -23,11 +23,11 @@ integer ig
 real(8) r,tp(2)
 ! allocate global G-vector spherical harmonic array
 if (allocated(ylmg)) deallocate(ylmg)
-allocate(ylmg(lmmaxvr,ngvec))
-do ig=1,ngvec
-  call sphcrd(vgc(:,ig),r,tp)
-  call genylm(lmaxvr,tp,ylmg(:,ig))
-end do
+!!!allocate(ylmg(lmmaxvr,ngvec))                    !!! OOM seed
+!!!do ig=1,ngvec
+!!!  call sphcrd(vgc(:,ig),r,tp)
+!!!  call genylm(lmaxvr,tp,ylmg(:,ig))
+!!!end do
 return
 end subroutine
 !EOC

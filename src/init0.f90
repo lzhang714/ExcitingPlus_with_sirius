@@ -664,10 +664,10 @@ subroutine init0
 
   ! allocate structure factor array for G-vectors
   if (allocated(sfacg)) deallocate(sfacg)
-  allocate(sfacg(ngvec,natmtot))
+  !!!allocate(sfacg(ngvec,natmtot))                          !!! OOM seed
 
   ! generate structure factors for G-vectors
-  call gensfacgp(ngvec,vgc,ngvec,sfacg)
+  !!!call gensfacgp(ngvec,vgc,ngvec,sfacg)                   !!! b/c ylmg and sfacg are gone
 
 ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 ! checked EXCITING interface again, different logic controlled by use_sirius_vha

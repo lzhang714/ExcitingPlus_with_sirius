@@ -50,8 +50,8 @@ zrhoir(:)=rhoir(:)
 lmax=lmaxvr+npsden+1
 call genjlgpr(lmax,gc,jlgr)
 ! solve the complex Poisson's equation
-call zpotcoul(nrmt,nrmtmax,spnrmax,spr,1,gc,jlgr,ylmg,sfacg,spzn,zrhomt, &
- zrhoir,zvclmt,zvclir,zrho0)
+!!!call zpotcoul(nrmt,nrmtmax,spnrmax,spr,1,gc,jlgr,ylmg,sfacg,spzn,zrhomt, &            !!! b/c ylmg and sfacg are gone
+!!! zrhoir,zvclmt,zvclir,zrho0)
 ! convert complex muffin-tin potential to real spherical harmonic expansion
 do is=1,nspecies
   do ia=1,natoms(is)

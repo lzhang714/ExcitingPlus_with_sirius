@@ -89,8 +89,8 @@ zn(:)=0.d0
 lmax=lmaxvr+npsden+1
 call genjlgpr(lmax,gc,jlgr)
 ! solve the complex Poisson's equation
-call zpotcoul(nrmt,nrmtmax,spnrmax,spr,1,gc,jlgr,ylmg,sfacg,zn,zrhomt,zrhoir, &
- zvclmt,zvclir,zrho0)
+!!!call zpotcoul(nrmt,nrmtmax,spnrmax,spr,1,gc,jlgr,ylmg,sfacg,zn,zrhomt,zrhoir, &      !!! b/c ylmg and sfacg are gone
+!!! zvclmt,zvclir,zrho0)
 ! convert complex muffin-tin potential to real spherical harmonic expansion
 do is=1,nspecies
   do ia=1,natoms(is)
