@@ -28,8 +28,8 @@ zrhoir(:)=0.d0
 lmax=lmaxvr+npsden+1
 call genjlgpr(lmax,gc,jlgr)
 ! solve the complex Poisson's equation
-call zpotcoul(nrmt,nrmtmax,spnrmax,spr,1,gc,jlgr,ylmg,sfacg,spzn,zrhomt, &
- zrhoir,zvclmt,zvclir,zrho0)
+!!!call zpotcoul(nrmt,nrmtmax,spnrmax,spr,1,gc,jlgr,ylmg,sfacg,spzn,zrhomt, &    !!! b/c ylmg and sfacg are gone
+!!! zrhoir,zvclmt,zvclir,zrho0)
 ! compute the nuclear-nuclear energy
 engynn=0.d0
 do is=1,nspecies
