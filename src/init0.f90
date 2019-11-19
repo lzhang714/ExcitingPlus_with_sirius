@@ -28,6 +28,7 @@ subroutine init0
   real(8) sum
   real(8) ts0,ts1
   integer, allocatable :: icls(:)
+  integer :: mpi_grid(2)
   character(100) :: label
   logical(1) :: flg, autoenu
   ! zero timing variables
@@ -562,9 +563,9 @@ subroutine init0
         ! as initial test, use sequential diagonalisation in lapack, i.e. sirius not running parallel.
         !mpi_grid(1)=rows_per_kpt 
         !mpi_grid(2)=cols_per_kpt
-        !mpi_grid(1) = 1 
-        !mpi_grid(2) = 1                
-        !call sirius_set_mpi_grid_dims(sctx, 2, mpi_grid(1))
+        mpi_grid(1) = 4 
+        mpi_grid(2) = 4                
+        call sirius_set_mpi_grid_dims(sctx, 2, mpi_grid(1))
 
         ! initialize global variables. In SIRIUS this is doing: sim_ctx.initialize();
         call sirius_initialize_context(sctx)
