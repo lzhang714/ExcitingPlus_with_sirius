@@ -1,0 +1,1093 @@
+ 
+timestamp: 19.11.2019  02:20:43
+comment: [main] done mpi_world_initialize
+ 
+timestamp: 19.11.2019  02:20:44
+comment: [main] done readinput
+SIRIUS 6.3.2, git hash: 954e2071e74bb0c3babe1a8df4956448cebc2a9a
+
+=== Warning at line 1087 of file /global/cscratch1/sd/zhang714/install_sirius_2019_08_22/SIRIUS-develop-debug/src/simulation_context.cpp ===
+step function gives a wrong volume for IT region
+  difference with exact value : 7.05768e-10
+
+
+SIRIUS version : 6.3.2
+git hash       : 954e2071e74bb0c3babe1a8df4956448cebc2a9a
+git branch     : release tag v6.3.2
+start time     : Tue, 19 Nov 2019 02:20:44
+
+number of MPI ranks           : 16
+MPI grid                      : 1 4 4
+maximum number of OMP threads : 16
+number of MPI ranks per node  : 1
+page size (Kb)                : 4
+number of pages               : 32973756
+available memory (GB)         : 125
+
+FFT context for density and potential
+=====================================
+  comm size                             : 4
+  plane wave cutoff                     : 16.000000
+  grid size                             : 200 200 200   total : 8000000
+  grid limits                           : -99 100   -99 100   -99 100
+  number of G-vectors within the cutoff : 3910043
+  local number of G-vectors             : 244385
+  number of G-shells                    : 7964
+
+FFT context for coarse grid
+=====================================
+  comm size                             : 1
+  plane wave cutoff                     : 14.736842
+  grid size                             : 192 192 192   total : 7077888
+  grid limits                           : -95 96   -95 96   -95 96
+  number of G-vectors within the cutoff : 3055249
+  local number of G-vectors             : 190955
+  number of G-shells                    : 6755
+
+
+Unit cell
+--------------------------------------------------------------------------------
+lattice vectors
+  a1 :      38.3784451020       0.0000000000       0.0000000000 
+  a2 :       0.0000000000      38.3784451020       0.0000000000 
+  a3 :       0.0000000000       0.0000000000      38.3784451020 
+reciprocal lattice vectors
+  b1 :       0.1637165156       0.0000000000       0.0000000000 
+  b2 :       0.0000000000       0.1637165156       0.0000000000 
+  b3 :       0.0000000000       0.0000000000       0.1637165156 
+
+unit cell volume :     56527.80554229 [a.u.^3]
+1/sqrt(omega)    :         0.00420600
+MT volume        : 283.020846 ( 0.50%)
+IT volume        : 56244.784696 (99.50%)
+
+number of atom types : 4
+type id : 0   symbol :  C   mt_radius :   0.950000, num_atoms: 21
+type id : 1   symbol :  H   mt_radius :   0.950000, num_atoms: 24
+type id : 2   symbol : Mn   mt_radius :   1.750000, num_atoms: 1
+type id : 3   symbol :  N   mt_radius :   1.500000, num_atoms: 7
+total number of atoms : 53
+number of symmetry classes : 53
+
+atom id              position                    vector_field        type id    class id
+----------------------------------------------------------------------------------------
+     0      0.932326 0.122351 0.001196   0.000000 0.000000 0.000000        0           0
+     1      0.122255 0.001551 0.932406   0.000000 0.000000 0.000000        0           1
+     2      0.000958 0.932525 0.122838   0.000000 0.000000 0.000000        0           2
+     3      0.934866 0.191727 0.000603   0.000000 0.000000 0.000000        0           3
+     4      0.191435 0.000403 0.934696   0.000000 0.000000 0.000000        0           4
+     5      0.000047 0.934440 0.192286   0.000000 0.000000 0.000000        0           5
+     6      0.001878 0.208235 0.997222   0.000000 0.000000 0.000000        0           6
+     7      0.208237 0.996275 0.001868   0.000000 0.000000 0.000000        0           7
+     8      0.996886 0.001306 0.209304   0.000000 0.000000 0.000000        0           8
+     9      0.037807 0.148666 0.995950   0.000000 0.000000 0.000000        0           9
+    10      0.148921 0.995275 0.037717   0.000000 0.000000 0.000000        0          10
+    11      0.995758 0.037461 0.149803   0.000000 0.000000 0.000000        0          11
+    12      0.882596 0.073918 0.002341   0.000000 0.000000 0.000000        0          12
+    13      0.073629 0.002642 0.882334   0.000000 0.000000 0.000000        0          13
+    14      0.001885 0.882624 0.074446   0.000000 0.000000 0.000000        0          14
+    15      0.853459 0.959762 0.000372   0.000000 0.000000 0.000000        0          15
+    16      0.959714 0.999827 0.852721   0.000000 0.000000 0.000000        0          16
+    17      0.000326 0.852488 0.960321   0.000000 0.000000 0.000000        0          17
+    18      0.843855 0.927976 0.932340   0.000000 0.000000 0.000000        0          18
+    19      0.928192 0.931604 0.843541   0.000000 0.000000 0.000000        0          19
+    20      0.932233 0.843185 0.928420   0.000000 0.000000 0.000000        0          20
+    21      0.892590 0.224554 0.001494   0.000000 0.000000 0.000000        1          21
+    22      0.224196 0.001668 0.892364   0.000000 0.000000 0.000000        1          22
+    23      0.000574 0.891876 0.224765   0.000000 0.000000 0.000000        1          23
+    24      0.022889 0.257512 0.995587   0.000000 0.000000 0.000000        1          24
+    25      0.257576 0.994401 0.022645   0.000000 0.000000 0.000000        1          25
+    26      0.995406 0.022040 0.258685   0.000000 0.000000 0.000000        1          26
+    27      0.090716 0.141296 0.993803   0.000000 0.000000 0.000000        1          27
+    28      0.141476 0.992887 0.090630   0.000000 0.000000 0.000000        1          28
+    29      0.993753 0.090454 0.142741   0.000000 0.000000 0.000000        1          29
+    30      0.830109 0.086109 0.005508   0.000000 0.000000 0.000000        1          30
+    31      0.086255 0.006102 0.829948   0.000000 0.000000 0.000000        1          31
+    32      0.004630 0.830236 0.087336   0.000000 0.000000 0.000000        1          32
+    33      0.805504 0.978702 0.017527   0.000000 0.000000 0.000000        1          33
+    34      0.978449 0.016788 0.804619   0.000000 0.000000 0.000000        1          34
+    35      0.017300 0.804412 0.979134   0.000000 0.000000 0.000000        1          35
+    36      0.869802 0.921749 0.035420   0.000000 0.000000 0.000000        1          36
+    37      0.921601 0.034703 0.869153   0.000000 0.000000 0.000000        1          37
+    38      0.035344 0.868952 0.922361   0.000000 0.000000 0.000000        1          38
+    39      0.806178 0.888991 0.938429   0.000000 0.000000 0.000000        1          39
+    40      0.888973 0.937414 0.806064   0.000000 0.000000 0.000000        1          40
+    41      0.938320 0.805627 0.889343   0.000000 0.000000 0.000000        1          41
+    42      0.822733 0.964968 0.898791   0.000000 0.000000 0.000000        1          42
+    43      0.965194 0.898095 0.822391   0.000000 0.000000 0.000000        1          43
+    44      0.898621 0.822074 0.965353   0.000000 0.000000 0.000000        1          44
+    45      0.000000 0.000000 0.000000   0.000000 0.000000 0.000000        2          45
+    46      0.996011 0.096948 0.998588   0.000000 0.000000 0.000000        3          46
+    47      0.097065 0.998710 0.995887   0.000000 0.000000 0.000000        3          47
+    48      0.998529 0.996106 0.097849   0.000000 0.000000 0.000000        3          48
+    49      0.902188 0.012112 0.999616   0.000000 0.000000 0.000000        3          49
+    50      0.011970 0.999413 0.901499   0.000000 0.000000 0.000000        3          50
+    51      0.999650 0.901294 0.012523   0.000000 0.000000 0.000000        3          51
+    52      0.902908 0.902336 0.902883   0.000000 0.000000 0.000000        3          52
+
+class id : 0   atom id : 0 
+class id : 1   atom id : 1 
+class id : 2   atom id : 2 
+class id : 3   atom id : 3 
+class id : 4   atom id : 4 
+class id : 5   atom id : 5 
+class id : 6   atom id : 6 
+class id : 7   atom id : 7 
+class id : 8   atom id : 8 
+class id : 9   atom id : 9 
+class id : 10   atom id : 10 
+class id : 11   atom id : 11 
+class id : 12   atom id : 12 
+class id : 13   atom id : 13 
+class id : 14   atom id : 14 
+class id : 15   atom id : 15 
+class id : 16   atom id : 16 
+class id : 17   atom id : 17 
+class id : 18   atom id : 18 
+class id : 19   atom id : 19 
+class id : 20   atom id : 20 
+class id : 21   atom id : 21 
+class id : 22   atom id : 22 
+class id : 23   atom id : 23 
+class id : 24   atom id : 24 
+class id : 25   atom id : 25 
+class id : 26   atom id : 26 
+class id : 27   atom id : 27 
+class id : 28   atom id : 28 
+class id : 29   atom id : 29 
+class id : 30   atom id : 30 
+class id : 31   atom id : 31 
+class id : 32   atom id : 32 
+class id : 33   atom id : 33 
+class id : 34   atom id : 34 
+class id : 35   atom id : 35 
+class id : 36   atom id : 36 
+class id : 37   atom id : 37 
+class id : 38   atom id : 38 
+class id : 39   atom id : 39 
+class id : 40   atom id : 40 
+class id : 41   atom id : 41 
+class id : 42   atom id : 42 
+class id : 43   atom id : 43 
+class id : 44   atom id : 44 
+class id : 45   atom id : 45 
+class id : 46   atom id : 46 
+class id : 47   atom id : 47 
+class id : 48   atom id : 48 
+class id : 49   atom id : 49 
+class id : 50   atom id : 50 
+class id : 51   atom id : 51 
+class id : 52   atom id : 52 
+
+atom id              position (Cartesian, a.u.)
+----------------------------------------------------------------------------------------
+     0         35.781220821108     4.695642159017     0.045901444263
+     1          4.691957193339     0.059524478914    35.784293515566
+     2          0.036766508834    35.788860983280     4.714331549044
+     3         35.878704225955     7.358184818703     0.023143474182
+     4          7.346978743591     0.015467407216    35.872180891843
+     5          0.001804688319    35.862354316702     7.379638877852
+     6          0.072074149204     7.991734353633    38.271828651451
+     7          7.991813722125    38.235485441238     0.071690534829
+     8         38.258935051030     0.050123092121     8.032764084297
+     9          1.450973188001     5.705570308817    38.223013249714
+    10          5.715355309986    38.197108885862     1.447520658620
+    11         38.215643318358     1.437695973205     5.749205971620
+    12         33.872661823330     2.836858543777     0.089843242675
+    13          2.825765852224     0.101395137643    33.862608481071
+    14          0.072342490295    33.873737077417     2.857123965279
+    15         32.754427807946    36.834172362491     0.014278769570
+    16         36.832329879652    38.371806494602    32.726106484555
+    17          0.012509986044    32.717164301177    36.855626421640
+    18         32.385842423052    35.614276758100    35.781759393015
+    19         35.622565096285    35.753513658664    32.373793530148
+    20         35.777653018442    32.360128921525    35.631316417339
+    21         34.256215727779     8.618034899671     0.057338065945
+    22          8.604292812283     0.064016357589    34.247543775218
+    23          0.022028535849    34.228814700945     8.626130485807
+    24          0.878442905242     9.882909762043    38.209080300000
+    25          9.885366405828    38.163564359839     0.869079312968
+    26         38.202133667266     0.845860249747     9.927926814543
+    27          3.481538564780     5.422721792025    38.140613637708
+    28          5.429630630240    38.105460954868     3.478239103204
+    29         38.138695565829     3.471485222521     5.478177690886
+    30         31.858291398273     3.304730132111     0.211388528534
+    31          3.310333169667     0.234186182860    31.852113884016
+    32          0.177690934706    31.863166891323     3.351820214020
+    33         30.913991542329    37.561061133175     0.672659303990
+    34         37.551351721046     0.644298296353    30.880025607410
+    35          0.663947667182    30.872081199354    37.577641588999
+    36         33.381648650540    35.375294450680     1.359364941253
+    37         35.369612044633     1.331848641133    33.356742062010
+    38          1.356447204326    33.349026310799    35.398781854992
+    39         30.939858111661    34.118093765548    36.015444798488
+    40         34.117400236110    35.976491876686    30.935483395997
+    41         36.011262834876    30.918712077849    34.131601526914
+    42         31.575214224636    37.033973091263    34.494200259876
+    43         37.042645043825    34.467488983028    31.562088187919
+    44         34.487676925764    31.549922132005    37.048746969042
+    45          0.000000000000     0.000000000000     0.000000000000
+    46         38.225352730487     3.720711734524    38.324255319552
+    47          3.725203613199    38.328936170825    38.220594400448
+    48         38.321989538091    38.228999901645     3.755293720115
+    49         34.624572455828     0.464840467848    38.363709018741
+    50          0.459390498097    38.355917678490    34.598129520070
+    51         38.365012929673    34.590262590780     0.480614010675
+    52         34.652205918959    34.630252972150    34.651245938157
+
+class id : 0   atom id : 0 
+class id : 1   atom id : 1 
+class id : 2   atom id : 2 
+class id : 3   atom id : 3 
+class id : 4   atom id : 4 
+class id : 5   atom id : 5 
+class id : 6   atom id : 6 
+class id : 7   atom id : 7 
+class id : 8   atom id : 8 
+class id : 9   atom id : 9 
+class id : 10   atom id : 10 
+class id : 11   atom id : 11 
+class id : 12   atom id : 12 
+class id : 13   atom id : 13 
+class id : 14   atom id : 14 
+class id : 15   atom id : 15 
+class id : 16   atom id : 16 
+class id : 17   atom id : 17 
+class id : 18   atom id : 18 
+class id : 19   atom id : 19 
+class id : 20   atom id : 20 
+class id : 21   atom id : 21 
+class id : 22   atom id : 22 
+class id : 23   atom id : 23 
+class id : 24   atom id : 24 
+class id : 25   atom id : 25 
+class id : 26   atom id : 26 
+class id : 27   atom id : 27 
+class id : 28   atom id : 28 
+class id : 29   atom id : 29 
+class id : 30   atom id : 30 
+class id : 31   atom id : 31 
+class id : 32   atom id : 32 
+class id : 33   atom id : 33 
+class id : 34   atom id : 34 
+class id : 35   atom id : 35 
+class id : 36   atom id : 36 
+class id : 37   atom id : 37 
+class id : 38   atom id : 38 
+class id : 39   atom id : 39 
+class id : 40   atom id : 40 
+class id : 41   atom id : 41 
+class id : 42   atom id : 42 
+class id : 43   atom id : 43 
+class id : 44   atom id : 44 
+class id : 45   atom id : 45 
+class id : 46   atom id : 46 
+class id : 47   atom id : 47 
+class id : 48   atom id : 48 
+class id : 49   atom id : 49 
+class id : 50   atom id : 50 
+class id : 51   atom id : 51 
+class id : 52   atom id : 52 
+
+minimum bond length:       2.051825706264
+
+space group number   : 1
+international symbol : P1
+Hall symbol          : P 1
+number of operations : 1
+transformation matrix : 
+    1.000000     0.000000     0.000000 
+    0.000000     1.000000     0.000000 
+    0.000000     0.000000     1.000000 
+origin shift : 
+    0.000000     0.000000     0.000000
+symmetry operations  : 
+isym : 0
+R :   1   0   0 
+      0   1   0 
+      0   0   1 
+T :   0.0000   0.0000   0.0000 
+S :   1.0000   0.0000   0.0000 
+      0.0000   1.0000   0.0000 
+      0.0000   0.0000   1.0000 
+
+
+label          : C.in
+--------------------------------------------------------------------------------
+symbol         : C
+name           : 
+zn             : 6
+mass           : 21894.166720
+mt_radius      : 0.950000
+num_mt_points  : 297
+grid_origin    : 0.000001
+grid_name      : external
+
+number of core electrons    : 2.000000
+number of valence electrons : 4.000000
+
+atomic levels (n, l, k, occupancy, core)
+1  0  1    2.0000 255
+2  0  1    2.0000 0
+2  1  1    1.0000 0
+2  1  2    1.0000 0
+
+local orbitals
+[{l :  0, n :  2, enu : 0.150000, dme : 0, auto : 0}, {l :  0, n :  2, enu : 0.150000, dme : 1, auto : 0}]
+[{l :  1, n :  2, enu : 0.150000, dme : 0, auto : 0}, {l :  1, n :  2, enu : 0.150000, dme : 1, auto : 0}]
+[{l :  0, n :  2, enu : 0.150000, dme : 0, auto : 0}, {l :  0, n :  2, enu : 0.150000, dme : 1, auto : 0}, {l :  0, n :  2, enu : -0.501200, dme : 0, auto : 0}]
+
+augmented wave basis
+[{l :  0, n :  2, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  1, n :  2, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  2, n :  3, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  3, n :  4, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  4, n :  5, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  5, n :  6, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  6, n :  7, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  7, n :  8, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  8, n :  9, enu : 0.150000, dme : 0, auto : 0}]
+maximum order of aw : 1
+
+total number of radial functions : 12
+lmax of radial functions         : 8
+max. number of radial functions  : 3
+total number of basis functions  : 86
+number of aw basis functions     : 81
+number of lo basis functions     : 5
+
+label          : H.in
+--------------------------------------------------------------------------------
+symbol         : H
+name           : 
+zn             : 1
+mass           : 1837.362219
+mt_radius      : 0.950000
+num_mt_points  : 197
+grid_origin    : 0.000002
+grid_name      : external
+
+number of core electrons    : 0.000000
+number of valence electrons : 1.000000
+
+atomic levels (n, l, k, occupancy, core)
+1  0  1    1.0000 0
+
+local orbitals
+[{l :  0, n :  1, enu : 0.150000, dme : 0, auto : 0}, {l :  0, n :  1, enu : 0.150000, dme : 1, auto : 0}]
+[{l :  1, n :  2, enu : 0.150000, dme : 0, auto : 0}, {l :  1, n :  2, enu : 0.150000, dme : 1, auto : 0}]
+
+augmented wave basis
+[{l :  0, n :  1, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  1, n :  2, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  2, n :  3, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  3, n :  4, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  4, n :  5, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  5, n :  6, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  6, n :  7, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  7, n :  8, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  8, n :  9, enu : 0.150000, dme : 0, auto : 0}]
+maximum order of aw : 1
+
+total number of radial functions : 11
+lmax of radial functions         : 8
+max. number of radial functions  : 2
+total number of basis functions  : 85
+number of aw basis functions     : 81
+number of lo basis functions     : 4
+
+label          : Mn.in
+--------------------------------------------------------------------------------
+symbol         : Mn
+name           : 
+zn             : 25
+mass           : 100145.936900
+mt_radius      : 1.750000
+num_mt_points  : 497
+grid_origin    : 0.000000
+grid_name      : external
+
+number of core electrons    : 10.000000
+number of valence electrons : 15.000000
+
+atomic levels (n, l, k, occupancy, core)
+1  0  1    2.0000 255
+2  0  1    2.0000 255
+2  1  1    2.0000 255
+2  1  2    4.0000 255
+3  0  1    2.0000 0
+3  1  1    2.0000 0
+3  1  2    4.0000 0
+3  2  2    3.0000 0
+3  2  3    2.0000 0
+4  0  1    2.0000 0
+
+local orbitals
+[{l :  0, n :  3, enu : 0.150000, dme : 0, auto : 0}, {l :  0, n :  3, enu : 0.150000, dme : 1, auto : 0}]
+[{l :  1, n :  3, enu : 0.150000, dme : 0, auto : 0}, {l :  1, n :  3, enu : 0.150000, dme : 1, auto : 0}]
+[{l :  2, n :  3, enu : 0.150000, dme : 0, auto : 0}, {l :  2, n :  3, enu : 0.150000, dme : 1, auto : 0}]
+[{l :  0, n :  3, enu : 0.150000, dme : 0, auto : 0}, {l :  0, n :  3, enu : 0.150000, dme : 1, auto : 0}, {l :  0, n :  3, enu : -3.137200, dme : 0, auto : 0}]
+[{l :  1, n :  3, enu : 0.150000, dme : 0, auto : 0}, {l :  1, n :  3, enu : 0.150000, dme : 1, auto : 0}, {l :  1, n :  3, enu : -1.985700, dme : 0, auto : 0}]
+[{l :  2, n :  3, enu : 0.150000, dme : 0, auto : 0}, {l :  2, n :  3, enu : 0.150000, dme : 1, auto : 0}, {l :  2, n :  3, enu : -0.255300, dme : 0, auto : 0}]
+
+augmented wave basis
+[{l :  0, n :  3, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  1, n :  3, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  2, n :  3, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  3, n :  4, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  4, n :  5, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  5, n :  6, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  6, n :  7, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  7, n :  8, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  8, n :  9, enu : 0.150000, dme : 0, auto : 0}]
+maximum order of aw : 1
+
+total number of radial functions : 15
+lmax of radial functions         : 8
+max. number of radial functions  : 3
+total number of basis functions  : 99
+number of aw basis functions     : 81
+number of lo basis functions     : 18
+
+label          : N.in
+--------------------------------------------------------------------------------
+symbol         : N
+name           : 
+zn             : 7
+  SIRIUS full scf started! 
+  SIRIUS full scf started! 
+  SIRIUS full scf started! 
+  SIRIUS full scf started! 
+  SIRIUS full scf started! 
+  SIRIUS full scf started! 
+  SIRIUS full scf started! 
+  SIRIUS full scf started! 
+  SIRIUS full scf started! 
+  SIRIUS full scf started! 
+  SIRIUS full scf started! 
+  SIRIUS full scf started! 
+  SIRIUS full scf started! 
+ma  SIRIUS full scf started! 
+  SIRIUS full scf started! 
+  SIRIUS full scf started! 
+ss           : 25532.652140
+mt_radius      : 1.500000
+num_mt_points  : 297
+grid_origin    : 0.000001
+grid_name      : external
+
+number of core electrons    : 2.000000
+number of valence electrons : 5.000000
+
+atomic levels (n, l, k, occupancy, core)
+1  0  1    2.0000 255
+2  0  1    2.0000 0
+2  1  1    1.0000 0
+2  1  2    2.0000 0
+
+local orbitals
+[{l :  0, n :  2, enu : 0.150000, dme : 0, auto : 0}, {l :  0, n :  2, enu : 0.150000, dme : 1, auto : 0}]
+[{l :  1, n :  2, enu : 0.150000, dme : 0, auto : 0}, {l :  1, n :  2, enu : 0.150000, dme : 1, auto : 0}]
+[{l :  0, n :  2, enu : 0.150000, dme : 0, auto : 0}, {l :  0, n :  2, enu : 0.150000, dme : 1, auto : 0}, {l :  0, n :  2, enu : -0.677000, dme : 0, auto : 0}]
+
+augmented wave basis
+[{l :  0, n :  2, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  1, n :  2, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  2, n :  3, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  3, n :  4, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  4, n :  5, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  5, n :  6, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  6, n :  7, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  7, n :  8, enu : 0.150000, dme : 0, auto : 0}]
+[{l :  8, n :  9, enu : 0.150000, dme : 0, auto : 0}]
+maximum order of aw : 1
+
+total number of radial functions : 12
+lmax of radial functions         : 8
+max. number of radial functions  : 3
+total number of basis functions  : 86
+number of aw basis functions     : 81
+number of lo basis functions     : 5
+
+total nuclear charge               : 224
+number of core electrons           : 66.000000
+number of valence electrons        : 158.000000
+total number of electrons          : 224.000000
+extra charge                       : 0.000000
+total number of aw basis functions : 4293
+total number of lo basis functions : 254
+number of first-variational states : 179
+number of bands                    : 179
+number of spins                    : 1
+number of magnetic dimensions      : 0
+lmax_apw                           : 8
+lmax_rho                           : 8
+lmax_pot                           : 8
+lmax_rf                            : 8
+smearing width                     : 0.010000
+cyclic block size                  : 16
+|G+k| cutoff                       : 7.368421
+valence relativity                 : none
+core relativity                    : none
+standard eigen-value solver        : LAPACK
+generalized eigen-value solver     : LAPACK
+processing unit                    : CPU
+
+iterative solver                   : davidson
+number of steps                    : 32
+subspace size                      : 8
+
+spglib version: 1.12.0
+HDF5 version: 1.10.5
+Libxc version: 4.3.4
+
+XC functionals
+==============
+1) XC_LDA_X: Slater exchange
+P. A. M. Dirac, Math. Proc. Cambridge Philos. Soc. 26, 376 (1930) (10.1017/S0305004100016108)
+F. Bloch, Z. Phys. 57, 545 (1929) (10.1007/BF01340281)
+
+2) XC_LDA_C_VWN: Vosko, Wilk & Nusair (VWN5)
+S. H. Vosko, L. Wilk, and M. Nusair, Can. J. Phys. 58, 1200 (1980) (10.1139/p80-159)
+
+
+=== Warning at line 33 of file /global/cscratch1/sd/zhang714/install_sirius_2019_08_22/SIRIUS-develop-debug/src/K_point/k_point.cpp ===
+G+k cutoff (7.36842) is too large for a given lmax (8) and a maximum MT radius (1.75)
+suggested minimum value for lmax : 13
+
+
+total number of k-points : 1
+--------------------------------------------------------------------------------
+  ik                vk                    weight  num_gkvec   gklo_basis_size
+--------------------------------------------------------------------------------
+   0     0.0000   0.0000   0.0000       1.000000     381915            382169
+
+|||+------------------------------+
+|||| SCF iteration   0 out of  30 |
+|||| this is rank:   0            |
+|||+------------------------------+
+
+Linearization energies
+Atom : C, class id : 0
+augmented waves
+local orbitals
+
+Atom : C, class id : 1
+augmented waves
+local orbitals
+
+Atom : C, class id : 2
+augmented waves
+local orbitals
+
+Atom : C, class id : 3
+augmented waves
+local orbitals
+
+Atom : C, class id : 4
+augmented waves
+local orbitals
+
+Atom : C, class id : 5
+augmented waves
+local orbitals
+
+Atom : C, class id : 6
+augmented waves
+local orbitals
+
+Atom : C, class id : 7
+augmented waves
+local orbitals
+
+Atom : C, class id : 8
+augmented waves
+local orbitals
+
+Atom : C, class id : 9
+augmented waves
+local orbitals
+
+Atom : C, class id : 10
+augmented waves
+local orbitals
+
+Atom : C, class id : 11
+augmented waves
+local orbitals
+
+Atom : C, class id : 12
+augmented waves
+local orbitals
+
+Atom : C, class id : 13
+augmented waves
+local orbitals
+
+Atom : C, class id : 14
+augmented waves
+local orbitals
+
+Atom : C, class id : 15
+augmented waves
+local orbitals
+
+Atom : C, class id : 16
+augmented waves
+local orbitals
+
+Atom : C, class id : 17
+augmented waves
+local orbitals
+
+Atom : C, class id : 18
+augmented waves
+local orbitals
+
+Atom : C, class id : 19
+augmented waves
+local orbitals
+
+Atom : C, class id : 20
+augmented waves
+local orbitals
+
+Atom : H, class id : 21
+augmented waves
+local orbitals
+
+Atom : H, class id : 22
+augmented waves
+local orbitals
+
+Atom : H, class id : 23
+augmented waves
+local orbitals
+
+Atom : H, class id : 24
+augmented waves
+local orbitals
+
+Atom : H, class id : 25
+augmented waves
+local orbitals
+
+Atom : H, class id : 26
+augmented waves
+local orbitals
+
+Atom : H, class id : 27
+augmented waves
+local orbitals
+
+Atom : H, class id : 28
+augmented waves
+local orbitals
+
+Atom : H, class id : 29
+augmented waves
+local orbitals
+
+Atom : H, class id : 30
+augmented waves
+local orbitals
+
+Atom : H, class id : 31
+augmented waves
+local orbitals
+
+Atom : H, class id : 32
+augmented waves
+local orbitals
+
+Atom : H, class id : 33
+augmented waves
+local orbitals
+
+Atom : H, class id : 34
+augmented waves
+local orbitals
+
+Atom : H, class id : 35
+augmented waves
+local orbitals
+
+Atom : H, class id : 36
+augmented waves
+local orbitals
+
+Atom : H, class id : 37
+augmented waves
+local orbitals
+
+Atom : H, class id : 38
+augmented waves
+local orbitals
+
+Atom : H, class id : 39
+augmented waves
+local orbitals
+
+Atom : H, class id : 40
+augmented waves
+local orbitals
+
+Atom : H, class id : 41
+augmented waves
+local orbitals
+
+Atom : H, class id : 42
+augmented waves
+local orbitals
+
+Atom : H, class id : 43
+augmented waves
+local orbitals
+
+Atom : H, class id : 44
+augmented waves
+local orbitals
+
+Atom : Mn, class id : 45
+augmented waves
+local orbitals
+
+Atom : N, class id : 46
+augmented waves
+local orbitals
+
+Atom : N, class id : 47
+augmented waves
+local orbitals
+
+Atom : N, class id : 48
+augmented waves
+local orbitals
+
+Atom : N, class id : 49
+augmented waves
+local orbitals
+
+Atom : N, class id : 50
+augmented waves
+local orbitals
+
+Atom : N, class id : 51
+augmented waves
+local orbitals
+
+Atom : N, class id : 52
+augmented waves
+local orbitals
+
+smallest eigen-value of the singular components:   0.0006586722954555
+iterative solver tolerance:     0.000000000000
+step: 0, current subspace size: 453, maximum subspace size: 1706
+step: 1, current subspace size: 632, maximum subspace size: 1706
+step: 2, current subspace size: 811, maximum subspace size: 1706
+step: 3, current subspace size: 990, maximum subspace size: 1706
+step: 4, current subspace size: 1169, maximum subspace size: 1706
+step: 5, current subspace size: 1348, maximum subspace size: 1706
+step: 6, current subspace size: 1527, maximum subspace size: 1706
+step: 7, current subspace size: 1706, maximum subspace size: 1706
+step: 8, current subspace size: 632, maximum subspace size: 1706
+step: 9, current subspace size: 811, maximum subspace size: 1706
+step: 10, current subspace size: 990, maximum subspace size: 1706
+step: 11, current subspace size: 1169, maximum subspace size: 1706
+step: 12, current subspace size: 1348, maximum subspace size: 1706
+step: 13, current subspace size: 1527, maximum subspace size: 1706
+step: 14, current subspace size: 1706, maximum subspace size: 1706
+step: 15, current subspace size: 632, maximum subspace size: 1706
+step: 16, current subspace size: 811, maximum subspace size: 1706
+step: 17, current subspace size: 990, maximum subspace size: 1706
+step: 18, current subspace size: 1169, maximum subspace size: 1706
+step: 19, current subspace size: 1348, maximum subspace size: 1706
+step: 20, current subspace size: 1527, maximum subspace size: 1706
+step: 21, current subspace size: 1706, maximum subspace size: 1706
+step: 22, current subspace size: 632, maximum subspace size: 1706
+step: 23, current subspace size: 811, maximum subspace size: 1706
+step: 24, current subspace size: 990, maximum subspace size: 1706
+step: 25, current subspace size: 1169, maximum subspace size: 1706
+step: 26, current subspace size: 1348, maximum subspace size: 1706
+step: 27, current subspace size: 1527, maximum subspace size: 1706
+step: 28, current subspace size: 1706, maximum subspace size: 1706
+step: 29, current subspace size: 632, maximum subspace size: 1706
+step: 30, current subspace size: 811, maximum subspace size: 1706
+step: 31, current subspace size: 990, maximum subspace size: 1706
+Lowest band energies
+ik :  0,   -23.331543  -21.730036  -16.929694   -3.977719   -3.246539   -2.167773   -2.165710   -2.162742   -1.499567   -1.385483
+
+=== Warning at line 1014 of file /global/cscratch1/sd/zhang714/install_sirius_2019_08_22/SIRIUS-develop-debug/src/Density/density.cpp ===
+wrong number of electrons
+  obtained value : 223.943
+  target value : 224
+  difference : 0.0574863
+  total core leakage : 0.115226
+    atom class : 0, core leakage : 0.00549148
+    atom class : 1, core leakage : 0.00549166
+    atom class : 2, core leakage : 0.00549173
+    atom class : 3, core leakage : 0.00548271
+    atom class : 4, core leakage : 0.00548261
+    atom class : 5, core leakage : 0.00548267
+    atom class : 6, core leakage : 0.00548254
+    atom class : 7, core leakage : 0.00548255
+    atom class : 8, core leakage : 0.00548251
+    atom class : 9, core leakage : 0.00548625
+    atom class : 10, core leakage : 0.00548631
+    atom class : 11, core leakage : 0.00548632
+    atom class : 12, core leakage : 0.00548943
+    atom class : 13, core leakage : 0.00548937
+    atom class : 14, core leakage : 0.00548966
+    atom class : 15, core leakage : 0.00548211
+    atom class : 16, core leakage : 0.00548215
+    atom class : 17, core leakage : 0.0054821
+    atom class : 18, core leakage : 0.00548296
+    atom class : 19, core leakage : 0.00548291
+    atom class : 20, core leakage : 0.00548293
+    atom class : 21, core leakage : 0
+    atom class : 22, core leakage : 0
+    atom class : 23, core leakage : 0
+    atom class : 24, core leakage : 0
+    atom class : 25, core leakage : 0
+    atom class : 26, core leakage : 0
+    atom class : 27, core leakage : 0
+    atom class : 28, core leakage : 0
+    atom class : 29, core leakage : 0
+    atom class : 30, core leakage : 0
+    atom class : 31, core leakage : 0
+    atom class : 32, core leakage : 0
+    atom class : 33, core leakage : 0
+    atom class : 34, core leakage : 0
+    atom class : 35, core leakage : 0
+    atom class : 36, core leakage : 0
+    atom class : 37, core leakage : 0
+    atom class : 38, core leakage : 0
+    atom class : 39, core leakage : 0
+    atom class : 40, core leakage : 0
+    atom class : 41, core leakage : 0
+    atom class : 42, core leakage : 0
+    atom class : 43, core leakage : 0
+    atom class : 44, core leakage : 0
+    atom class : 45, core leakage : 2.71393e-08
+    atom class : 46, core leakage : 4.67593e-06
+    atom class : 47, core leakage : 4.67603e-06
+    atom class : 48, core leakage : 4.67618e-06
+    atom class : 49, core leakage : 4.67239e-06
+    atom class : 50, core leakage : 4.67286e-06
+    atom class : 51, core leakage : 4.67251e-06
+    atom class : 52, core leakage : 4.68873e-06
+
+
+Charges and magnetic moments
+--------------------------------------------------------------------------------
+atom      charge    core leakage
+--------------------------------------------------------------------------------
+   0    3.614831  5.49147989e-03
+   1    3.386106  5.49166191e-03
+   2    3.192981  5.49172681e-03
+   3    4.929173  5.48271158e-03
+   4    4.949504  5.48260531e-03
+   5    4.937306  5.48266719e-03
+   6    4.893210  5.48253824e-03
+   7    4.921847  5.48255227e-03
+   8    4.901745  5.48250887e-03
+   9    4.683307  5.48624903e-03
+  10    4.847518  5.48630536e-03
+  11    4.725651  5.48631921e-03
+  12    2.710259  5.48942859e-03
+  13    2.932609  5.48937110e-03
+  14    2.803691  5.48965921e-03
+  15    2.919631  5.48211498e-03
+  16    2.997777  5.48214737e-03
+  17    2.860240  5.48209563e-03
+  18    2.943329  5.48296391e-03
+  19    2.945034  5.48291193e-03
+  20    2.875699  5.48293462e-03
+  21    0.454540  0.00000000e+00
+  22    0.464197  0.00000000e+00
+  23    0.446366  0.00000000e+00
+  24    0.445194  0.00000000e+00
+  25    0.463757  0.00000000e+00
+  26    0.460554  0.00000000e+00
+  27    0.467730  0.00000000e+00
+  28    0.475706  0.00000000e+00
+  29    0.460555  0.00000000e+00
+  30    0.447958  0.00000000e+00
+  31    0.458799  0.00000000e+00
+  32    0.424005  0.00000000e+00
+  33    0.456526  0.00000000e+00
+  34    0.452984  0.00000000e+00
+  35    0.421730  0.00000000e+00
+  36    0.472648  0.00000000e+00
+  37    0.475789  0.00000000e+00
+  38    0.473366  0.00000000e+00
+  39    0.451104  0.00000000e+00
+  40    0.442369  0.00000000e+00
+  41    0.443171  0.00000000e+00
+  42    0.449622  0.00000000e+00
+  43    0.475890  0.00000000e+00
+  44    0.457525  0.00000000e+00
+  45   18.681024  2.71393224e-08
+  46    5.402455  4.67592572e-06
+  47    6.320904  4.67602905e-06
+  48    5.314065  4.67618320e-06
+  49    5.314830  4.67239248e-06
+  50    6.067264  4.67286052e-06
+  51    5.267290  4.67250861e-06
+  52    5.658236  4.68872897e-06
+
+total core leakage    : 1.15225715e-01
+interstitial charge   :  75.002911
+total charge          : 223.942514
+
+Energy
+--------------------------------------------------------------------------------
+valence_eval_sum          :      -261.94228819
+core_eval_sum             :     -1289.03994297
+kinetic energy            :      2595.66055732
+enuc                      :     -3050.02687831
+<rho|V^{XC}>              :      -336.27517880
+<rho|E^{XC}>              :      -254.83704300
+<mag|B^{XC}>              :         0.00000000
+<rho|V^{H}>               :     -3744.55697509
+Total energy              :     -2581.48185153 (Ha),     -5162.96370307 (Ry)
+
+band gap (eV) :         0.07640073
+Efermi        :        -0.51400109
+
+iteration :   0, RMS 4.645934294425E-01, energy difference : -2.647285426327E+03
+
+|||+------------------------------+
+|||| SCF iteration   1 out of  30 |
+|||| this is rank:   0            |
+|||+------------------------------+
+
+Linearization energies
+Atom : C, class id : 0
+augmented waves
+local orbitals
+
+Atom : C, class id : 1
+augmented waves
+local orbitals
+
+Atom : C, class id : 2
+augmented waves
+local orbitals
+
+Atom : C, class id : 3
+augmented waves
+local orbitals
+
+Atom : C, class id : 4
+augmented waves
+local orbitals
+
+Atom : C, class id : 5
+augmented waves
+local orbitals
+
+Atom : C, class id : 6
+augmented waves
+local orbitals
+
+Atom : C, class id : 7
+augmented waves
+local orbitals
+
+Atom : C, class id : 8
+augmented waves
+local orbitals
+
+Atom : C, class id : 9
+augmented waves
+local orbitals
+
+Atom : C, class id : 10
+augmented waves
+local orbitals
+
+Atom : C, class id : 11
+augmented waves
+local orbitals
+
+Atom : C, class id : 12
+augmented waves
+local orbitals
+
+Atom : C, class id : 13
+augmented waves
+local orbitals
+
+Atom : C, class id : 14
+augmented waves
+local orbitals
+
+Atom : C, class id : 15
+augmented waves
+local orbitals
+
+Atom : C, class id : 16
+augmented waves
+local orbitals
+
+Atom : C, class id : 17
+augmented waves
+local orbitals
+
+Atom : C, class id : 18
+augmented waves
+local orbitals
+
+Atom : C, class id : 19
+augmented waves
+local orbitals
+
+Atom : C, class id : 20
+augmented waves
+local orbitals
+
+Atom : H, class id : 21
+augmented waves
+local orbitals
+
+Atom : H, class id : 22
+augmented waves
+local orbitals
+
+Atom : H, class id : 23
+augmented waves
+local orbitals
+
+Atom : H, class id : 24
+augmented waves
+local orbitals
+
+Atom : H, class id : 25
+augmented waves
+local orbitals
+
+Atom : H, class id : 26
+augmented waves
+local orbitals
+
+Atom : H, class id : 27
+augmented waves
+local orbitals
+
+Atom : H, class id : 28
+augmented waves
+local orbitals
+
+Atom : H, class id : 29
+augmented waves
+local orbitals
+
+Atom : H, class id : 30
+augmented waves
+local orbitals
+
+Atom : H, class id : 31
+augmented waves
+local orbitals
+
