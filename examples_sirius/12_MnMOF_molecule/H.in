@@ -1,0 +1,12 @@
+ 'H'                                        : spsymb
+ 'hydrogen'                                 : spname
+ -1.000000                                  : spzn
+   1837.362219                              : spmass
+  0.100000E-04    0.7500   19.5924   200    : sprmin, rmt, sprmax, nrmt
+   1                                        : spnst
+   1   0   1    1.000000    F               : spn, spl, spk, spocc, spcore
+   1                                        : apword
+    0.1500   0  F                           : apwe0, apwdm, apwve
+   0                                        : nlx
+   0                                        : nlorb
+ 

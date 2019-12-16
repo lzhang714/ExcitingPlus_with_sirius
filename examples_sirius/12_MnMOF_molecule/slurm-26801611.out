@@ -1,0 +1,287 @@
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 26801611.0 ON nid00547 CANCELLED AT 2019-12-16T01:05:15 DUE TO TIME LIMIT ***
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB209F3191  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB209F31A8  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+elk                0000000021670140  for__signal_handl     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB209F3274  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB249F3369  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB189F312D  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB249F3421  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB209F3338  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB209F33C7  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB08A6F115  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB209FA38A  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB209FA3EC  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB209F3455  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB209F3315  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB1C9F33D2  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB209F3196  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB089F3411  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB0C9FA2B6  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB209FA43C  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmpich_intel.so  00002AAAF728127E  Unknown               Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB209F34B5  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB209F34ED  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB08A6F38C  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmpich_intel.so  00002AAAF72812B3  Unknown               Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB209F3252  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB0D1FE32A  mkl_blas_avx2_zge     Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmkl_avx2.so     00002AAB206B60E7  mkl_blas_avx2_zge     Unknown  Unknown
+libmkl_avx2.so     00002AAB206B73AB  mkl_blas_avx2_z_g     Unknown  Unknown
+libmkl_avx2.so     00002AAB206C83D6  mkl_blas_avx2_xzg     Unknown  Unknown
+libmkl_core.so     00002AAAADD66770  mkl_blas_xzgemm       Unknown  Unknown
+libmkl_sequential  00002AAAAC71C8F6  mkl_blas_zgemm        Unknown  Unknown
+libmkl_intel_lp64  00002AAAAAE6E3FF  zgemm                 Unknown  Unknown
+elk                0000000020CB01DE  Unknown               Unknown  Unknown
+elk                0000000020CADC32  Unknown               Unknown  Unknown
+elk                0000000020DF8D22  Unknown               Unknown  Unknown
+elk                0000000020DF64FE  Unknown               Unknown  Unknown
+elk                0000000020D12C1C  Unknown               Unknown  Unknown
+elk                0000000020D7C014  Unknown               Unknown  Unknown
+elk                0000000020BD3AE4  Unknown               Unknown  Unknown
+elk                0000000020BBBCDE  Unknown               Unknown  Unknown
+elk                00000000200FCF50  Unknown               Unknown  Unknown
+elk                00000000202E8DAC  Unknown               Unknown  Unknown
+elk                0000000020016D12  Unknown               Unknown  Unknown
+libc-2.26.so       00002AAAF7813F8A  __libc_start_main     Unknown  Unknown
+elk                0000000020016C2A  Unknown               Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libugni.so.0.6.0   00002AAAFAB4E7E3  GNI_SmsgGetNextWT     Unknown  Unknown
+libmpich_intel.so  00002AAAF72503B8  MPID_nem_gni_poll     Unknown  Unknown
+libmpich_intel.so  00002AAAF722D4E6  MPIDI_CH3I_Progre     Unknown  Unknown
+libmpich_intel.so  00002AAAF7173DED  MPIC_Wait             Unknown  Unknown
+libmpich_intel.so  00002AAAF71744A2  MPIC_Sendrecv         Unknown  Unknown
+libmpich_intel.so  00002AAAF70A6464  MPIR_Allreduce_in     Unknown  Unknown
+libmpich_intel.so  00002AAAF719736A  MPIR_CRAY_Allredu     Unknown  Unknown
+libmpich_intel.so  00002AAAF70A7664  MPIR_Allreduce_im     Unknown  Unknown
+libmpich_intel.so  00002AAAF70A8005  MPI_Allreduce         Unknown  Unknown
+elk                0000000020CB0B3D  Unknown               Unknown  Unknown
+elk                0000000020CADC05  Unknown               Unknown  Unknown
+elk                0000000020DF8D22  Unknown               Unknown  Unknown
+elk                0000000020DF64FE  Unknown               Unknown  Unknown
+elk                0000000020D12C1C  Unknown               Unknown  Unknown
+elk                0000000020D7C014  Unknown               Unknown  Unknown
+elk                0000000020BD3AE4  Unknown               Unknown  Unknown
+elk                0000000020BBBCDE  Unknown               Unknown  Unknown
+elk                00000000200FCF50  Unknown               Unknown  Unknown
+elk                00000000202E8DAC  Unknown               Unknown  Unknown
+elk                0000000020016D12  Unknown               Unknown  Unknown
+libc-2.26.so       00002AAAF7813F8A  __libc_start_main     Unknown  Unknown
+elk                0000000020016C2A  Unknown               Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libugni.so.0.6.0   00002AAAFAB4E6DA  GNI_SmsgGetNextWT     Unknown  Unknown
+libmpich_intel.so  00002AAAF72503B8  MPID_nem_gni_poll     Unknown  Unknown
+libmpich_intel.so  00002AAAF722D4E6  MPIDI_CH3I_Progre     Unknown  Unknown
+libmpich_intel.so  00002AAAF7173DED  MPIC_Wait             Unknown  Unknown
+libmpich_intel.so  00002AAAF71744A2  MPIC_Sendrecv         Unknown  Unknown
+libmpich_intel.so  00002AAAF70A6464  MPIR_Allreduce_in     Unknown  Unknown
+libmpich_intel.so  00002AAAF719736A  MPIR_CRAY_Allredu     Unknown  Unknown
+libmpich_intel.so  00002AAAF70A7664  MPIR_Allreduce_im     Unknown  Unknown
+libmpich_intel.so  00002AAAF70A8005  MPI_Allreduce         Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmpich_intel.so  00002AAAF724EA90  Unknown               Unknown  Unknown
+libmpich_intel.so  00002AAAF724F76A  MPID_nem_gni_poll     Unknown  Unknown
+libmpich_intel.so  00002AAAF722D4E6  MPIDI_CH3I_Progre     Unknown  Unknown
+libmpich_intel.so  00002AAAF7173DED  MPIC_Wait             Unknown  Unknown
+libmpich_intel.so  00002AAAF71744A2  MPIC_Sendrecv         Unknown  Unknown
+libmpich_intel.so  00002AAAF70A6464  MPIR_Allreduce_in     Unknown  Unknown
+libmpich_intel.so  00002AAAF719736A  MPIR_CRAY_Allredu     Unknown  Unknown
+libmpich_intel.so  00002AAAF70A7664  MPIR_Allreduce_im     Unknown  Unknown
+libmpich_intel.so  00002AAAF70A8005  MPI_Allreduce         Unknown  Unknown
+elk                0000000020CB0B3D  Unknown               Unknown  Unknown
+elk                0000000020CADC05  Unknown               Unknown  Unknown
+elk                0000000020DF8D22  Unknown               Unknown  Unknown
+elk                0000000020DF64FE  Unknown               Unknown  Unknown
+elk                0000000020D12C1C  Unknown               Unknown  Unknown
+elk                0000000020D7C014  Unknown               Unknown  Unknown
+elk                0000000020BD3AE4  Unknown               Unknown  Unknown
+elk                0000000020BBBCDE  Unknown               Unknown  Unknown
+elk                00000000200FCF50  Unknown               Unknown  Unknown
+elk                00000000202E8DAC  Unknown               Unknown  Unknown
+elk                0000000020016D12  Unknown               Unknown  Unknown
+libc-2.26.so       00002AAAF7813F8A  __libc_start_main     Unknown  Unknown
+elk                0000000020016C2A  Unknown               Unknown  Unknown
+elk                0000000020CB0B3D  Unknown               Unknown  Unknown
+elk                0000000020CADC05  Unknown               Unknown  Unknown
+elk                0000000020DF8D22  Unknown               Unknown  Unknown
+elk                0000000020DF64FE  Unknown               Unknown  Unknown
+elk                0000000020D12C1C  Unknown               Unknown  Unknown
+elk                0000000020D7C014  Unknown               Unknown  Unknown
+elk                0000000020BD3AE4  Unknown               Unknown  Unknown
+elk                0000000020BBBCDE  Unknown               Unknown  Unknown
+elk                00000000200FCF50  Unknown               Unknown  Unknown
+elk                00000000202E8DAC  Unknown               Unknown  Unknown
+elk                0000000020016D12  Unknown               Unknown  Unknown
+libc-2.26.so       00002AAAF7813F8A  __libc_start_main     Unknown  Unknown
+elk                0000000020016C2A  Unknown               Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libmpich_intel.so  00002AAAF7228656  Unknown               Unknown  Unknown
+libmpich_intel.so  00002AAAF722CF38  MPIDI_CH3I_Progre     Unknown  Unknown
+libmpich_intel.so  00002AAAF7173DED  MPIC_Wait             Unknown  Unknown
+srun: got SIGCONT
+libmpich_intel.so  00002AAAF71744A2  MPIC_Sendrecv         Unknown  Unknown
+libmpich_intel.so  00002AAAF70A6464  MPIR_Allreduce_in     Unknown  Unknown
+libmpich_intel.so  00002AAAF719736A  MPIR_CRAY_Allredu     Unknown  Unknown
+libmpich_intel.so  00002AAAF70A7664  MPIR_Allreduce_im     Unknown  Unknown
+libmpich_intel.so  00002AAAF70A8005  MPI_Allreduce         Unknown  Unknown
+elk                0000000020CB0B3D  Unknown               Unknown  Unknown
+srun: forcing job termination
+elk                0000000020CADC05  Unknown               Unknown  Unknown
+elk                0000000020DF8D22  Unknown               Unknown  Unknown
+elk                0000000020DF64FE  Unknown               Unknown  Unknown
+srun: forcing job termination
+elk                0000000020D12C1C  Unknown               Unknown  Unknown
+elk                0000000020D7C014  Unknown               Unknown  Unknown
+elk                0000000020BD3AE4  Unknown               Unknown  Unknown
+elk                0000000020BBBCDE  Unknown               Unknown  Unknown
+elk                00000000200FCF50  Unknown               Unknown  Unknown
+elk                00000000202E8DAC  Unknown               Unknown  Unknown
+elk                0000000020016D12  Unknown               Unknown  Unknown
+libc-2.26.so       00002AAAF7813F8A  __libc_start_main     Unknown  Unknown
+elk                0000000020016C2A  Unknown               Unknown  Unknown
+forrtl: error (78): process killed (SIGTERM)
+Image              PC                Routine            Line        Source             
+elk                00000000216706F4  for__signal_handl     Unknown  Unknown
+libpthread-2.26.s  00002AAAF75E7360  Unknown               Unknown  Unknown
+libugni.so.0.6.0   00002AAAFAB1A0C4  Unknown               Unknown  Unknown
+libmpich_intel.so  00002AAAF724EC59  Unknown               Unknown  Unknown
+libmpich_intel.so  00002AAAF724F76A  MPID_nem_gni_poll     Unknown  Unknown
+libmpich_intel.so  00002AAAF722D4E6  MPIDI_CH3I_Progre     Unknown  Unknown
+libmpich_intel.so  00002AAAF7173DED  MPIC_Wait             Unknown  Unknown
+libmpich_intel.so  00002AAAF71744A2  MPIC_Sendrecv         Unknown  Unknown
+libmpich_intel.so  00002AAAF70A6464  MPIR_Allreduce_in     Unknown  Unknown
+libmpich_intel.so  00002AAAF719736A  MPIR_CRAY_Allredu     Unknown  Unknown
+libmpich_intel.so  00002AAAF70A7664  MPIR_Allreduce_im     Unknown  Unknown
+libmpich_intel.so  00002AAAF70A8005  MPI_Allreduce         Unknown  Unknown
+elk                0000000020CB0B3D  Unknown               Unknown  Unknown
+elk                0000000020CADC05  Unknown               Unknown  Unknown
+elk                0000000020DF8D22  Unknown               Unknown  Unknown
+elk                0000000020DF64FE  Unknown               Unknown  Unknown
+elk                0000000020D12C1C  Unknown               Unknown  Unknown
+elk                0000000020D7C014  Unknown               Unknown  Unknown
+elk                0000000020BD3AE4  Unknown               Unknown  Unknown
+elk                0000000020BBBCDE  Unknown               Unknown  Unknown
+elk                00000000200FCF50  Unknown               Unknown  Unknown
+elk                00000000202E8DAC  Unknown               Unknown  Unknown
+elk                0000000020016D12  Unknown               Unknown  Unknown
+libc-2.26.so       00002AAAF7813F8A  __libc_start_main     Unknown  Unknown
