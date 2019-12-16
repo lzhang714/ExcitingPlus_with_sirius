@@ -323,10 +323,8 @@ subroutine init0
           ! use minimum muffin-tin radius
           gkmax=rgkmax/minval(rmt(1:nspecies))
       end if
-    else
-      ! why it's possible to be nspecies <= 0 ?? 
+    else 
       gkmax=rgkmax/2.d0
-    end if
     ! originally EP requires gmaxvr >= 2*gkmax+epslat
     gmaxvr=max(gmaxvr,2.d0*gkmax+epslat)
 
