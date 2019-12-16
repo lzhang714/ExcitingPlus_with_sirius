@@ -371,10 +371,10 @@ subroutine init0
         nstfv = int(chgval/2.d0) + nempty
 
         ! ---------------- control block
-        call sirius_import_parameters(sctx, string('{"control" : {"cyclic_block_size"   : 16 }}'))
+        call sirius_import_parameters(sctx, string('{"control" : {"cyclic_block_size"   : 4 }}'))
         call sirius_import_parameters(sctx, string('{"control" : {"processing_unit"     : "cpu" }}'))      
-        call sirius_import_parameters(sctx, string('{"control" : {"std_evp_solver_type" : "lapack" }}'))  
-        call sirius_import_parameters(sctx, string('{"control" : {"gen_evp_solver_type" : "lapack" }}'))
+        call sirius_import_parameters(sctx, string('{"control" : {"std_evp_solver_type" : "scalapack" }}'))  
+        call sirius_import_parameters(sctx, string('{"control" : {"gen_evp_solver_type" : "scalapack" }}'))
         call sirius_import_parameters(sctx, string('{"control" : {"verbosity"           : 2 }}'))
         call sirius_import_parameters(sctx, string('{"control" : {"verification"        : 0 }}'))
         
@@ -389,20 +389,20 @@ subroutine init0
         !call sirius_import_parameters(sctx, string('{"parameters" : {"energy_tol"                  : 1e-6   }}'))
 
 	! ---------------- mixer settings 
-        call sirius_import_parameters(sctx, string('{"mixer" : {"beta"         : 0.75 }}'))
-        call sirius_import_parameters(sctx, string('{"mixer" : {"type"         : "broyden1" }}'))
-        call sirius_import_parameters(sctx, string('{"mixer" : {"max_history"  : 8 }}'))
+        !call sirius_import_parameters(sctx, string('{"mixer" : {"beta"         : 0.75 }}'))
+        !call sirius_import_parameters(sctx, string('{"mixer" : {"type"         : "broyden1" }}'))
+        !call sirius_import_parameters(sctx, string('{"mixer" : {"max_history"  : 8 }}'))
 
         ! ---------------- choose eigen solver      
         if (sirius_davidson_eigen_solver) then 
           call sirius_set_parameters(sctx, iter_solver_type=string('davidson'))                                         ! duplicated?
-          call sirius_import_parameters(sctx, string('{"iterative_solver" : {"type"                 : "davidson" }}'))  ! duplicated?
-          call sirius_import_parameters(sctx, string('{"iterative_solver" : {"energy_tolerance"     : 1e-13}}'))
-          call sirius_import_parameters(sctx, string('{"iterative_solver" : {"residual_tolerance"   : 1e-6}}'))
-          call sirius_import_parameters(sctx, string('{"iterative_solver" : {"num_steps"            : 32}}'))
-          call sirius_import_parameters(sctx, string('{"iterative_solver" : {"subspace_size"        : 8 }}'))         ! default 8, for large molecules
-          call sirius_import_parameters(sctx, string('{"iterative_solver" : {"converge_by_energy"   : 1 }}'))
-	  call sirius_import_parameters(sctx, string('{"iterative_solver" : {"num_singular"         : 20 }}'))  
+          !call sirius_import_parameters(sctx, string('{"iterative_solver" : {"type"                 : "davidson" }}'))  ! duplicated?
+          !call sirius_import_parameters(sctx, string('{"iterative_solver" : {"energy_tolerance"     : 1e-13}}'))
+          !call sirius_import_parameters(sctx, string('{"iterative_solver" : {"residual_tolerance"   : 1e-6}}'))
+          !call sirius_import_parameters(sctx, string('{"iterative_solver" : {"num_steps"            : 32}}'))
+          !call sirius_import_parameters(sctx, string('{"iterative_solver" : {"subspace_size"        : 8 }}'))         ! default 8, for large molecules
+          !call sirius_import_parameters(sctx, string('{"iterative_solver" : {"converge_by_energy"   : 1 }}'))
+	  !call sirius_import_parameters(sctx, string('{"iterative_solver" : {"num_singular"         : 20 }}'))  
         else 
           call sirius_set_parameters(sctx, iter_solver_type=string('exact'))
         endif
@@ -410,7 +410,7 @@ subroutine init0
         ! ---------------- cutoffs,relativity,mag-dim,symm
         call sirius_set_parameters(   sctx,&
                                       &use_symmetry=bool(.true.),&
-                                      &valence_rel=string('none'),&
+                                      &valence_rel=string('zora'),&
                                       &core_rel=string('none'),&
                                       &auto_rmt=0,&
                                       &fft_grid_size=ngrid(1),&
@@ -563,8 +563,8 @@ subroutine init0
         ! as initial test, use sequential diagonalisation in lapack, i.e. sirius not running parallel.
         !mpi_grid(1)=rows_per_kpt 
         !mpi_grid(2)=cols_per_kpt
-        mpi_grid(1) = 4 
-        mpi_grid(2) = 4                
+        mpi_grid(1) = 2
+        mpi_grid(2) = 2                
         call sirius_set_mpi_grid_dims(sctx, 2, mpi_grid(1))
 
         ! initialize global variables. In SIRIUS this is doing: sim_ctx.initialize();
